@@ -6,41 +6,41 @@ function renderAppTitle() {
   return appTitle;
 }
 
-function createSidebarElement(elementLabel) {
+function createList(listLabel) {
   const projectElement = document.createElement("div");
   projectElement.className = "sidebar-element";
 
   const label = document.createElement("div");
   label.className = "sidebar-element-label";
-  label.textContent = elementLabel;
+  label.textContent = listLabel;
 
   projectElement.appendChild(label);
 
   return projectElement;
 }
 
-function renderHomeProjectsContainer() {
-  const projectsContainer = document.createElement("div");
-  projectsContainer.className = "sidebar-projects-container";
+function renderHomeListsContainer() {
+  const listsContainer = document.createElement("div");
+  listsContainer.className = "sidebar-lists-container";
 
   const title = document.createElement("div");
   title.textContent = "Home";
 
-  projectsContainer.appendChild(title);
+  listsContainer.appendChild(title);
 
-  return projectsContainer;
+  return listsContainer;
 }
 
-function renderUserProjectsContainer() {
-  const projectsContainer = document.createElement("div");
-  projectsContainer.className = "sidebar-projects-container";
+function renderUserListsContainer() {
+  const listsContainer = document.createElement("div");
+  listsContainer.className = "sidebar-lists-container";
 
   const title = document.createElement("div");
-  title.textContent = "My Projects";
+  title.textContent = "My Lists";
 
-  projectsContainer.appendChild(title);
+  listsContainer.appendChild(title);
 
-  return projectsContainer;
+  return listsContainer;
 }
 
 export default function renderSidebar() {
@@ -48,8 +48,8 @@ export default function renderSidebar() {
   sidebar.id = "sidebar";
 
   sidebar.appendChild(renderAppTitle());
-  sidebar.appendChild(renderHomeProjectsContainer());
-  sidebar.appendChild(renderUserProjectsContainer());
+  sidebar.appendChild(renderHomeListsContainer());
+  sidebar.appendChild(renderUserListsContainer());
 
   document.body.appendChild(sidebar);
 }
