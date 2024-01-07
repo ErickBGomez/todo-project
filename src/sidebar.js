@@ -6,17 +6,17 @@ function renderAppTitle() {
   return appTitle;
 }
 
-function createList(listLabel) {
-  const projectElement = document.createElement("div");
-  projectElement.className = "sidebar-element";
+function createListSidebar(listLabel) {
+  const list = document.createElement("div");
+  list.className = "list-sidebar-element";
 
   const label = document.createElement("div");
-  label.className = "sidebar-element-label";
+  label.className = "list-sidebar-element-label";
   label.textContent = listLabel;
 
-  projectElement.appendChild(label);
+  list.appendChild(label);
 
-  return projectElement;
+  return list;
 }
 
 function renderHomeListsContainer() {
@@ -24,9 +24,18 @@ function renderHomeListsContainer() {
   listsContainer.className = "sidebar-lists-container";
 
   const title = document.createElement("div");
+  title.className = "title";
   title.textContent = "Home";
 
+  const listsGroup = document.createElement("div");
+  listsGroup.className = "lists-group";
+
+  listsGroup.appendChild(createListSidebar("All Tasks"));
+  listsGroup.appendChild(createListSidebar("Today"));
+  listsGroup.appendChild(createListSidebar("This week"));
+
   listsContainer.appendChild(title);
+  listsContainer.appendChild(listsGroup);
 
   return listsContainer;
 }
@@ -36,9 +45,18 @@ function renderUserListsContainer() {
   listsContainer.className = "sidebar-lists-container";
 
   const title = document.createElement("div");
+  title.className = "title";
   title.textContent = "My Lists";
 
+  const listsGroup = document.createElement("div");
+  listsGroup.className = "lists-group";
+
+  listsGroup.appendChild(createListSidebar("List 1"));
+  listsGroup.appendChild(createListSidebar("List 2"));
+  listsGroup.appendChild(createListSidebar("List 3"));
+
   listsContainer.appendChild(title);
+  listsContainer.appendChild(listsGroup);
 
   return listsContainer;
 }

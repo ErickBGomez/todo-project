@@ -49,6 +49,7 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 32px;
+  user-select: none;
 }
 
 #app-title {
@@ -61,7 +62,31 @@ body {
   width: 100%;
   border-top: 1px solid var(--Black-25);
   padding-top: 32px;
+}
+
+.sidebar-lists-container .title {
   color: var(--Black-50);
   font-size: 0.875rem;
   font-weight: 400;
+  margin-bottom: 16px;
+}
+
+.lists-group {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.list-sidebar-element {
+  color: var(--Black);
+  font-weight: 500;
+  border-radius: 8px;
+  padding: 8px;
+  cursor: pointer;
+  transition: 100ms;
+}
+
+.list-sidebar-element:hover {
+  background-color: var(--Black-10);
+  transition: 100ms;
 }
