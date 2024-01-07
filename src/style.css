@@ -90,3 +90,26 @@ body {
   background-color: var(--Black-10);
   transition: 100ms;
 }
+
+.lower-sidebar {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  width: 100%;
+}
+
+.credits {
+  color: var(--Black-50);
+  font-size: 0.875rem;
+}
+
+.credits a {
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.credits a,
+.credits a:visited {
+  color: var(--Primary);
+}
