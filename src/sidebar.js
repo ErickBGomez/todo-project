@@ -61,6 +61,30 @@ function renderUserListsContainer() {
   return listsContainer;
 }
 
+function renderCredits() {
+  const creditsContainer = document.createElement("div");
+  creditsContainer.className = "credits";
+  creditsContainer.textContent = "Made by ";
+
+  const creditsLink = document.createElement("a");
+  creditsLink.textContent = "Erick B. Gómez";
+  creditsLink.href = "https://www.github.com/ErickBGomez";
+  creditsLink.target = "_blank";
+
+  creditsContainer.appendChild(creditsLink);
+
+  return creditsContainer;
+}
+
+function renderLowerSidebar() {
+  const container = document.createElement("div");
+  container.className = "lower-sidebar";
+
+  container.appendChild(renderCredits());
+
+  return container;
+}
+
 export default function renderSidebar() {
   const sidebar = document.createElement("div");
   sidebar.id = "sidebar";
@@ -68,6 +92,7 @@ export default function renderSidebar() {
   sidebar.appendChild(renderAppTitle());
   sidebar.appendChild(renderHomeListsContainer());
   sidebar.appendChild(renderUserListsContainer());
+  sidebar.appendChild(renderLowerSidebar());
 
   document.body.appendChild(sidebar);
 }
