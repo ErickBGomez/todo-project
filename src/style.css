@@ -1,5 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap");
 
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
 :root {
   /* Typography */
   font-size: 16px;
@@ -7,11 +13,11 @@
 
   /* Colors: */
   --Black: #25272c;
-  --Black-75: #25272c;
-  --Black-50: #25272c;
-  --Black-25: #25272c;
-  --Black-10: #25272c;
-  --Black-05: #25272c;
+  --Black-75: #25272cbf;
+  --Black-50: #25272c80;
+  --Black-25: #25272c40;
+  --Black-10: #25272c1a;
+  --Black-05: #25272c0d;
   --White: #fafafa;
   --Primary: #4c7dfb;
   --Secondary: #9ac2ff;
@@ -27,4 +33,26 @@
 body {
   color: var(--Black);
   background-color: var(--White);
+
+  display: flex;
+  height: 100vh;
+  margin: 0;
+}
+
+#sidebar {
+  background-color: var(--Black-05);
+  padding: 26px 32px;
+  border-right: 1px solid var(--Black-25);
+
+  display: flex;
+  flex-direction: column;
+}
+
+#app-title {
+  color: var(--Primary);
+  font-weight: 700;
+  font-size: 1.625rem;
+}
+
+.projects-category {
 }
