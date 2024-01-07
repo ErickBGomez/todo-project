@@ -43,9 +43,12 @@ body {
   background-color: var(--Black-05);
   padding: 26px 32px;
   border-right: 1px solid var(--Black-25);
+  width: 256px;
 
   display: flex;
   flex-direction: column;
+  align-items: center;
+  gap: 32px;
 }
 
 #app-title {
@@ -54,5 +57,11 @@ body {
   font-size: 1.625rem;
 }
 
-.projects-category {
+.sidebar-projects-container {
+  width: 100%;
+  border-top: 1px solid var(--Black-25);
+  padding-top: 32px;
+  color: var(--Black-50);
+  font-size: 0.875rem;
+  font-weight: 400;
 }
