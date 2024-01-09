@@ -63,7 +63,7 @@ function createUserListsContainer() {
 
 function createCredits() {
   const creditsContainer = document.createElement("div");
-  creditsContainer.className = "credits";
+  creditsContainer.id = "credits";
   creditsContainer.textContent = "Made by ";
 
   const creditsLink = document.createElement("a");
