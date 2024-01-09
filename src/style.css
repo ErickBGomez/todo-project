@@ -28,6 +28,7 @@
   --Medium-Priority: #ea7e1a;
   --Low-Priority: #896b3f;
   --Completed-Checklist: #2f9e62;
+  --List-Background-Gradient: linear-gradient(90deg, #66a2e8 0%, #989be9 100%);
 }
 
 body {
@@ -38,6 +39,8 @@ body {
   height: 100vh;
   margin: 0;
 }
+
+/* Sidebar */
 
 #sidebar {
   background-color: var(--Black-05);
@@ -112,4 +115,9 @@ body {
 .credits a,
 .credits a:visited {
   color: var(--Primary);
+}
+
+/* List content */
+
+#list-background {
 }
