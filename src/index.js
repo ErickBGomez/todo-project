@@ -1,6 +1,6 @@
 import "./style.css";
 import renderSidebar from "./sidebar.js";
-import renderListContent from "./listContent.js";
+import renderPage from "./page.js";
 
 renderSidebar();
-renderListContent();
+renderPage();

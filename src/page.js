@@ -12,21 +12,27 @@ function createListContent() {
   const title = document.createElement("h1");
   title.id = "list-title";
   title.textContent = "List Title";
+
+  const tasks = document.createElement("div");
+  tasks.id = "tasks";
+
+  const newTaskButton = document.createElement("button");
+  newTaskButton.id = "new-task-button";
+  newTaskButton.textContent = "Add new task";
+
+  container.appendChild(title);
+  container.appendChild(tasks);
+  container.appendChild(newTaskButton);
+
+  return container;
 }
 
-function createListTitle(listTitle) {
-  const title = document.createElement("h1");
-  title.id = "list-title";
-  title.textContent = listTitle;
-
-  return title;
-}
-
-export default function renderListContent() {
+export default function renderPage() {
   const listContent = document.createElement("div");
   listContent.id = "list-content";
 
   listContent.appendChild(createBackground());
+  listContent.appendChild(createListContent());
 
   document.body.appendChild(listContent);
 }
