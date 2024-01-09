@@ -142,7 +142,8 @@ button {
 }
 
 .list-container {
-  padding: 48px 416px;
+  margin: 48px auto;
+  width: clamp(400px, 50vw, 832px);
 }
 
 #list-title {
