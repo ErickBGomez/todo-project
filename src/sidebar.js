@@ -1,4 +1,4 @@
-function renderAppTitle() {
+function createAppTitle() {
   const appTitle = document.createElement("div");
   appTitle.id = "app-title";
   appTitle.textContent = "To-do app";
@@ -19,7 +19,7 @@ function createListSidebar(listLabel) {
   return list;
 }
 
-function renderHomeListsContainer() {
+function createHomeListsContainer() {
   const listsContainer = document.createElement("div");
   listsContainer.className = "sidebar-lists-container";
 
@@ -40,7 +40,7 @@ function renderHomeListsContainer() {
   return listsContainer;
 }
 
-function renderUserListsContainer() {
+function createUserListsContainer() {
   const listsContainer = document.createElement("div");
   listsContainer.className = "sidebar-lists-container";
 
@@ -61,7 +61,7 @@ function renderUserListsContainer() {
   return listsContainer;
 }
 
-function renderCredits() {
+function createCredits() {
   const creditsContainer = document.createElement("div");
   creditsContainer.className = "credits";
   creditsContainer.textContent = "Made by ";
@@ -76,11 +76,11 @@ function renderCredits() {
   return creditsContainer;
 }
 
-function renderLowerSidebar() {
+function createLowerSidebar() {
   const container = document.createElement("div");
   container.className = "lower-sidebar";
 
-  container.appendChild(renderCredits());
+  container.appendChild(createCredits());
 
   return container;
 }
@@ -89,10 +89,10 @@ export default function renderSidebar() {
   const sidebar = document.createElement("div");
   sidebar.id = "sidebar";
 
-  sidebar.appendChild(renderAppTitle());
-  sidebar.appendChild(renderHomeListsContainer());
-  sidebar.appendChild(renderUserListsContainer());
-  sidebar.appendChild(renderLowerSidebar());
+  sidebar.appendChild(createAppTitle());
+  sidebar.appendChild(createHomeListsContainer());
+  sidebar.appendChild(createUserListsContainer());
+  sidebar.appendChild(createLowerSidebar());
 
   document.body.appendChild(sidebar);
 }
