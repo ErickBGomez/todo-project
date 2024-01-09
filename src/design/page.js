@@ -15,43 +15,43 @@ function createListContent() {
   title.id = "list-title";
   title.textContent = "List Title";
 
-  const tasks = document.createElement("div");
-  tasks.id = "tasks";
+  const tasksContaier = document.createElement("div");
+  tasksContaier.id = "tasksContainer";
 
   const newTaskButton = document.createElement("button");
   newTaskButton.id = "new-task-button";
   newTaskButton.textContent = "Add new task";
 
   container.appendChild(title);
-  container.appendChild(tasks);
+  container.appendChild(tasksContaier);
   container.appendChild(newTaskButton);
 
   return container;
 }
 
 function createTaskElement(task, listContainer) {
-  const tasks = listContainer.querySelector("#tasks");
+  const tasksContainer = listContainer.querySelector("#tasksContainer");
 
   const newTask = document.createElement("div");
-  newTask.className = "task-container";
+  newTask.className = "task";
 
   const taskTitle = document.createElement("div");
-  taskTitle.className = "task-title";
+  taskTitle.className = "title";
   taskTitle.textContent = task.title;
 
   const taskDescription = document.createElement("div");
-  taskDescription.className = "task-description";
+  taskDescription.className = "description";
   taskDescription.textContent = task.description;
 
   const taskDate = document.createElement("div");
-  taskDate.className = "task-date";
+  taskDate.className = "date";
   taskDate.textContent = task.date;
 
   newTask.appendChild(taskTitle);
   newTask.appendChild(taskDescription);
   newTask.appendChild(taskDate);
 
-  tasks.appendChild(newTask);
+  tasksContainer.appendChild(newTask);
 }
 
 function addNewTaskEvent(listContent) {
