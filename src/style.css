@@ -40,6 +40,19 @@ body {
   margin: 0;
 }
 
+h1 {
+  font-size: 2.534rem;
+  margin: 0;
+  font-weight: 700;
+}
+
+button {
+  font-family: inherit;
+  background-color: var(--White);
+  border: none;
+  cursor: pointer;
+}
+
 /* Sidebar */
 
 #sidebar {
@@ -119,11 +132,28 @@ body {
 
 /* List content */
 
-#list-content {
+#list-page {
   flex: 1;
 }
 
 #list-background {
   height: 152px;
   background: var(--List-Background-Gradient);
+}
+
+.list-container {
+  padding: 48px 416px;
+}
+
+#list-title {
+  margin-bottom: 48px;
+}
+
+#new-task-button {
+  width: 100%;
+  padding: 24px 32px;
+  font-weight: 400;
+  color: var(--Black-50);
+  border: 1px solid var(--Black-25);
+  border-radius: 8px;
 }

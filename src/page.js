@@ -7,7 +7,7 @@ function createBackground() {
 
 function createListContent() {
   const container = document.createElement("div");
-  container.className = "list-content";
+  container.className = "list-container";
 
   const title = document.createElement("h1");
   title.id = "list-title";
@@ -29,7 +29,7 @@ function createListContent() {
 
 export default function renderPage() {
   const listContent = document.createElement("div");
-  listContent.id = "list-content";
+  listContent.id = "list-page";
 
   listContent.appendChild(createBackground());
   listContent.appendChild(createListContent());
