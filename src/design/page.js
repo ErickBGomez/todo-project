@@ -1,4 +1,6 @@
+// Functions
 import createTask from "../tasks";
+// Icons
 
 function createBackground() {
   const background = document.createElement("div");
