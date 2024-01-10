@@ -175,7 +175,18 @@ button {
   border-radius: 8px;
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 32px;
+}
+
+.complete-task-button {
+  width: 32px;
+  height: 32px;
+  background-color: var(--White);
+  border: 3px solid var(--Black-50);
+  border-radius: 100%;
+}
+
+.task-information {
 }
 
 .task .title {
