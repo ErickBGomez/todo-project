@@ -29,7 +29,7 @@ function createListContent() {
   return container;
 }
 
-function createTaskElement(task, listContainer) {
+function appendTaskToList(task, listContainer) {
   const tasksContainer = listContainer.querySelector("#tasksContainer");
 
   const newTask = document.createElement("div");
@@ -58,7 +58,7 @@ function addNewTaskEvent(listContent) {
   const newTaskButton = listContent.querySelector("#new-task-button");
 
   newTaskButton.addEventListener("click", () => {
-    createTaskElement(createTask(), listContent);
+    appendTaskToList(createTask(), listContent);
   });
 }
 
