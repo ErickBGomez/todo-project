@@ -179,11 +179,13 @@ button {
 }
 
 .task .complete-task-button {
-  width: 32px;
+  display: block;
+  min-width: 32px;
   height: 32px;
   background-color: var(--White);
   border: 3px solid var(--Black-50);
   border-radius: 100%;
+  padding: 0;
 }
 
 .task .task-information {
@@ -195,6 +197,9 @@ button {
 
 .task .main-information {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .task .title {
@@ -203,7 +208,14 @@ button {
   font-size: 1.375rem;
 }
 
-.task .description,
-.task .date {
+.task .description {
   color: var(--Black-50);
+}
+
+.task .sub-information {
+  font-weight: 400;
+}
+
+.task .date {
+  color: var(--Black-75);
 }
