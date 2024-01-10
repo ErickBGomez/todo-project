@@ -58,10 +58,31 @@ function appendTaskToList(task, listContainer) {
   const subInformation = document.createElement("div");
   subInformation.className = "sub-information";
 
+  const taskPriority = document.createElement("div");
+  taskPriority.className = "priority";
+
+  switch (task.priority) {
+    case 1: // Low
+      taskPriority.classList.add("low");
+      taskPriority.textContent = "Low";
+      break;
+
+    case 2: // Medium
+      taskPriority.classList.add("medium");
+      taskPriority.textContent = "Medium";
+      break;
+
+    case 3: // High
+      taskPriority.classList.add("high");
+      taskPriority.textContent = "High";
+      break;
+  }
+
   const taskDate = document.createElement("div");
   taskDate.className = "date";
   taskDate.textContent = task.date;
 
+  subInformation.appendChild(taskPriority);
   subInformation.appendChild(taskDate);
 
   taskInformation.appendChild(mainInformation);

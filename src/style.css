@@ -213,7 +213,21 @@ button {
 }
 
 .task .sub-information {
+  display: flex;
+  gap: 24px;
   font-weight: 400;
+}
+
+.task .priority.low {
+  color: var(--Low-Priority);
+}
+
+.task .priority.medium {
+  color: var(--Medium-Priority);
+}
+
+.task .priority.high {
+  color: var(--High-Priority);
 }
 
 .task .date {
