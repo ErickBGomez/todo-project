@@ -56,10 +56,12 @@ button {
 /* Sidebar */
 
 #sidebar {
+  position: fixed;
   background-color: var(--Black-05);
   padding: 26px 32px;
   border-right: 1px solid var(--Black-25);
   width: 256px;
+  height: 100vh;
 
   display: flex;
   flex-direction: column;
@@ -135,7 +137,8 @@ button {
 /* List content */
 
 #list-page {
-  flex: 1;
+  width: calc(100% - 256px);
+  margin-left: auto;
 }
 
 #list-background {
