@@ -32,14 +32,17 @@ function createListContent() {
 function appendTaskToList(task, listContainer) {
   const tasksContainer = listContainer.querySelector("#tasksContainer");
 
+  const newTask = document.createElement("div");
+  newTask.className = "task";
+
   const completeTaskButton = document.createElement("button");
   completeTaskButton.className = "complete-task-button";
 
   const taskInformation = document.createElement("div");
   taskInformation.className = "task-information";
 
-  const newTask = document.createElement("div");
-  newTask.className = "task";
+  const mainInformation = document.createElement("div");
+  mainInformation.className = "main-information";
 
   const taskTitle = document.createElement("div");
   taskTitle.className = "title";
@@ -49,13 +52,20 @@ function appendTaskToList(task, listContainer) {
   taskDescription.className = "description";
   taskDescription.textContent = task.description;
 
+  mainInformation.appendChild(taskTitle);
+  mainInformation.appendChild(taskDescription);
+
+  const subInformation = document.createElement("div");
+  subInformation.className = "sub-information";
+
   const taskDate = document.createElement("div");
   taskDate.className = "date";
   taskDate.textContent = task.date;
 
-  taskInformation.appendChild(taskTitle);
-  taskInformation.appendChild(taskDescription);
-  taskInformation.appendChild(taskDate);
+  subInformation.appendChild(taskDate);
+
+  taskInformation.appendChild(mainInformation);
+  taskInformation.appendChild(subInformation);
 
   newTask.appendChild(completeTaskButton);
   newTask.appendChild(taskInformation);

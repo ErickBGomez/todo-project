@@ -178,7 +178,7 @@ button {
   gap: 32px;
 }
 
-.complete-task-button {
+.task .complete-task-button {
   width: 32px;
   height: 32px;
   background-color: var(--White);
@@ -186,7 +186,15 @@ button {
   border-radius: 100%;
 }
 
-.task-information {
+.task .task-information {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 24px;
+}
+
+.task .main-information {
+  flex: 1;
 }
 
 .task .title {
