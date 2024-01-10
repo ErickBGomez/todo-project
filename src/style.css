@@ -230,6 +230,13 @@ button {
   color: var(--High-Priority);
 }
 
+.task .priority-container,
+.task .date-container {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
 .task .date {
   color: var(--Black-75);
 }

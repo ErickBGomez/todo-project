@@ -1,6 +1,11 @@
 // Functions
 import createTask from "../tasks";
 // Icons
+import taskDescriptionSvg from "../img/svg/task-description.svg";
+import taskDateSvg from "../img/svg/task-date.svg";
+import taskPriorityLowSvg from "../img/svg/task-priority-low.svg";
+import taskPriorityMediumSvg from "../img/svg/task-priority-medium.svg";
+import taskPriorityHighSvg from "../img/svg/task-priority-high.svg";
 
 function createBackground() {
   const background = document.createElement("div");
@@ -60,32 +65,52 @@ function appendTaskToList(task, listContainer) {
   const subInformation = document.createElement("div");
   subInformation.className = "sub-information";
 
+  const priorityContainer = document.createElement("div");
+  priorityContainer.className = "priority-container";
+
+  const priorityIcon = new Image();
+
   const taskPriority = document.createElement("div");
   taskPriority.className = "priority";
 
   switch (task.priority) {
     case 1: // Low
+      priorityIcon.src = taskPriorityLowSvg;
       taskPriority.classList.add("low");
       taskPriority.textContent = "Low";
       break;
 
     case 2: // Medium
+      priorityIcon.src = taskPriorityMediumSvg;
       taskPriority.classList.add("medium");
       taskPriority.textContent = "Medium";
       break;
 
     case 3: // High
+      priorityIcon.src = taskPriorityHighSvg;
       taskPriority.classList.add("high");
       taskPriority.textContent = "High";
       break;
   }
 
+  priorityContainer.appendChild(priorityIcon);
+  priorityContainer.appendChild(taskPriority);
+
+  const dateContainer = document.createElement("div");
+  dateContainer.className = "date-container";
+
+  const dateIcon = new Image();
+  dateIcon.src = taskDateSvg;
+
   const taskDate = document.createElement("div");
   taskDate.className = "date";
   taskDate.textContent = task.date;
 
-  subInformation.appendChild(taskPriority);
-  subInformation.appendChild(taskDate);
+  dateContainer.appendChild(dateIcon);
+  dateContainer.appendChild(taskDate);
+
+  subInformation.appendChild(priorityContainer);
+  subInformation.appendChild(dateContainer);
 
   taskInformation.appendChild(mainInformation);
   taskInformation.appendChild(subInformation);
