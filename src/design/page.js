@@ -23,7 +23,7 @@ function createListContent() {
   title.textContent = "List Title";
 
   const tasksContaier = document.createElement("div");
-  tasksContaier.id = "tasksContainer";
+  tasksContaier.id = "task-container";
 
   const newTaskButton = document.createElement("button");
   newTaskButton.id = "new-task-button";
@@ -37,7 +37,7 @@ function createListContent() {
 }
 
 function appendTaskToList(task, listContainer) {
-  const tasksContainer = listContainer.querySelector("#tasksContainer");
+  const tasksContainer = listContainer.querySelector("#task-container");
 
   const newTask = document.createElement("div");
   newTask.className = "task";
