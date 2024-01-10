@@ -99,6 +99,8 @@ button {
   border-radius: 8px;
   padding: 8px;
   cursor: pointer;
+  display: flex;
+  gap: 4px;
   transition: 100ms;
 }
 

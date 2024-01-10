@@ -1,3 +1,9 @@
+// Icons
+import allTasksSvg from "../img/svg/all-tasks.svg";
+import todaySvg from "../img/svg/today.svg";
+import thisWeekSvg from "../img/svg/this-week.svg";
+import defaultListSvg from "../img/svg/default-list.svg";
+
 function createAppTitle() {
   const appTitle = document.createElement("div");
   appTitle.id = "app-title";
@@ -6,14 +12,18 @@ function createAppTitle() {
   return appTitle;
 }
 
-function createListSidebar(listLabel) {
+function createListSidebar(listLabel, listIcon = defaultListSvg) {
   const list = document.createElement("div");
   list.className = "list-sidebar-element";
+
+  const icon = new Image();
+  icon.src = listIcon;
 
   const label = document.createElement("div");
   label.className = "list-sidebar-element-label";
   label.textContent = listLabel;
 
+  list.appendChild(icon);
   list.appendChild(label);
 
   return list;
@@ -30,9 +40,9 @@ function createHomeListsContainer() {
   const listsGroup = document.createElement("div");
   listsGroup.className = "lists-group";
 
-  listsGroup.appendChild(createListSidebar("All Tasks"));
-  listsGroup.appendChild(createListSidebar("Today"));
-  listsGroup.appendChild(createListSidebar("This week"));
+  listsGroup.appendChild(createListSidebar("All Tasks", allTasksSvg));
+  listsGroup.appendChild(createListSidebar("Today", todaySvg));
+  listsGroup.appendChild(createListSidebar("This week", thisWeekSvg));
 
   listsContainer.appendChild(title);
   listsContainer.appendChild(listsGroup);
