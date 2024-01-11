@@ -50,6 +50,13 @@ function createHomeListsContainer() {
   return listsContainer;
 }
 
+// * Experimental:
+// function refreshSidebarLists(listsGroup) {
+//   for (let e in localStorage) {
+//     listsGroup.appendChild(createListSidebar(e));
+//   }
+// }
+
 function createUserListsContainer() {
   const listsContainer = document.createElement("div");
   listsContainer.className = "sidebar-lists-container";
@@ -61,9 +68,7 @@ function createUserListsContainer() {
   const listsGroup = document.createElement("div");
   listsGroup.className = "lists-group";
 
-  listsGroup.appendChild(createListSidebar("List 1"));
-  listsGroup.appendChild(createListSidebar("List 2"));
-  listsGroup.appendChild(createListSidebar("List 3"));
+  // refreshSidebarLists(listsGroup);
 
   listsContainer.appendChild(title);
   listsContainer.appendChild(listsGroup);
