@@ -20,4 +20,6 @@ export function createList(listName) {
     tasks: [],
     completed: [],
   };
+
+  localStorage.setItem(newList.name, JSON.stringify(newList));
 }
