@@ -1,5 +1,3 @@
-// Functions
-import { createTask } from "../tasks.js";
 // Icons
 import taskDescriptionSvg from "../img/svg/task-description.svg";
 import taskDateSvg from "../img/svg/task-date.svg";
@@ -124,9 +122,9 @@ function appendTaskToList(task, listContainer) {
 function addNewTaskEvent(listContent) {
   const newTaskButton = listContent.querySelector("#new-task-button");
 
-  newTaskButton.addEventListener("click", () => {
-    appendTaskToList(createTask(), listContent);
-  });
+  // newTaskButton.addEventListener("click", () => {
+  //   appendTaskToList(createTask(), listContent);
+  // });
 }
 
 export default function renderPage() {
