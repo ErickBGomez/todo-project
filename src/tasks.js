@@ -20,11 +20,7 @@ class List {
   }
 
   #saveList() {
-    if (lists.find((list) => list.name === this.name)) {
-      console.log("si");
-    } else {
-      lists.push(this);
-    }
+    if (!lists.find((list) => list.name === this.name)) lists.push(this);
 
     localStorage.setItem("lists", JSON.stringify(lists));
   }
@@ -50,13 +46,20 @@ class List {
     this.completed.splice(taskIndex, 1);
     this.#saveList();
   }
+
+  static;
 }
 
 const defaultList = new List("Default");
+const testList = new List("Test List");
+const test2List = new List("Test 2 List");
 
 defaultList.createTask("Title1", "Description 1", "11-Jan-2024", 0);
 defaultList.createTask("Title2", "Description 2", "11-Jan-2024", 1);
 defaultList.createTask("Title3", "Description 3", "11-Jan-2024", 2);
 defaultList.createTask("Title4", "Description 4", "11-Jan-2024", 2);
+defaultList.createTask("Title5", "Description 4", "11-Jan-2024", 2);
+
+testList.createTask("Test1", "Description Test", "10-Jan-2024", 3);
 
 export { defaultList };

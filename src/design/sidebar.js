@@ -15,6 +15,7 @@ function createAppTitle() {
 function createListSidebar(listLabel, listIcon = defaultListSvg) {
   const list = document.createElement("div");
   list.className = "list-sidebar-element";
+  list.dataset.listName = listLabel;
 
   const icon = new Image();
   icon.src = listIcon;
@@ -50,13 +51,11 @@ function createHomeListsContainer() {
   return listsContainer;
 }
 
-// * Experimental:
-function refreshSidebarLists(listsGroup) {
-  let i = 0;
-  while (localStorage.key(i)) {
-    console.log(localStorage.getItem(localStorage.key(i)));
-    i++;
-  }
+function getSidebarLists(listsGroup) {
+  const lists = JSON.parse(localStorage.getItem("lists"));
+  lists.forEach((list) => {
+    listsGroup.appendChild(createListSidebar(list.name));
+  });
 }
 
 function createUserListsContainer() {
@@ -70,7 +69,7 @@ function createUserListsContainer() {
   const listsGroup = document.createElement("div");
   listsGroup.className = "lists-group";
 
-  refreshSidebarLists(listsGroup);
+  getSidebarLists(listsGroup);
 
   listsContainer.appendChild(title);
   listsContainer.appendChild(listsGroup);
