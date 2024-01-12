@@ -5,6 +5,8 @@ import taskPriorityLowSvg from "../img/svg/task-priority-low.svg";
 import taskPriorityMediumSvg from "../img/svg/task-priority-medium.svg";
 import taskPriorityHighSvg from "../img/svg/task-priority-high.svg";
 
+let listContent;
+
 function createBackground() {
   const background = document.createElement("div");
   background.id = "list-background";
@@ -119,7 +121,7 @@ function appendTaskToList(task, listContainer) {
   tasksContainer.appendChild(newTask);
 }
 
-function addNewTaskEvent(listContent) {
+function addNewTaskEvent() {
   const newTaskButton = listContent.querySelector("#new-task-button");
 
   // newTaskButton.addEventListener("click", () => {
@@ -127,14 +129,24 @@ function addNewTaskEvent(listContent) {
   // });
 }
 
-export default function renderPage() {
-  const listContent = document.createElement("div");
+export function loadListContent() {
+  const selectedList = JSON.parse(localStorage.getItem("currentList"));
+  const listTitle = listContent.querySelector("#list-title");
+  const listTasks = listContent.querySelector("#task-container");
+
+  listTitle.textContent = selectedList.name;
+}
+
+export function renderPage() {
+  listContent = document.createElement("div");
   listContent.id = "list-page";
 
   listContent.appendChild(createBackground());
   listContent.appendChild(createListContent());
 
   addNewTaskEvent(listContent);
+
+  loadListContent(listContent);
 
   document.body.appendChild(listContent);
 }

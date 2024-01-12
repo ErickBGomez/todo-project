@@ -1,4 +1,5 @@
 const lists = [];
+let currentList;
 
 class Task {
   constructor(title, description, date, priority) {
@@ -46,8 +47,12 @@ class List {
     this.completed.splice(taskIndex, 1);
     this.#saveList();
   }
+}
 
-  static;
+function selectCurrentList(listName) {
+  currentList = lists.find((list) => list.name === listName);
+
+  localStorage.setItem("currentList", JSON.stringify(currentList));
 }
 
 const defaultList = new List("Default");
@@ -62,4 +67,6 @@ defaultList.createTask("Title5", "Description 4", "11-Jan-2024", 2);
 
 testList.createTask("Test1", "Description Test", "10-Jan-2024", 3);
 
-export { defaultList };
+selectCurrentList(defaultList.name);
+
+export { defaultList, selectCurrentList };
