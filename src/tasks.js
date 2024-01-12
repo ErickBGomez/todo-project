@@ -32,9 +32,19 @@ class List {
     this.completed.unshift(completedTask);
     this.#saveList();
   }
+
+  removeTask(taskIndex) {
+    this.tasks.splice(taskIndex, 1);
+    this.#saveList();
+  }
+
+  removeCompletedTask(taskIndex) {
+    this.completed.splice(taskIndex, 1);
+    this.#saveList();
+  }
 }
 
-const defaultList = new List("default");
+const defaultList = new List("Default");
 
 defaultList.createTask("Title1", "Description 1", "11-Jan-2024", 0);
 defaultList.createTask("Title2", "Description 2", "11-Jan-2024", 1);
