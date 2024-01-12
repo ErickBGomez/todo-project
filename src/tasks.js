@@ -20,7 +20,7 @@ class List {
   }
 
   #saveList() {
-    if (lists.find((list) => list.name === "Default")) {
+    if (lists.find((list) => list.name === this.name)) {
       console.log("si");
     } else {
       lists.push(this);
