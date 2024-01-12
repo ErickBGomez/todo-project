@@ -1,3 +1,5 @@
+const lists = [];
+
 class Task {
   constructor(title, description, date, priority) {
     this.title = title;
@@ -18,7 +20,13 @@ class List {
   }
 
   #saveList() {
-    localStorage.setItem(this.name, JSON.stringify(this));
+    if (lists.find((list) => list.name === "Default")) {
+      console.log("si");
+    } else {
+      lists.push(this);
+    }
+
+    localStorage.setItem("lists", JSON.stringify(lists));
   }
 
   createTask(title, description, date, priority) {
