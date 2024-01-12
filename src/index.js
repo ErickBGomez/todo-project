@@ -6,4 +6,4 @@ import { createNewList } from "./tasks.js";
 renderSidebar();
 renderPage();
 
-if (!localStorage.default) createNewList("default");
+// if (!localStorage.default) createNewList("default");

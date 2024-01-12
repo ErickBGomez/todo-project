@@ -13,6 +13,8 @@ class List {
     this.sort = "";
     this.tasks = [];
     this.completed = [];
+
+    this.saveList();
   }
 
   saveList() {
@@ -24,7 +26,7 @@ class List {
 
     this.tasks.push(newTask);
 
-    console.log(this.tasks);
+    this.saveList();
   }
 }
 
@@ -34,5 +36,7 @@ export function createNewList(listName) {
   localStorage.setItem(newList.name, JSON.stringify(newList));
 }
 
-const currentList = JSON.parse(localStorage.getItem("default"));
-console.log(currentList);
+const defaultList = new List("default");
+
+defaultList.createTask("Title1", "Description 1", "11-Jan-2024", 0);
+defaultList.createTask("Title2", "Description 2", "11-Jan-2024", 1);
