@@ -36,9 +36,7 @@ function createListContent() {
   return container;
 }
 
-function appendTaskToList(task, listContainer) {
-  const tasksContainer = listContainer.querySelector("#task-container");
-
+function appendTaskToList(task, tasksContainer) {
   const newTask = document.createElement("div");
   newTask.className = "task";
 
@@ -132,9 +130,16 @@ function addNewTaskEvent() {
 export function loadListContent() {
   const selectedList = JSON.parse(localStorage.getItem("currentList"));
   const listTitle = listContent.querySelector("#list-title");
-  const listTasks = listContent.querySelector("#task-container");
+  const tasksContainer = listContent.querySelector("#task-container");
 
+  // Set title
   listTitle.textContent = selectedList.name;
+
+  // Reset existing tasks and add new ones
+  tasksContainer.innerHTML = "";
+  selectedList.tasks.forEach((task) => {
+    appendTaskToList(task, tasksContainer);
+  });
 }
 
 export function renderPage() {
