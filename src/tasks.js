@@ -14,10 +14,10 @@ class List {
     this.tasks = [];
     this.completed = [];
 
-    this.saveList();
+    this.#saveList();
   }
 
-  saveList() {
+  #saveList() {
     localStorage.setItem(this.name, JSON.stringify(this));
   }
 
@@ -26,7 +26,7 @@ class List {
 
     this.tasks.push(newTask);
 
-    this.saveList();
+    this.#saveList();
   }
 }
 
