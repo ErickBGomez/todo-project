@@ -30,12 +30,6 @@ class List {
   }
 }
 
-export function createNewList(listName) {
-  const newList = new List(listName);
-
-  localStorage.setItem(newList.name, JSON.stringify(newList));
-}
-
 const defaultList = new List("default");
 
 defaultList.createTask("Title1", "Description 1", "11-Jan-2024", 0);
