@@ -4,6 +4,7 @@ import todaySvg from "../img/svg/today.svg";
 import thisWeekSvg from "../img/svg/this-week.svg";
 import defaultListSvg from "../img/svg/default-list.svg";
 import { loadListContent } from "./page";
+import { createList } from "../tasks";
 
 function createAppTitle() {
   const appTitle = document.createElement("div");
@@ -67,12 +68,17 @@ function createUserListsContainer() {
   title.className = "title";
   title.textContent = "My Lists";
 
+  const createListButton = document.createElement("button");
+  createListButton.id = "create-list-button";
+  createListButton.textContent = "+";
+
   const listsGroup = document.createElement("div");
   listsGroup.className = "lists-group";
 
   getSidebarLists(listsGroup);
 
   listsContainer.appendChild(title);
+  listsContainer.appendChild(createListButton);
   listsContainer.appendChild(listsGroup);
 
   return listsContainer;
@@ -102,6 +108,16 @@ function createLowerSidebar() {
   return container;
 }
 
+function createListEvent(sidebar) {
+  const createListButton = sidebar.querySelector("#create-list-button");
+
+  createListButton.addEventListener("click", () => {
+    // Temporary create List dialog box
+    const listName = prompt("Inser list name", "List name");
+    createList(listName);
+  });
+}
+
 function addUserSidebarEvents(sidebar) {
   const sidebarLists = sidebar.querySelectorAll(
     ".user-lists .list-sidebar-element"
@@ -125,6 +141,7 @@ export default function renderSidebar() {
   sidebar.appendChild(createLowerSidebar());
 
   addUserSidebarEvents(sidebar);
+  createListEvent(sidebar);
 
   document.body.appendChild(sidebar);
 }
