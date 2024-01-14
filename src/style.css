@@ -89,6 +89,20 @@ button {
   margin-bottom: 16px;
 }
 
+.user-lists .list-title-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+}
+
+#create-list-button {
+  background: none;
+  font-size: 1.2rem;
+  color: var(--Black-50);
+  width: 16px;
+  height: 16px;
+}
+
 .lists-group {
   display: flex;
   flex-direction: column;

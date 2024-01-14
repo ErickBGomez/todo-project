@@ -68,6 +68,9 @@ function createUserListsContainer() {
   const listsContainer = document.createElement("div");
   listsContainer.className = "sidebar-lists-container user-lists";
 
+  const listTitleContainer = document.createElement("div");
+  listTitleContainer.className = "list-title-container";
+
   const title = document.createElement("div");
   title.className = "title";
   title.textContent = "My Lists";
@@ -76,13 +79,15 @@ function createUserListsContainer() {
   createListButton.id = "create-list-button";
   createListButton.textContent = "+";
 
+  listTitleContainer.appendChild(title);
+  listTitleContainer.appendChild(createListButton);
+
   const listsGroup = document.createElement("div");
   listsGroup.className = "lists-group";
 
   getUserSidebarLists(listsGroup);
 
-  listsContainer.appendChild(title);
-  listsContainer.appendChild(createListButton);
+  listsContainer.appendChild(listTitleContainer);
   listsContainer.appendChild(listsGroup);
 
   return listsContainer;
