@@ -1,4 +1,4 @@
-const lists = [];
+let lists;
 
 class Task {
   constructor(title, description, date, priority) {
@@ -12,14 +12,22 @@ class Task {
 class List {
   constructor(listName) {
     this.name = listName;
-    this.sort = "";
     this.tasks = [];
     this.completed = [];
   }
 }
 
+function refreshLists() {
+  // If lists is not created in localStorage, create an empty array
+  if (!localStorage.getItem("lists")) {
+    localStorage.setItem("lists", "[]");
+  }
+
+  lists = JSON.parse(localStorage.getItem("lists"));
+}
+
 function saveLists() {
-  localStorage.setItem("lists", lists);
+  localStorage.setItem("lists", JSON.stringify(lists));
 }
 
 function createList(listName) {
@@ -41,4 +49,4 @@ function createList(listName) {
 
 // selectCurrentList(defaultList.name);
 
-export { createList, lists };
+export { lists, createList, saveLists, refreshLists };
