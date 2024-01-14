@@ -54,10 +54,10 @@ function createHomeListsContainer() {
 }
 
 function getSidebarLists(listsGroup) {
-  const lists = JSON.parse(localStorage.getItem("lists"));
-  lists.forEach((list) => {
-    listsGroup.appendChild(createListSidebar(list.name));
-  });
+  // const lists = JSON.parse(localStorage.getItem("lists"));
+  // lists.forEach((list) => {
+  //   listsGroup.appendChild(createListSidebar(list.name));
+  // });
 }
 
 function createUserListsContainer() {
@@ -110,7 +110,7 @@ function addUserSidebarEvents(sidebar) {
 
   sidebarLists.forEach((list) => {
     list.addEventListener("click", (e) => {
-      selectCurrentList(list.dataset.listName);
+      // selectCurrentList(list.dataset.listName);
       loadListContent();
     });
   });
