@@ -53,11 +53,15 @@ function createHomeListsContainer() {
   return listsContainer;
 }
 
-function getSidebarLists(listsGroup) {
-  // const lists = JSON.parse(localStorage.getItem("lists"));
-  // lists.forEach((list) => {
-  //   listsGroup.appendChild(createListSidebar(list.name));
-  // });
+function getUserSidebarLists(listsGroup) {
+  const lists = JSON.parse(localStorage.getItem("lists"));
+
+  // Reset sidebar lists
+  listsGroup.innerHTML = "";
+
+  lists.forEach((list) => {
+    listsGroup.appendChild(createListSidebar(list.name));
+  });
 }
 
 function createUserListsContainer() {
@@ -75,7 +79,7 @@ function createUserListsContainer() {
   const listsGroup = document.createElement("div");
   listsGroup.className = "lists-group";
 
-  getSidebarLists(listsGroup);
+  getUserSidebarLists(listsGroup);
 
   listsContainer.appendChild(title);
   listsContainer.appendChild(createListButton);
@@ -108,28 +112,30 @@ function createLowerSidebar() {
   return container;
 }
 
-function createListEvent(sidebar) {
+function createUserListEvent(sidebar) {
   const createListButton = sidebar.querySelector("#create-list-button");
+  const listsGroup = sidebar.querySelector(".user-lists .lists-group");
 
   createListButton.addEventListener("click", () => {
     // Temporary create List dialog box
     const listName = prompt("Inser list name", "List name");
     createList(listName);
+    getUserSidebarLists(listsGroup);
   });
 }
 
-function addUserSidebarEvents(sidebar) {
-  const sidebarLists = sidebar.querySelectorAll(
-    ".user-lists .list-sidebar-element"
-  );
+// function addUserSidebarEvents(sidebar) {
+//   const sidebarLists = sidebar.querySelectorAll(
+//     ".user-lists .list-sidebar-element"
+//   );
 
-  sidebarLists.forEach((list) => {
-    list.addEventListener("click", (e) => {
-      // selectCurrentList(list.dataset.listName);
-      loadListContent();
-    });
-  });
-}
+//   sidebarLists.forEach((list) => {
+//     list.addEventListener("click", (e) => {
+//       // selectCurrentList(list.dataset.listName);
+//       loadListContent();
+//     });
+//   });
+// }
 
 export default function renderSidebar() {
   const sidebar = document.createElement("div");
@@ -140,8 +146,8 @@ export default function renderSidebar() {
   sidebar.appendChild(createUserListsContainer());
   sidebar.appendChild(createLowerSidebar());
 
-  addUserSidebarEvents(sidebar);
-  createListEvent(sidebar);
+  // addUserSidebarEvents(sidebar);
+  createUserListEvent(sidebar);
 
   document.body.appendChild(sidebar);
 }

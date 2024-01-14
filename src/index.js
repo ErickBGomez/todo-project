@@ -3,10 +3,11 @@ import renderSidebar from "./design/sidebar.js";
 import { renderPage } from "./design/page.js";
 import { addNewTask, createList, lists, refreshLists } from "./tasks.js";
 
+refreshLists();
+
 renderSidebar();
 renderPage();
 
-refreshLists();
 // console.log(lists);
 // createList("Test");
 // createList("Test2");
