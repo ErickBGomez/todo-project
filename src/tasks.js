@@ -18,7 +18,15 @@ class List {
   }
 }
 
-console.log(lists);
+function saveLists() {
+  localStorage.setItem("lists", lists);
+}
+
+function createList(listName) {
+  if (!lists.find((list) => list.name === listName))
+    lists.push(new List(listName));
+}
+
 // console.log(JSON.parse(localStorage.getItem("lists")));
 // const defaultList = new List("Default");
 // const testList = new List("Test List");
@@ -32,3 +40,5 @@ console.log(lists);
 // testList.createTask("Test1", "Description Test", "10-Jan-2024", 3);
 
 // selectCurrentList(defaultList.name);
+
+export { createList, lists };
