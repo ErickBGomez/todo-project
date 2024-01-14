@@ -19,9 +19,7 @@ class List {
 
 function refreshLists() {
   // If lists is not created in localStorage, create an empty array
-  if (!localStorage.getItem("lists")) {
-    localStorage.setItem("lists", "[]");
-  }
+  if (!localStorage.getItem("lists")) localStorage.setItem("lists", "[]");
 
   lists = JSON.parse(localStorage.getItem("lists"));
 }
@@ -31,8 +29,17 @@ function saveLists() {
 }
 
 function createList(listName) {
-  if (!lists.find((list) => list.name === listName))
+  // Avoid creating duplicated lists
+  if (!lists.find((list) => list.name === listName)) {
     lists.push(new List(listName));
+    saveLists();
+  }
+}
+
+function addNewTask(listName, title, description, date, priority) {
+  const selectedList = lists.find((list) => list.name === listName);
+  selectedList.tasks.push(new Task(title, description, date, priority));
+  saveLists();
 }
 
 // console.log(JSON.parse(localStorage.getItem("lists")));
@@ -49,4 +56,4 @@ function createList(listName) {
 
 // selectCurrentList(defaultList.name);
 
-export { lists, createList, saveLists, refreshLists };
+export { lists, createList, refreshLists, addNewTask };

@@ -1,7 +1,7 @@
 import "./style.css";
 import renderSidebar from "./design/sidebar.js";
 import { renderPage } from "./design/page.js";
-import { createList, lists, refreshLists, saveLists } from "./tasks.js";
+import { addNewTask, createList, lists, refreshLists } from "./tasks.js";
 
 renderSidebar();
 renderPage();
@@ -9,5 +9,7 @@ renderPage();
 refreshLists();
 console.log(lists);
 createList("Test");
+createList("Test2");
 console.log(lists);
-saveLists();
+addNewTask("Test", "Title1", "Description 1", "11-Jan-2024", 0);
+console.log(lists);
