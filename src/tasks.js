@@ -1,5 +1,4 @@
 const lists = [];
-let currentList;
 
 class Task {
   constructor(title, description, date, priority) {
@@ -16,43 +15,7 @@ class List {
     this.sort = "";
     this.tasks = [];
     this.completed = [];
-
-    this.#saveList();
   }
-
-  #saveList() {
-    if (!lists.find((list) => list.name === this.name)) lists.push(this);
-
-    localStorage.setItem("lists", JSON.stringify(lists));
-  }
-
-  createTask(title, description, date, priority) {
-    const newTask = new Task(title, description, date, priority);
-    this.tasks.push(newTask);
-    this.#saveList();
-  }
-
-  completeTask(taskIndex) {
-    const completedTask = this.tasks.splice(taskIndex, 1);
-    this.completed.unshift(completedTask);
-    this.#saveList();
-  }
-
-  removeTask(taskIndex) {
-    this.tasks.splice(taskIndex, 1);
-    this.#saveList();
-  }
-
-  removeCompletedTask(taskIndex) {
-    this.completed.splice(taskIndex, 1);
-    this.#saveList();
-  }
-}
-
-function selectCurrentList(listName) {
-  currentList = lists.find((list) => list.name === listName);
-
-  localStorage.setItem("currentList", JSON.stringify(currentList));
 }
 
 console.log(lists);
@@ -69,5 +32,3 @@ console.log(lists);
 // testList.createTask("Test1", "Description Test", "10-Jan-2024", 3);
 
 // selectCurrentList(defaultList.name);
-
-export { selectCurrentList };

@@ -3,7 +3,6 @@ import allTasksSvg from "../img/svg/all-tasks.svg";
 import todaySvg from "../img/svg/today.svg";
 import thisWeekSvg from "../img/svg/this-week.svg";
 import defaultListSvg from "../img/svg/default-list.svg";
-import { selectCurrentList } from "../tasks";
 import { loadListContent } from "./page";
 
 function createAppTitle() {
