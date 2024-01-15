@@ -1,4 +1,5 @@
 let lists;
+let currentList;
 
 class Task {
   constructor(title, description, date, priority) {
@@ -42,6 +43,10 @@ function addNewTask(listName, title, description, date, priority) {
   saveLists();
 }
 
+function selectCurrentList(listName) {
+  currentList = lists.find((list) => list.name === listName);
+}
+
 // console.log(JSON.parse(localStorage.getItem("lists")));
 // const defaultList = new List("Default");
 // const testList = new List("Test List");
@@ -56,4 +61,11 @@ function addNewTask(listName, title, description, date, priority) {
 
 // selectCurrentList(defaultList.name);
 
-export { lists, createList, refreshLists, addNewTask };
+export {
+  lists,
+  currentList,
+  createList,
+  refreshLists,
+  addNewTask,
+  selectCurrentList,
+};

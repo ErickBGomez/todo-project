@@ -206,6 +206,10 @@ p {
   color: var(--Black-50);
 }
 
+.hide {
+  display: none;
+}
+
 /* Tasks */
 
 #task-container {

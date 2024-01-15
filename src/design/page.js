@@ -5,7 +5,7 @@ import taskPriorityLowSvg from "../img/svg/task-priority-low.svg";
 import taskPriorityMediumSvg from "../img/svg/task-priority-medium.svg";
 import taskPriorityHighSvg from "../img/svg/task-priority-high.svg";
 
-let listContent;
+let listPage;
 
 function createBackground() {
   const background = document.createElement("div");
@@ -14,9 +14,9 @@ function createBackground() {
   return background;
 }
 
-function createListContent() {
+function createListContainer() {
   const container = document.createElement("div");
-  container.className = "list-container";
+  container.className = "list-container hide";
 
   const title = document.createElement("h1");
   title.id = "list-title";
@@ -139,20 +139,25 @@ function appendTaskToList(task, tasksContainer) {
 }
 
 function addNewTaskEvent() {
-  const newTaskButton = listContent.querySelector("#new-task-button");
+  const newTaskButton = listPage.querySelector("#new-task-button");
 
   // newTaskButton.addEventListener("click", () => {
   //   appendTaskToList(createTask(), listContent);
   // });
 }
 
-export function loadListContent() {
-  // const selectedList = JSON.parse(localStorage.getItem("currentList"));
-  const listTitle = listContent.querySelector("#list-title");
-  const tasksContainer = listContent.querySelector("#task-container");
+export function loadListContent(list) {
+  const emptyContainer = listPage.querySelector(".empty-page");
+  const listContainer = listPage.querySelector(".list-container");
+
+  const listTitle = listPage.querySelector("#list-title");
+  const tasksContainer = listPage.querySelector("#task-container");
+
+  emptyContainer.classList.add("hide");
+  listContainer.classList.remove("hide");
 
   // Set title
-  // listTitle.textContent = selectedList.name;
+  listTitle.textContent = list.name;
 
   // Reset existing tasks and add new ones
   tasksContainer.innerHTML = "";
@@ -162,16 +167,14 @@ export function loadListContent() {
 }
 
 export function renderPage() {
-  listContent = document.createElement("div");
-  listContent.id = "list-page";
+  listPage = document.createElement("div");
+  listPage.id = "list-page";
 
-  listContent.appendChild(createBackground());
-  // listContent.appendChild(createListContent());
-  listContent.appendChild(emptyPage());
+  listPage.appendChild(createBackground());
+  listPage.appendChild(createListContainer());
+  listPage.appendChild(emptyPage());
 
   // addNewTaskEvent(listContent);
 
-  // loadListContent(listContent);
-
-  document.body.appendChild(listContent);
+  document.body.appendChild(listPage);
 }

@@ -4,7 +4,7 @@ import todaySvg from "../img/svg/today.svg";
 import thisWeekSvg from "../img/svg/this-week.svg";
 import defaultListSvg from "../img/svg/default-list.svg";
 import { loadListContent } from "./page";
-import { createList } from "../tasks";
+import { createList, currentList, selectCurrentList } from "../tasks";
 
 function createAppTitle() {
   const appTitle = document.createElement("div");
@@ -129,18 +129,18 @@ function createUserListEvent(sidebar) {
   });
 }
 
-// function addUserSidebarEvents(sidebar) {
-//   const sidebarLists = sidebar.querySelectorAll(
-//     ".user-lists .list-sidebar-element"
-//   );
+function addUserSidebarEvents(sidebar) {
+  const sidebarLists = sidebar.querySelectorAll(
+    ".user-lists .list-sidebar-element"
+  );
 
-//   sidebarLists.forEach((list) => {
-//     list.addEventListener("click", (e) => {
-//       // selectCurrentList(list.dataset.listName);
-//       loadListContent();
-//     });
-//   });
-// }
+  sidebarLists.forEach((list) => {
+    list.addEventListener("click", (e) => {
+      selectCurrentList(list.dataset.listName);
+      loadListContent(currentList);
+    });
+  });
+}
 
 export default function renderSidebar() {
   const sidebar = document.createElement("div");
@@ -151,8 +151,8 @@ export default function renderSidebar() {
   sidebar.appendChild(createUserListsContainer());
   sidebar.appendChild(createLowerSidebar());
 
-  // addUserSidebarEvents(sidebar);
   createUserListEvent(sidebar);
+  addUserSidebarEvents(sidebar);
 
   document.body.appendChild(sidebar);
 }
