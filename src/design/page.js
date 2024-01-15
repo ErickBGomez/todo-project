@@ -170,7 +170,7 @@ function addNewTaskEvent() {
     const title = prompt("Title", "Task title");
     const description = prompt("Description", "Description of the task");
     const date = prompt("Date", "15-Jan-2024");
-    const priority = prompt("Priority (0,1,2,3)");
+    const priority = Number(prompt("Priority (0,1,2,3)"));
 
     addNewTask(currentList.name, title, description, date, priority);
     refreshTaskElements();
