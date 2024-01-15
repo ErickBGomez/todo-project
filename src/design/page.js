@@ -4,6 +4,7 @@ import taskDateSvg from "../img/svg/task-date.svg";
 import taskPriorityLowSvg from "../img/svg/task-priority-low.svg";
 import taskPriorityMediumSvg from "../img/svg/task-priority-medium.svg";
 import taskPriorityHighSvg from "../img/svg/task-priority-high.svg";
+import { addNewTask, currentList } from "../tasks";
 
 let listPage;
 
@@ -138,14 +139,6 @@ function appendTaskToList(task, tasksContainer) {
   tasksContainer.appendChild(newTask);
 }
 
-function addNewTaskEvent() {
-  const newTaskButton = listPage.querySelector("#new-task-button");
-
-  // newTaskButton.addEventListener("click", () => {
-  //   appendTaskToList(createTask(), listContent);
-  // });
-}
-
 export function loadListContent(list) {
   const emptyContainer = listPage.querySelector(".empty-page");
   const listContainer = listPage.querySelector(".list-container");
@@ -166,6 +159,20 @@ export function loadListContent(list) {
   // });
 }
 
+function addNewTaskEvent() {
+  const newTaskButton = listPage.querySelector("#new-task-button");
+
+  newTaskButton.addEventListener("click", () => {
+    // Temporary new task creation
+    const title = prompt("Title", "Task title");
+    const description = prompt("Description", "Description of the task");
+    const date = prompt("Date", "15-Jan-2024");
+    const priority = prompt("Priority (0,1,2,3)");
+
+    addNewTask(currentList.name, title, description, date, priority);
+  });
+}
+
 export function renderPage() {
   listPage = document.createElement("div");
   listPage.id = "list-page";
@@ -174,7 +181,7 @@ export function renderPage() {
   listPage.appendChild(createListContainer());
   listPage.appendChild(emptyPage());
 
-  // addNewTaskEvent(listContent);
+  addNewTaskEvent(listPage);
 
   document.body.appendChild(listPage);
 }
