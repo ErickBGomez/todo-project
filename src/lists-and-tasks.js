@@ -33,20 +33,22 @@ const lists = (() => {
 
   const createList = (listName) => {
     // Avoid creating duplicated lists
-    if (!content.find((list) => list.name === listName)) {
+    if (!getList(listName)) {
       content.push(new List(listName));
       saveLists();
     }
   };
 
+  const getList = (listName) => content.find((list) => list.name === listName);
+
   const addNewTask = (listName, title, description, date, priority) => {
-    const selectedList = content.find((list) => list.name === listName);
+    const selectedList = getList(listName);
     selectedList.tasks.push(new Task(title, description, date, priority));
     saveLists();
   };
 
   const setCurrentList = (listName) => {
-    currentList = content.find((list) => list.name === listName);
+    currentList = getList(listName);
   };
 
   const getCurrentList = () => currentList;
