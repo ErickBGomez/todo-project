@@ -4,7 +4,7 @@ import todaySvg from "../img/svg/today.svg";
 import thisWeekSvg from "../img/svg/this-week.svg";
 import defaultListSvg from "../img/svg/default-list.svg";
 import { loadListContent } from "./page";
-import { createList, currentList, selectCurrentList } from "../lists-and-tasks";
+import lists from "../lists-and-tasks.js";
 
 function createAppTitle() {
   const appTitle = document.createElement("div");
@@ -54,20 +54,20 @@ function createHomeListsContainer() {
 }
 
 function refreshUserSidebarLists(listsGroup) {
-  const lists = JSON.parse(localStorage.getItem("lists"));
+  const listsContent = JSON.parse(localStorage.getItem("lists"));
 
   // Reset sidebar lists
   listsGroup.innerHTML = "";
 
   // Add lists to the sidebar
-  lists.forEach((list) => {
+  listsContent.forEach((list) => {
     listsGroup.appendChild(createListSidebar(list.name));
   });
 
   // Add loading events to each list created by the user
   listsGroup.childNodes.forEach((listElement) => {
     listElement.addEventListener("click", () => {
-      selectCurrentList(listElement.dataset.listName);
+      lists.setCurrentList(listElement.dataset.listName);
       loadListContent();
     });
   });
@@ -133,7 +133,7 @@ function createUserListEvent(sidebar) {
   createListButton.addEventListener("click", () => {
     // Temporary create List dialog box
     const listName = prompt("Inser list name", "List name");
-    createList(listName);
+    lists.createList(listName);
     refreshUserSidebarLists(listsGroup);
   });
 }

@@ -4,7 +4,7 @@ import taskDateSvg from "../img/svg/task-date.svg";
 import taskPriorityLowSvg from "../img/svg/task-priority-low.svg";
 import taskPriorityMediumSvg from "../img/svg/task-priority-medium.svg";
 import taskPriorityHighSvg from "../img/svg/task-priority-high.svg";
-import { addNewTask, currentList } from "../lists-and-tasks";
+import lists from "../lists-and-tasks.js";
 
 let listPage;
 
@@ -143,7 +143,7 @@ function refreshTaskElements() {
   const tasksContainer = listPage.querySelector("#task-container");
 
   tasksContainer.innerHTML = "";
-  currentList.tasks.forEach((task) => {
+  lists.getCurrentList().tasks.forEach((task) => {
     tasksContainer.appendChild(createNewTaskElement(task));
   });
 }
@@ -156,8 +156,10 @@ export function loadListContent() {
   emptyContainer.classList.add("hide");
   listContainer.classList.remove("hide");
 
+  console.log(lists);
+
   // Set title
-  listTitle.textContent = currentList.name;
+  listTitle.textContent = lists.getCurrentList().name;
 
   refreshTaskElements();
 }
@@ -172,7 +174,13 @@ function addNewTaskEvent() {
     const date = prompt("Date", "15-Jan-2024");
     const priority = Number(prompt("Priority (0,1,2,3)"));
 
-    addNewTask(currentList.name, title, description, date, priority);
+    lists.addNewTask(
+      lists.getCurrentList().name,
+      title,
+      description,
+      date,
+      priority
+    );
     refreshTaskElements();
   });
 }
