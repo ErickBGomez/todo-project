@@ -4,7 +4,7 @@ import taskDateSvg from "../img/svg/task-date.svg";
 import taskPriorityLowSvg from "../img/svg/task-priority-low.svg";
 import taskPriorityMediumSvg from "../img/svg/task-priority-medium.svg";
 import taskPriorityHighSvg from "../img/svg/task-priority-high.svg";
-import { addNewTask, currentList } from "../tasks";
+import { addNewTask, currentList } from "../lists-and-tasks";
 
 let listPage;
 

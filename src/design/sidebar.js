@@ -4,7 +4,7 @@ import todaySvg from "../img/svg/today.svg";
 import thisWeekSvg from "../img/svg/this-week.svg";
 import defaultListSvg from "../img/svg/default-list.svg";
 import { loadListContent } from "./page";
-import { createList, currentList, selectCurrentList } from "../tasks";
+import { createList, currentList, selectCurrentList } from "../lists-and-tasks";
 
 function createAppTitle() {
   const appTitle = document.createElement("div");
