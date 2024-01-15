@@ -1,7 +1,12 @@
 import "./style.css";
 import renderSidebar from "./design/sidebar.js";
 import { renderPage } from "./design/page.js";
-import { addNewTask, createList, lists, refreshLists } from "./tasks.js";
+import {
+  addNewTask,
+  createList,
+  lists,
+  refreshLists,
+} from "./lists-and-tasks.js";
 
 refreshLists();
 
