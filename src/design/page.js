@@ -56,9 +56,9 @@ function emptyPage() {
   return container;
 }
 
-function appendTaskToList(task, tasksContainer) {
-  const newTask = document.createElement("div");
-  newTask.className = "task";
+function createNewTaskElement(task) {
+  const newTaskElement = document.createElement("div");
+  newTaskElement.className = "task";
 
   const completeTaskButton = document.createElement("button");
   completeTaskButton.className = "complete-task-button";
@@ -133,30 +133,33 @@ function appendTaskToList(task, tasksContainer) {
   taskInformation.appendChild(mainInformation);
   taskInformation.appendChild(subInformation);
 
-  newTask.appendChild(completeTaskButton);
-  newTask.appendChild(taskInformation);
+  newTaskElement.appendChild(completeTaskButton);
+  newTaskElement.appendChild(taskInformation);
 
-  tasksContainer.appendChild(newTask);
+  return newTaskElement;
 }
 
-export function loadListContent(list) {
+function refreshTaskElements() {
+  const tasksContainer = listPage.querySelector("#task-container");
+
+  tasksContainer.innerHTML = "";
+  currentList.tasks.forEach((task) => {
+    tasksContainer.appendChild(createNewTaskElement(task));
+  });
+}
+
+export function loadListContent() {
   const emptyContainer = listPage.querySelector(".empty-page");
   const listContainer = listPage.querySelector(".list-container");
-
   const listTitle = listPage.querySelector("#list-title");
-  const tasksContainer = listPage.querySelector("#task-container");
 
   emptyContainer.classList.add("hide");
   listContainer.classList.remove("hide");
 
   // Set title
-  listTitle.textContent = list.name;
+  listTitle.textContent = currentList.name;
 
-  // Reset existing tasks and add new ones
-  tasksContainer.innerHTML = "";
-  // selectedList.tasks.forEach((task) => {
-  //   appendTaskToList(task, tasksContainer);
-  // });
+  refreshTaskElements();
 }
 
 function addNewTaskEvent() {
@@ -170,6 +173,7 @@ function addNewTaskEvent() {
     const priority = prompt("Priority (0,1,2,3)");
 
     addNewTask(currentList.name, title, description, date, priority);
+    refreshTaskElements();
   });
 }
 
