@@ -53,14 +53,23 @@ function createHomeListsContainer() {
   return listsContainer;
 }
 
-function getUserSidebarLists(listsGroup) {
+function appendUserSidebarLists(listsGroup) {
   const lists = JSON.parse(localStorage.getItem("lists"));
 
   // Reset sidebar lists
   listsGroup.innerHTML = "";
 
+  // Add lists to the sidebar
   lists.forEach((list) => {
     listsGroup.appendChild(createListSidebar(list.name));
+  });
+
+  // Add loading events to each list created by the user
+  listsGroup.childNodes.forEach((listElement) => {
+    listElement.addEventListener("click", () => {
+      selectCurrentList(listElement.dataset.listName);
+      loadListContent(currentList);
+    });
   });
 }
 
@@ -85,7 +94,7 @@ function createUserListsContainer() {
   const listsGroup = document.createElement("div");
   listsGroup.className = "lists-group";
 
-  getUserSidebarLists(listsGroup);
+  appendUserSidebarLists(listsGroup);
 
   listsContainer.appendChild(listTitleContainer);
   listsContainer.appendChild(listsGroup);
@@ -125,20 +134,7 @@ function createUserListEvent(sidebar) {
     // Temporary create List dialog box
     const listName = prompt("Inser list name", "List name");
     createList(listName);
-    getUserSidebarLists(listsGroup);
-  });
-}
-
-function addUserSidebarEvents(sidebar) {
-  const sidebarLists = sidebar.querySelectorAll(
-    ".user-lists .list-sidebar-element"
-  );
-
-  sidebarLists.forEach((list) => {
-    list.addEventListener("click", (e) => {
-      selectCurrentList(list.dataset.listName);
-      loadListContent(currentList);
-    });
+    appendUserSidebarLists(listsGroup);
   });
 }
 
@@ -152,7 +148,6 @@ export default function renderSidebar() {
   sidebar.appendChild(createLowerSidebar());
 
   createUserListEvent(sidebar);
-  addUserSidebarEvents(sidebar);
 
   document.body.appendChild(sidebar);
 }
