@@ -36,6 +36,25 @@ function createListContent() {
   return container;
 }
 
+function emptyPage() {
+  const container = document.createElement("div");
+  container.className = "empty-page";
+
+  const emptyTitle = document.createElement("p");
+  emptyTitle.className = "empty-title";
+  emptyTitle.textContent = "To-Do app";
+
+  const emptySubtitle = document.createElement("p");
+  emptySubtitle.className = "empty-subtitle";
+  emptySubtitle.textContent =
+    "Select a list to start adding your tasks or create a new list by clicking the + button";
+
+  container.appendChild(emptyTitle);
+  container.appendChild(emptySubtitle);
+
+  return container;
+}
+
 function appendTaskToList(task, tasksContainer) {
   const newTask = document.createElement("div");
   newTask.className = "task";
@@ -147,11 +166,12 @@ export function renderPage() {
   listContent.id = "list-page";
 
   listContent.appendChild(createBackground());
-  listContent.appendChild(createListContent());
+  // listContent.appendChild(createListContent());
+  listContent.appendChild(emptyPage());
 
-  addNewTaskEvent(listContent);
+  // addNewTaskEvent(listContent);
 
-  loadListContent(listContent);
+  // loadListContent(listContent);
 
   document.body.appendChild(listContent);
 }
