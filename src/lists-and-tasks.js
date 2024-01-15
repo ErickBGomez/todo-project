@@ -1,5 +1,6 @@
 class Task {
   constructor(title, description, date, priority) {
+    this.id = Date.now().toString(16);
     this.title = title;
     this.description = description;
     this.date = date;

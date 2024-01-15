@@ -60,6 +60,8 @@ function createNewTaskElement(task) {
   const newTaskElement = document.createElement("div");
   newTaskElement.className = "task";
 
+  newTaskElement.dataset.taskid = task.id;
+
   const completeTaskButton = document.createElement("button");
   completeTaskButton.className = "complete-task-button";
 
@@ -155,8 +157,6 @@ export function loadListContent() {
 
   emptyContainer.classList.add("hide");
   listContainer.classList.remove("hide");
-
-  console.log(lists);
 
   // Set title
   listTitle.textContent = lists.getCurrentList().name;
