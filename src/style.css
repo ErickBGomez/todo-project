@@ -327,7 +327,7 @@ p {
   width: 24px;
   height: 24px;
   cursor: pointer;
-  background: url(img/svg/expand-more-completed-tasks.svg);
+  background: url(img/svg/expand-tasks.svg);
   transform: rotate(180deg);
   transition: 300ms;
 }

@@ -4,7 +4,6 @@ import taskDateSvg from "../img/svg/task-date.svg";
 import taskPriorityLowSvg from "../img/svg/task-priority-low.svg";
 import taskPriorityMediumSvg from "../img/svg/task-priority-medium.svg";
 import taskPriorityHighSvg from "../img/svg/task-priority-high.svg";
-import expandMoreCompletedTasksSvg from "../img/svg/expand-more-completed-tasks.svg";
 
 import lists from "../lists-and-tasks.js";
 
