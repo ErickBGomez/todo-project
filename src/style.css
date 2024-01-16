@@ -312,3 +312,8 @@ p {
 #completed-tasks-title {
   margin-bottom: 24px;
 }
+
+#completed-tasks-container .task .title {
+  text-decoration: line-through;
+  color: var(--Black-75);
+}

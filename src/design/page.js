@@ -76,7 +76,7 @@ function emptyPage() {
   return container;
 }
 
-function createNewTaskElement(task) {
+function createNewTaskElement(task, completed) {
   const newTaskElement = document.createElement("div");
   newTaskElement.className = "task";
 
