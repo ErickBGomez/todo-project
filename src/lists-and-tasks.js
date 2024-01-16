@@ -66,6 +66,8 @@ const lists = (() => {
 
   const getCurrentList = () => currentList;
 
+  const getCompletedLength = (listName) => getList(listName).completed.length;
+
   return {
     refreshLists,
     createList,
@@ -73,6 +75,7 @@ const lists = (() => {
     completeTask,
     setCurrentList,
     getCurrentList,
+    getCompletedLength,
   };
 })();
 

@@ -34,8 +34,14 @@ function createListContainer() {
   completedSection.className = "completed-tasks-section";
 
   const completedTitle = document.createElement("h2");
-  completedTitle.className = "completed-tasks-title";
-  completedTitle.textContent = "Completed tasks";
+  completedTitle.id = "completed-tasks-title";
+  completedTitle.textContent = "Completed tasks ";
+
+  const completedTasksCounter = document.createElement("span");
+  completedTasksCounter.className = "completed-tasks-counter";
+  completedTasksCounter.textContent = "(0)";
+
+  completedTitle.appendChild(completedTasksCounter);
 
   const completedContainer = document.createElement("div");
   completedContainer.id = "completed-tasks-container";
@@ -160,6 +166,9 @@ function refreshTaskElements() {
   const completedContainer = listPage.querySelector(
     "#completed-tasks-container"
   );
+  const completedCounter = listPage.querySelector(".completed-tasks-counter");
+
+  console.log(completedCounter);
 
   tasksContainer.innerHTML = "";
   lists.getCurrentList().tasks.forEach((task) => {
@@ -167,6 +176,10 @@ function refreshTaskElements() {
   });
 
   completedContainer.innerHTML = "";
+  completedCounter.textContent = `(${lists.getCompletedLength(
+    lists.getCurrentList().name
+  )})`;
+
   lists.getCurrentList().completed.forEach((task) => {
     completedContainer.appendChild(createNewTaskElement(task));
   });

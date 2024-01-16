@@ -309,6 +309,6 @@ p {
   padding-top: 32px;
 }
 
-.completed-tasks-section .completed-tasks-title {
+#completed-tasks-title {
   margin-bottom: 24px;
 }
