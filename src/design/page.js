@@ -30,9 +30,23 @@ function createListContainer() {
   newTaskButton.id = "new-task-button";
   newTaskButton.textContent = "Add new task";
 
+  const completedSection = document.createElement("div");
+  completedSection.className = "completed-tasks-section";
+
+  const completedTitle = document.createElement("h2");
+  completedTitle.className = "completed-tasks-title";
+  completedTitle.textContent = "Completed tasks";
+
+  const completedContainer = document.createElement("div");
+  completedContainer.id = "completed-tasks-container";
+
+  completedSection.appendChild(completedTitle);
+  completedSection.appendChild(completedContainer);
+
   container.appendChild(title);
   container.appendChild(tasksContaier);
   container.appendChild(newTaskButton);
+  container.appendChild(completedSection);
 
   return container;
 }
@@ -143,10 +157,18 @@ function createNewTaskElement(task) {
 
 function refreshTaskElements() {
   const tasksContainer = listPage.querySelector("#task-container");
+  const completedContainer = listPage.querySelector(
+    "#completed-tasks-container"
+  );
 
   tasksContainer.innerHTML = "";
   lists.getCurrentList().tasks.forEach((task) => {
     tasksContainer.appendChild(createNewTaskElement(task));
+  });
+
+  completedContainer.innerHTML = "";
+  lists.getCurrentList().completed.forEach((task) => {
+    completedContainer.appendChild(createNewTaskElement(task));
   });
 
   addCompleteTaskEvent();
