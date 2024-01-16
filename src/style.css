@@ -324,7 +324,17 @@ p {
 }
 
 .expand-tasks {
+  width: 24px;
+  height: 24px;
   cursor: pointer;
+  background: url(img/svg/expand-more-completed-tasks.svg);
+  transform: rotate(180deg);
+  transition: 300ms;
+}
+
+.expand-tasks.hiding {
+  transform: rotate(0deg);
+  transition: 300ms;
 }
 
 #completed-tasks-container.hide {

@@ -46,8 +46,7 @@ function createListContainer() {
   completedTasksCounter.className = "completed-tasks-counter";
   completedTasksCounter.textContent = "(0)";
 
-  const expandCompletedTasks = new Image();
-  expandCompletedTasks.src = expandMoreCompletedTasksSvg;
+  const expandCompletedTasks = document.createElement("div");
   expandCompletedTasks.className = "expand-tasks";
 
   completedTitle.appendChild(completedTasksCounter);
@@ -270,10 +269,9 @@ function addExpandTasksEvent() {
   const completedTasks = listPage.querySelector("#completed-tasks-container");
   const expandTasksButton = listPage.querySelector(".expand-tasks");
 
-  console.log(completedTasks);
-
   expandTasksButton.addEventListener("click", () => {
     completedTasks.classList.toggle("hide");
+    expandTasksButton.classList.toggle("hiding");
   });
 }
 
