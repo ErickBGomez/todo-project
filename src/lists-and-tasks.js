@@ -60,6 +60,19 @@ const lists = (() => {
     saveLists();
   };
 
+  const restoreTask = (listName, taskId) => {
+    const selectedList = getList(listName);
+    // Find task index to use it in splice() arguments
+    const taskIndex = selectedList.completed.indexOf(
+      selectedList.completed.find((task) => task.id === taskId)
+    );
+    // Remove task from array and convert it to object (index 0)
+    const completedTask = selectedList.completed.splice(taskIndex, 1)[0];
+    // Add task to the front of completed array
+    selectedList.tasks.push(completedTask);
+    saveLists();
+  };
+
   const setCurrentList = (listName) => {
     currentList = getList(listName);
   };
@@ -73,6 +86,7 @@ const lists = (() => {
     createList,
     addNewTask,
     completeTask,
+    restoreTask,
     setCurrentList,
     getCurrentList,
     getCompletedLength,

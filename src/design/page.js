@@ -169,12 +169,17 @@ function refreshTaskElements() {
   );
   const completedCounter = listPage.querySelector(".completed-tasks-counter");
 
+  // Reset all tasks elements
   tasksContainer.innerHTML = "";
   lists.getCurrentList().tasks.forEach((task) => {
     tasksContainer.appendChild(createNewTaskElement(task));
   });
 
+  addCompleteTaskEvent();
+
+  // Reset all completed tasks elements
   completedContainer.innerHTML = "";
+  // Count completed takss
   completedCounter.textContent = `(${lists.getCompletedLength(
     lists.getCurrentList().name
   )})`;
@@ -183,7 +188,7 @@ function refreshTaskElements() {
     completedContainer.appendChild(createNewTaskElement(task));
   });
 
-  addCompleteTaskEvent();
+  addRestoreTaskEvent();
 }
 
 export function loadListContent() {
@@ -230,6 +235,22 @@ function addCompleteTaskEvent() {
     const completeTaskButton = task.querySelector(".complete-task-button");
     completeTaskButton.addEventListener("click", () => {
       lists.completeTask(lists.getCurrentList().name, task.dataset.taskid);
+      refreshTaskElements();
+    });
+  });
+}
+
+function addRestoreTaskEvent() {
+  const completedTasksContainer = listPage.querySelector(
+    "#completed-tasks-container"
+  );
+  const tasks = Array.from(completedTasksContainer.querySelectorAll(".task"));
+
+  // Add complete button event to each task element
+  tasks.forEach((task) => {
+    const completeTaskButton = task.querySelector(".complete-task-button");
+    completeTaskButton.addEventListener("click", () => {
+      lists.restoreTask(lists.getCurrentList().name, task.dataset.taskid);
       refreshTaskElements();
     });
   });
