@@ -243,10 +243,8 @@ p {
   display: block;
   min-width: 32px;
   height: 32px;
-  background-color: var(--White);
-  border: 3px solid var(--Black-50);
-  border-radius: 100%;
-  padding: 0;
+  background: url(img/svg/to-complete-button.svg);
+  cursor: pointer;
 }
 
 .task .task-information {
@@ -316,4 +314,8 @@ p {
 #completed-tasks-container .task .title {
   text-decoration: line-through;
   color: var(--Black-75);
+}
+
+#completed-tasks-container .task .complete-task-button {
+  background: url(img/svg/completed-task.svg);
 }

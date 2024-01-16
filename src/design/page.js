@@ -4,6 +4,7 @@ import taskDateSvg from "../img/svg/task-date.svg";
 import taskPriorityLowSvg from "../img/svg/task-priority-low.svg";
 import taskPriorityMediumSvg from "../img/svg/task-priority-medium.svg";
 import taskPriorityHighSvg from "../img/svg/task-priority-high.svg";
+
 import lists from "../lists-and-tasks.js";
 
 let listPage;
@@ -76,13 +77,13 @@ function emptyPage() {
   return container;
 }
 
-function createNewTaskElement(task, completed) {
+function createNewTaskElement(task) {
   const newTaskElement = document.createElement("div");
   newTaskElement.className = "task";
 
   newTaskElement.dataset.taskid = task.id;
 
-  const completeTaskButton = document.createElement("button");
+  const completeTaskButton = document.createElement("div");
   completeTaskButton.className = "complete-task-button";
 
   const taskInformation = document.createElement("div");
