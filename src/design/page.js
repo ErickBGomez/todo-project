@@ -148,6 +148,8 @@ function refreshTaskElements() {
   lists.getCurrentList().tasks.forEach((task) => {
     tasksContainer.appendChild(createNewTaskElement(task));
   });
+
+  addCompleteTaskEvent();
 }
 
 export function loadListContent() {
@@ -185,6 +187,20 @@ function addNewTaskEvent() {
   });
 }
 
+function addCompleteTaskEvent() {
+  const tasksContainer = listPage.querySelector("#task-container");
+  const tasks = Array.from(tasksContainer.querySelectorAll(".task"));
+
+  // Add complete button event to each task element
+  tasks.forEach((task) => {
+    const completeTaskButton = task.querySelector(".complete-task-button");
+    completeTaskButton.addEventListener("click", () => {
+      lists.completeTask(lists.getCurrentList().name, task.dataset.taskid);
+      refreshTaskElements();
+    });
+  });
+}
+
 export function renderPage() {
   listPage = document.createElement("div");
   listPage.id = "list-page";
@@ -193,7 +209,7 @@ export function renderPage() {
   listPage.appendChild(createListContainer());
   listPage.appendChild(emptyPage());
 
-  addNewTaskEvent(listPage);
+  addNewTaskEvent();
 
   document.body.appendChild(listPage);
 }
