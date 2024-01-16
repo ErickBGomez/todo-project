@@ -168,8 +168,6 @@ function refreshTaskElements() {
   );
   const completedCounter = listPage.querySelector(".completed-tasks-counter");
 
-  console.log(completedCounter);
-
   tasksContainer.innerHTML = "";
   lists.getCurrentList().tasks.forEach((task) => {
     tasksContainer.appendChild(createNewTaskElement(task));
