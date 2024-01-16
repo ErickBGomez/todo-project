@@ -307,7 +307,10 @@ p {
   padding-top: 32px;
 }
 
-#completed-tasks-title {
+.completed-tasks-title-section {
+  display: flex;
+  gap: 24px;
+  align-items: center;
   margin-bottom: 24px;
 }
 
@@ -318,4 +321,12 @@ p {
 
 #completed-tasks-container .task .complete-task-button {
   background: url(img/svg/completed-task.svg);
+}
+
+.expand-tasks {
+  cursor: pointer;
+}
+
+#completed-tasks-container.hide {
+  display: none;
 }

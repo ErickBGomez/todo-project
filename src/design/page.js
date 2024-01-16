@@ -4,6 +4,7 @@ import taskDateSvg from "../img/svg/task-date.svg";
 import taskPriorityLowSvg from "../img/svg/task-priority-low.svg";
 import taskPriorityMediumSvg from "../img/svg/task-priority-medium.svg";
 import taskPriorityHighSvg from "../img/svg/task-priority-high.svg";
+import expandMoreCompletedTasksSvg from "../img/svg/expand-more-completed-tasks.svg";
 
 import lists from "../lists-and-tasks.js";
 
@@ -34,6 +35,9 @@ function createListContainer() {
   const completedSection = document.createElement("div");
   completedSection.className = "completed-tasks-section";
 
+  const completedTasksTitleSection = document.createElement("div");
+  completedTasksTitleSection.className = "completed-tasks-title-section";
+
   const completedTitle = document.createElement("h2");
   completedTitle.id = "completed-tasks-title";
   completedTitle.textContent = "Completed tasks ";
@@ -42,12 +46,18 @@ function createListContainer() {
   completedTasksCounter.className = "completed-tasks-counter";
   completedTasksCounter.textContent = "(0)";
 
+  const expandCompletedTasks = new Image();
+  expandCompletedTasks.src = expandMoreCompletedTasksSvg;
+  expandCompletedTasks.className = "expand-tasks";
+
   completedTitle.appendChild(completedTasksCounter);
+  completedTasksTitleSection.appendChild(completedTitle);
+  completedTasksTitleSection.appendChild(expandCompletedTasks);
 
   const completedContainer = document.createElement("div");
   completedContainer.id = "completed-tasks-container";
 
-  completedSection.appendChild(completedTitle);
+  completedSection.appendChild(completedTasksTitleSection);
   completedSection.appendChild(completedContainer);
 
   container.appendChild(title);
@@ -256,6 +266,17 @@ function addRestoreTaskEvent() {
   });
 }
 
+function addExpandTasksEvent() {
+  const completedTasks = listPage.querySelector("#completed-tasks-container");
+  const expandTasksButton = listPage.querySelector(".expand-tasks");
+
+  console.log(completedTasks);
+
+  expandTasksButton.addEventListener("click", () => {
+    completedTasks.classList.toggle("hide");
+  });
+}
+
 export function renderPage() {
   listPage = document.createElement("div");
   listPage.id = "list-page";
@@ -265,6 +286,7 @@ export function renderPage() {
   listPage.appendChild(emptyPage());
 
   addNewTaskEvent();
+  addExpandTasksEvent();
 
   document.body.appendChild(listPage);
 }
