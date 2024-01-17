@@ -1,4 +1,3 @@
-// Icons
 import taskDescriptionSvg from "../img/svg/task-description.svg";
 import taskDateSvg from "../img/svg/task-date.svg";
 import taskPriorityLowSvg from "../img/svg/task-priority-low.svg";

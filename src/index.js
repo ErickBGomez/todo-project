@@ -7,10 +7,3 @@ lists.refreshLists();
 
 renderSidebar();
 renderPage();
-
-// console.log(lists);
-// createList("Test");
-// createList("Test2");
-// console.log(lists);
-// addNewTask("Test", "Title1", "Description 1", "11-Jan-2024", 0);
-// console.log(lists);

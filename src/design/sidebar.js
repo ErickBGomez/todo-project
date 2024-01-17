@@ -1,4 +1,3 @@
-// Icons
 import allTasksSvg from "../img/svg/all-tasks.svg";
 import todaySvg from "../img/svg/today.svg";
 import thisWeekSvg from "../img/svg/this-week.svg";
