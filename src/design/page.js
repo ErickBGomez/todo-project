@@ -25,7 +25,7 @@ function createListContainer() {
   title.textContent = "List Title";
 
   const tasksContaier = document.createElement("div");
-  tasksContaier.id = "task-container";
+  tasksContaier.id = "tasks-container";
 
   const newTaskButton = document.createElement("button");
   newTaskButton.id = "new-task-button";
@@ -171,7 +171,7 @@ function createNewTaskElement(task) {
 }
 
 function refreshTaskElements() {
-  const tasksContainer = listPage.querySelector("#task-container");
+  const tasksContainer = listPage.querySelector("#tasks-container");
   const completedContainer = listPage.querySelector(
     "#completed-tasks-container"
   );
@@ -235,7 +235,7 @@ function addNewTaskEvent() {
 }
 
 function addCompleteTaskEvent() {
-  const tasksContainer = listPage.querySelector("#task-container");
+  const tasksContainer = listPage.querySelector("#tasks-container");
   const tasks = Array.from(tasksContainer.querySelectorAll(".task"));
 
   // Add complete button event to each task element

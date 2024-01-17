@@ -221,7 +221,7 @@ p {
 
 /* Tasks */
 
-#task-container,
+#tasks-container,
 #completed-tasks-container {
   display: flex;
   flex-direction: column;
