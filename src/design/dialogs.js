@@ -19,7 +19,23 @@ const dialogs = (() => {
 
   const showCreateListDialog = () => {
     const dialog = document.createElement("dialog");
+    dialog.id = "new-list";
 
+    const titleContainer = document.createElement("div");
+    titleContainer.className = "title-container";
+
+    const titleIconInput = document.createElement("div");
+    titleIconInput.className = "title-icon-input";
+
+    const titleInput = document.createElement("input");
+    titleInput.id = "list-title-input";
+    titleInput.type = "text";
+    titleInput.placeholder = "New list title";
+
+    titleContainer.appendChild(titleIconInput);
+    titleContainer.appendChild(titleInput);
+
+    dialog.appendChild(titleContainer);
     dialog.appendChild(appendDialogButtons("Create list"));
 
     document.body.appendChild(dialog);
