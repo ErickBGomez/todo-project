@@ -367,3 +367,10 @@ dialog::backdrop {
 }
 
 /* Dialogs */
+
+.buttons {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  gap: 8px;
+}
