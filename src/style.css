@@ -57,13 +57,38 @@ h2 {
 
 button {
   font-family: inherit;
-  background-color: var(--White);
   border: none;
+  border-radius: 8px;
   cursor: pointer;
+  padding: 10px 16px;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+button.primary {
+  background-color: var(--Primary);
+  color: var(--White);
+}
+
+button.secondary {
+  background-color: var(--Black-10);
+  color: var(--Black-75);
 }
 
 p {
   margin: 0;
+}
+
+dialog {
+  display: flex;
+  padding: 16px;
+  background-color: var(--White);
+  border: none;
+  border-radius: 16px;
+}
+
+dialog::backdrop {
+  background-color: #00000099;
 }
 
 /* Sidebar */
@@ -340,3 +365,5 @@ p {
 #completed-tasks-container.hide {
   display: none;
 }
+
+/* Dialogs */
