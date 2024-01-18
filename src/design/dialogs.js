@@ -1,3 +1,6 @@
+import dateUnselectedSvg from "../img/svg/dialog-icons/date-unselected.svg";
+import priorityUnselectedSvg from "../img/svg/dialog-icons/priority-unselected.svg";
+import listUnselectedSvg from "../img/svg/dialog-icons/list-unselected.svg";
 import lists from "../lists-and-tasks";
 import * as sidebar from "./sidebar.js";
 
@@ -62,6 +65,22 @@ const dialogs = (() => {
   };
 
   // New task:
+  const appendTaskOption = (label, icon) => {
+    const optionContainer = document.createElement("div");
+    optionContainer.className = "task-option";
+
+    const optionIcon = new Image();
+    optionIcon.src = icon;
+
+    const optionLabel = document.createElement("span");
+    optionLabel.textContent = label;
+
+    optionContainer.appendChild(optionIcon);
+    optionContainer.appendChild(optionLabel);
+
+    return optionContainer;
+  };
+
   const showNewTaskDialog = () => {
     const dialog = document.createElement("dialog");
     dialog.id = "new-task";
@@ -80,21 +99,17 @@ const dialogs = (() => {
     const taskOptions = document.createElement("div");
     taskOptions.className = "task-options";
 
-    const dateInput = document.createElement("div");
-    dateInput.id = "task-date-input";
-    dateInput.textContent = "Date";
-
     const priorityInput = document.createElement("div");
-    priorityInput.id = "task-priority-input";
     priorityInput.textContent = "Priority";
 
     const listInput = document.createElement("div");
-    listInput.id = "task-list-input";
     listInput.textContent = "List";
 
-    taskOptions.appendChild(dateInput);
-    taskOptions.appendChild(priorityInput);
-    taskOptions.appendChild(listInput);
+    taskOptions.appendChild(appendTaskOption("Date", dateUnselectedSvg));
+    taskOptions.appendChild(
+      appendTaskOption("Priority", priorityUnselectedSvg)
+    );
+    taskOptions.appendChild(appendTaskOption("Date", listUnselectedSvg));
 
     dialog.appendChild(titleInput);
     dialog.appendChild(descriptionInput);

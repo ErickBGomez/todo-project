@@ -477,6 +477,9 @@ dialog#new-task .task-options {
 }
 
 .task-options > div {
+  display: flex;
+  align-items: center;
+  gap: 4px;
   color: var(--Black-50);
   font-weight: 400;
   padding: 6px 10px;
