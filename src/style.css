@@ -366,6 +366,7 @@ input[type="text"] {
   color: var(--Black);
   border: none;
   border-bottom: 3px solid;
+  caret-color: var(--Primary);
 }
 
 input[type="text"]:placeholder-shown {
