@@ -9,4 +9,4 @@ lists.refreshLists();
 renderSidebar();
 renderPage();
 
-dialogs.showCreateListDialog();
+dialogs.showNewListDialog();

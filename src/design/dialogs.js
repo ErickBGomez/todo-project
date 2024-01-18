@@ -17,7 +17,7 @@ const dialogs = (() => {
     return buttons;
   };
 
-  const showCreateListDialog = () => {
+  const showNewListDialog = () => {
     const dialog = document.createElement("dialog");
     dialog.id = "new-list";
 
@@ -40,10 +40,24 @@ const dialogs = (() => {
 
     document.body.appendChild(dialog);
 
+    addCloseDialogEvent(dialog);
+
     dialog.showModal();
   };
 
-  return { showCreateListDialog };
+  const addCloseDialogEvent = (dialogContainer) => {
+    const buttons = dialogContainer.querySelectorAll("button");
+
+    buttons.forEach((button) => button.addEventListener("click", closeDialogs));
+  };
+
+  const closeDialogs = () => {
+    const dialog = document.querySelector("dialog[open]");
+    dialog.close();
+    document.body.removeChild(dialog);
+  };
+
+  return { showNewListDialog };
 })();
 
 export { dialogs };
