@@ -397,16 +397,40 @@ button {
   padding: 10px 16px;
   font-size: 1rem;
   font-weight: 600;
+  user-select: none;
+}
+
+button:focus {
+  outline: 2px solid var(--Primary);
+  outline-offset: 2px;
 }
 
 button.primary {
   background-color: var(--Primary);
   color: var(--White);
+  transition: background-color 150ms;
+}
+
+button.primary:hover {
+  background-color: #79a7fc;
+}
+
+button.primary:active {
+  background-color: #3352cc;
 }
 
 button.secondary {
-  background-color: var(--Black-10);
+  background-color: #c9cbcf;
   color: var(--Black-75);
+  transition: background-color 150ms;
+}
+
+button.secondary:hover {
+  background-color: #a7a9af;
+}
+
+button.secondary:active {
+  background-color: #878a92;
 }
 
 /* New list dialog */
