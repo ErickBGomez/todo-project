@@ -362,9 +362,15 @@ input[type="text"] {
   font-size: 1.375rem;
   font-weight: 600;
   padding: 2px 4px 0 4px;
+  background-color: var(--White);
   color: var(--Black);
   border: none;
   border-bottom: 3px solid var(--Primary);
+}
+
+input[type="text"]::placeholder {
+  font-weight: 400;
+  color: var(--Black-50);
 }
 
 button {
@@ -399,7 +405,7 @@ dialog#new-list .title-icon-input {
   width: 32px;
   height: 32px;
   padding: 4px;
-  border: 1px solid var(--Black-25);
+  border: 2px solid var(--Black-25);
   border-radius: 8px;
   cursor: pointer;
 }
