@@ -1,3 +1,6 @@
+import lists from "../lists-and-tasks";
+import * as sidebar from "./sidebar.js";
+
 const dialogs = (() => {
   const appendDialogButtons = (primaryLabel, secondaryLabel = "Cancel") => {
     const buttons = document.createElement("div");
@@ -41,8 +44,15 @@ const dialogs = (() => {
     document.body.appendChild(dialog);
 
     addCloseDialogEvent(dialog);
+    addCreateListEvent(dialog);
 
     dialog.showModal();
+  };
+
+  const closeDialogs = () => {
+    const dialog = document.querySelector("dialog[open]");
+    dialog.close();
+    document.body.removeChild(dialog);
   };
 
   const addCloseDialogEvent = (dialogContainer) => {
@@ -51,10 +61,14 @@ const dialogs = (() => {
     buttons.forEach((button) => button.addEventListener("click", closeDialogs));
   };
 
-  const closeDialogs = () => {
-    const dialog = document.querySelector("dialog[open]");
-    dialog.close();
-    document.body.removeChild(dialog);
+  const addCreateListEvent = (dialogContainer) => {
+    const createButton = dialogContainer.querySelector("button.primary");
+    const titleInput = dialogContainer.querySelector("input#list-title-input");
+
+    createButton.addEventListener("click", () => {
+      lists.createList(titleInput.value);
+      sidebar.refreshUserSidebarLists();
+    });
   };
 
   return { showNewListDialog };

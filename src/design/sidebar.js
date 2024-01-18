@@ -4,6 +4,9 @@ import thisWeekSvg from "../img/svg/this-week.svg";
 import defaultListSvg from "../img/svg/default-list.svg";
 import { loadListContent } from "./page";
 import lists from "../lists-and-tasks.js";
+import { dialogs } from "./dialogs.js";
+
+let userLists;
 
 function createAppTitle() {
   const appTitle = document.createElement("div");
@@ -52,19 +55,19 @@ function createHomeListsContainer() {
   return listsContainer;
 }
 
-function refreshUserSidebarLists(listsGroup) {
+export function refreshUserSidebarLists() {
   const listsContent = JSON.parse(localStorage.getItem("lists"));
 
   // Reset sidebar lists
-  listsGroup.innerHTML = "";
+  userLists.innerHTML = "";
 
   // Add lists to the sidebar
   listsContent.forEach((list) => {
-    listsGroup.appendChild(createListSidebar(list.name));
+    userLists.appendChild(createListSidebar(list.name));
   });
 
   // Add loading events to each list created by the user
-  listsGroup.childNodes.forEach((listElement) => {
+  userLists.childNodes.forEach((listElement) => {
     listElement.addEventListener("click", () => {
       lists.setCurrentList(listElement.dataset.listName);
       loadListContent();
@@ -90,13 +93,13 @@ function createUserListsContainer() {
   listTitleContainer.appendChild(title);
   listTitleContainer.appendChild(createListButton);
 
-  const listsGroup = document.createElement("div");
-  listsGroup.className = "lists-group";
+  userLists = document.createElement("div");
+  userLists.className = "lists-group";
 
-  refreshUserSidebarLists(listsGroup);
+  refreshUserSidebarLists();
 
   listsContainer.appendChild(listTitleContainer);
-  listsContainer.appendChild(listsGroup);
+  listsContainer.appendChild(userLists);
 
   return listsContainer;
 }
@@ -127,14 +130,7 @@ function createLowerSidebar() {
 
 function createUserListEvent(sidebar) {
   const createListButton = sidebar.querySelector("#create-list-button");
-  const listsGroup = sidebar.querySelector(".user-lists .lists-group");
-
-  createListButton.addEventListener("click", () => {
-    // Temporary create List dialog box
-    const listName = prompt("Inser list name", "List name");
-    lists.createList(listName);
-    refreshUserSidebarLists(listsGroup);
-  });
+  createListButton.addEventListener("click", () => dialogs.showNewListDialog());
 }
 
 export default function renderSidebar() {
