@@ -360,12 +360,27 @@ dialog .buttons {
 input[type="text"] {
   font-family: inherit;
   font-size: 1.375rem;
-  font-weight: 600;
+  font-weight: 500;
   padding: 2px 4px 0 4px;
   background-color: var(--White);
   color: var(--Black);
   border: none;
-  border-bottom: 3px solid var(--Primary);
+  border-bottom: 3px solid;
+}
+
+input[type="text"]:placeholder-shown {
+  border-bottom-color: var(--Black-25);
+  transition: 150ms;
+}
+
+input[type="text"]:focus,
+input[type="text"]:not(:placeholder-shown) {
+  border-bottom-color: var(--Primary);
+  transition: 150ms;
+}
+
+input[type="text"]:focus {
+  outline: none;
 }
 
 input[type="text"]::placeholder {
