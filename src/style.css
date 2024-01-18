@@ -184,6 +184,7 @@ p {
   color: var(--Black-50);
   border: 1px solid var(--Black-25);
   border-radius: 8px;
+  background-color: var(--White);
 }
 
 .empty-page {
