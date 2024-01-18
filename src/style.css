@@ -450,3 +450,36 @@ dialog#new-list .title-icon-input {
   border-radius: 8px;
   cursor: pointer;
 }
+
+/* New task dialog */
+
+textarea {
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--Black-75);
+  background-color: var(--Black-05);
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  outline: none;
+  resize: none;
+}
+
+textarea::placeholder {
+  color: var(--Black-50);
+}
+
+dialog#new-task .task-options {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.task-options > div {
+  color: var(--Black-50);
+  font-weight: 400;
+  padding: 6px 10px;
+  border: 1px solid var(--Black-25);
+  border-radius: 8px;
+}
