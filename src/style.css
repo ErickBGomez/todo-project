@@ -474,6 +474,8 @@ dialog#new-task .task-options {
   display: flex;
   align-items: center;
   gap: 8px;
+  user-select: none;
+  cursor: pointer;
 }
 
 .task-options > div {
