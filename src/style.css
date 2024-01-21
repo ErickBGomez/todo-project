@@ -308,6 +308,10 @@ p {
   margin-bottom: 24px;
 }
 
+#completed-tasks-container {
+  display: none;
+}
+
 #completed-tasks-container .task .title {
   text-decoration: line-through;
   color: var(--Black-75);
@@ -322,17 +326,17 @@ p {
   height: 24px;
   cursor: pointer;
   background: url(img/svg/expand-tasks.svg);
-  transform: rotate(180deg);
-  transition: 300ms;
-}
-
-.expand-tasks.hiding {
   transform: rotate(0deg);
   transition: 300ms;
 }
 
-#completed-tasks-container.hide {
-  display: none;
+.completed-tasks-section.show .expand-tasks {
+  transform: rotate(180deg);
+  transition: 300ms;
+}
+
+.completed-tasks-section.show #completed-tasks-container {
+  display: flex;
 }
 
 /* Dialogs */

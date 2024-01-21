@@ -251,12 +251,11 @@ function addRestoreTaskEvent() {
 }
 
 function addExpandTasksEvent() {
-  const completedTasks = listPage.querySelector("#completed-tasks-container");
+  const completedTasks = listPage.querySelector(".completed-tasks-section");
   const expandTasksButton = listPage.querySelector(".expand-tasks");
 
   expandTasksButton.addEventListener("click", () => {
-    completedTasks.classList.toggle("hide");
-    expandTasksButton.classList.toggle("hiding");
+    completedTasks.classList.toggle("show");
   });
 }
 
