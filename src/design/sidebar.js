@@ -4,7 +4,7 @@ import thisWeekSvg from "../img/svg/this-week.svg";
 import defaultListSvg from "../img/svg/default-list.svg";
 import { loadListContent } from "./page";
 import lists from "../lists-and-tasks.js";
-import { dialogs } from "./dialogs.js";
+import dialogs from "./dialogs.js";
 
 let userLists;
 

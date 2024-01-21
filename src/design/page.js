@@ -4,6 +4,7 @@ import taskPriorityMediumSvg from "../img/svg/task-priority-medium.svg";
 import taskPriorityHighSvg from "../img/svg/task-priority-high.svg";
 
 import lists from "../lists-and-tasks.js";
+import dialogs from "./dialogs.js";
 
 let listPage;
 
@@ -168,7 +169,7 @@ function createNewTaskElement(task) {
   return newTaskElement;
 }
 
-function refreshTaskElements() {
+export function refreshTaskElements() {
   const tasksContainer = listPage.querySelector("#tasks-container");
   const completedContainer = listPage.querySelector(
     "#completed-tasks-container"
@@ -215,20 +216,7 @@ function addNewTaskEvent() {
   const newTaskButton = listPage.querySelector("#new-task-button");
 
   newTaskButton.addEventListener("click", () => {
-    // Temporary new task creation
-    const title = prompt("Title", "Task title");
-    const description = prompt("Description", "Description of the task");
-    const date = prompt("Date", "15-Jan-2024");
-    const priority = Number(prompt("Priority (0,1,2,3)"));
-
-    lists.addNewTask(
-      lists.getCurrentList().name,
-      title,
-      description,
-      date,
-      priority
-    );
-    refreshTaskElements();
+    dialogs.showNewTaskDialog();
   });
 }
 
