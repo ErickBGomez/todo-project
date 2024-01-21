@@ -3,6 +3,7 @@ import priorityUnselectedSvg from "../img/svg/dialog-icons/priority-unselected.s
 import listUnselectedSvg from "../img/svg/dialog-icons/list-unselected.svg";
 import lists from "../lists-and-tasks";
 import * as sidebar from "./sidebar.js";
+import * as page from "./page.js";
 
 const dialogs = (() => {
   const appendDialogButtons = (primaryLabel, secondaryLabel = "Cancel") => {
@@ -119,8 +120,27 @@ const dialogs = (() => {
     document.body.appendChild(dialog);
 
     addCloseDialogEvent(dialog);
+    addCreateTaskEvent(dialog);
 
     dialog.showModal();
+  };
+
+  const addCreateTaskEvent = (dialogContainer) => {
+    const createButton = dialogContainer.querySelector("button.primary");
+    const titleInput = dialogContainer.querySelector("#task-title-input");
+    const descriptionInput = dialogContainer.querySelector(
+      "#task-description-input"
+    );
+
+    createButton.addEventListener("click", () => {
+      lists.addNewTask(
+        lists.getCurrentList().name,
+        titleInput.value,
+        descriptionInput.value
+      );
+
+      page.refreshTaskElements();
+    });
   };
 
   // All dialogs:
@@ -139,4 +159,4 @@ const dialogs = (() => {
   return { showNewListDialog, showNewTaskDialog };
 })();
 
-export { dialogs };
+export default dialogs;
