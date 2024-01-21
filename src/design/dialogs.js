@@ -50,6 +50,7 @@ const dialogs = (() => {
     document.body.appendChild(dialog);
 
     addCloseDialogEvent(dialog);
+    addCloseDialogButtonsEvent(dialog);
     addCreateListEvent(dialog);
 
     dialog.showModal();
@@ -120,6 +121,7 @@ const dialogs = (() => {
     document.body.appendChild(dialog);
 
     addCloseDialogEvent(dialog);
+    addCloseDialogButtonsEvent(dialog);
     addCreateTaskEvent(dialog);
 
     dialog.showModal();
@@ -144,16 +146,18 @@ const dialogs = (() => {
   };
 
   // All dialogs:
-  const closeDialogs = () => {
-    const dialog = document.querySelector("dialog[open]");
-    dialog.close();
-    document.body.removeChild(dialog);
+  const addCloseDialogEvent = (currentDialog) => {
+    currentDialog.addEventListener("close", () =>
+      document.body.removeChild(currentDialog)
+    );
   };
 
-  const addCloseDialogEvent = (dialogContainer) => {
-    const buttons = dialogContainer.querySelectorAll("button");
+  const addCloseDialogButtonsEvent = (currentDialog) => {
+    const buttons = currentDialog.querySelectorAll("button");
 
-    buttons.forEach((button) => button.addEventListener("click", closeDialogs));
+    buttons.forEach((button) =>
+      button.addEventListener("click", () => currentDialog.close())
+    );
   };
 
   return { showNewListDialog, showNewTaskDialog };
