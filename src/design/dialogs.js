@@ -109,7 +109,7 @@ const dialogs = (() => {
     taskOptions.appendChild(
       appendTaskOption("Priority", priorityUnselectedSvg)
     );
-    taskOptions.appendChild(appendTaskOption("Date", listUnselectedSvg));
+    taskOptions.appendChild(appendTaskOption("List", listUnselectedSvg));
 
     dialog.appendChild(titleInput);
     dialog.appendChild(descriptionInput);
