@@ -355,7 +355,7 @@ dialog::backdrop {
   background-color: #00000099;
 }
 
-dialog .buttons {
+dialog .dialog-buttons {
   display: flex;
   flex-direction: row-reverse;
   justify-content: end;

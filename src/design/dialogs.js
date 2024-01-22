@@ -8,7 +8,7 @@ import * as page from "./page.js";
 const dialogs = (() => {
   const appendDialogButtons = (primaryLabel, secondaryLabel = "Cancel") => {
     const buttons = document.createElement("div");
-    buttons.className = "buttons";
+    buttons.className = "dialog-buttons";
 
     const primaryButton = document.createElement("button");
     primaryButton.className = "primary";
@@ -68,7 +68,7 @@ const dialogs = (() => {
 
   // New task:
   const appendTaskOption = (label, icon) => {
-    const optionContainer = document.createElement("div");
+    const optionContainer = document.createElement("button");
     optionContainer.className = "task-option";
 
     const optionIcon = new Image();
@@ -153,7 +153,9 @@ const dialogs = (() => {
   };
 
   const addCloseDialogButtonsEvent = (currentDialog) => {
-    const buttons = currentDialog.querySelectorAll("button");
+    const dialogButtonsContainer =
+      currentDialog.querySelector(".dialog-buttons");
+    const buttons = dialogButtonsContainer.querySelectorAll("button");
 
     buttons.forEach((button) =>
       button.addEventListener("click", () => currentDialog.close())
