@@ -474,21 +474,66 @@ textarea::placeholder {
   color: var(--Black-50);
 }
 
-dialog#new-task .task-options {
+dialog#new-task .task-select-inputs {
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
-.task-options > div {
+.select-input {
+  position: relative;
+}
+
+.select-input .select-button {
   display: flex;
   align-items: center;
   gap: 4px;
   color: var(--Black-50);
   font-weight: 400;
   padding: 6px 10px;
+  background-color: var(--White);
   border: 1px solid var(--Black-25);
   border-radius: 8px;
   user-select: none;
   cursor: pointer;
+}
+
+.select-input .options {
+  position: fixed;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  background-color: var(--White);
+  border: 1px solid #a3a3a3;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.options :first-child {
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
+}
+
+.options :last-child {
+  border-bottom-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+
+.options .option {
+  background-color: var(--White);
+  padding: 8px;
+  width: 100%;
+  transition: background-color 150ms;
+  user-select: none;
+}
+
+.options .option:hover {
+  background-color: #d3d3d3;
+  transition: background-color 150ms;
+}
+
+.select-button:focus + .options {
+  display: flex;
 }
