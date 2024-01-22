@@ -70,10 +70,11 @@ const dialogs = (() => {
   const appendSelectInput = (
     label,
     icon,
-    optionsArray = ["Option 1", "Option 2", "Option 3"]
+    optionsArray = [{ icon: "", text: "No options", value: 0 }]
   ) => {
     const container = document.createElement("div");
     container.className = "select-input";
+    container.dataset.value = optionsArray[0].text;
 
     const inputButton = document.createElement("button");
     inputButton.className = "select-button";
@@ -91,7 +92,7 @@ const dialogs = (() => {
     optionsArray.forEach((option) => {
       const optionElement = document.createElement("span");
       optionElement.className = "option";
-      optionElement.textContent = option;
+      optionElement.textContent = option.text;
       optionsContainer.appendChild(optionElement);
     });
 
@@ -126,7 +127,12 @@ const dialogs = (() => {
       appendSelectInput("Date", dateUnselectedSvg)
     );
     selectInputsContainer.appendChild(
-      appendSelectInput("Priority", priorityUnselectedSvg)
+      appendSelectInput("Priority", priorityUnselectedSvg, [
+        { icon: "", text: "No Priority", value: 0 },
+        { icon: "", text: "Low", value: 1 },
+        { icon: "", text: "Medium", value: 2 },
+        { icon: "", text: "High", value: 3 },
+      ])
     );
     selectInputsContainer.appendChild(
       appendSelectInput("List", listUnselectedSvg)
