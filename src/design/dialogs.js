@@ -67,20 +67,41 @@ const dialogs = (() => {
   };
 
   // New task:
-  const appendTaskOption = (label, icon) => {
-    const optionContainer = document.createElement("button");
-    optionContainer.className = "task-option";
+  const appendSelectInput = (
+    label,
+    icon,
+    optionsArray = ["Option 1", "Option 2", "Option 3"]
+  ) => {
+    const container = document.createElement("div");
+    container.className = "select-input";
 
-    const optionIcon = new Image();
-    optionIcon.src = icon;
+    const inputButton = document.createElement("button");
+    inputButton.className = "select-button";
 
-    const optionLabel = document.createElement("span");
-    optionLabel.textContent = label;
+    const buttonLabel = document.createElement("span");
+    buttonLabel.textContent = label;
 
-    optionContainer.appendChild(optionIcon);
-    optionContainer.appendChild(optionLabel);
+    const buttonIcon = new Image();
+    buttonIcon.src = icon;
 
-    return optionContainer;
+    // Options
+    const optionsContainer = document.createElement("div");
+    optionsContainer.className = "options";
+
+    optionsArray.forEach((option) => {
+      const optionElement = document.createElement("span");
+      optionElement.className = "option";
+      optionElement.textContent = option;
+      optionsContainer.appendChild(optionElement);
+    });
+
+    inputButton.appendChild(buttonIcon);
+    inputButton.appendChild(buttonLabel);
+
+    container.appendChild(inputButton);
+    container.appendChild(optionsContainer);
+
+    return container;
   };
 
   const showNewTaskDialog = () => {
@@ -98,24 +119,22 @@ const dialogs = (() => {
     descriptionInput.rows = "4";
     descriptionInput.placeholder = "Task description";
 
-    const taskOptions = document.createElement("div");
-    taskOptions.className = "task-options";
+    const selectInputsContainer = document.createElement("div");
+    selectInputsContainer.className = "task-select-inputs";
 
-    const priorityInput = document.createElement("div");
-    priorityInput.textContent = "Priority";
-
-    const listInput = document.createElement("div");
-    listInput.textContent = "List";
-
-    taskOptions.appendChild(appendTaskOption("Date", dateUnselectedSvg));
-    taskOptions.appendChild(
-      appendTaskOption("Priority", priorityUnselectedSvg)
+    selectInputsContainer.appendChild(
+      appendSelectInput("Date", dateUnselectedSvg)
     );
-    taskOptions.appendChild(appendTaskOption("List", listUnselectedSvg));
+    selectInputsContainer.appendChild(
+      appendSelectInput("Priority", priorityUnselectedSvg)
+    );
+    selectInputsContainer.appendChild(
+      appendSelectInput("List", listUnselectedSvg)
+    );
 
     dialog.appendChild(titleInput);
     dialog.appendChild(descriptionInput);
-    dialog.appendChild(taskOptions);
+    dialog.appendChild(selectInputsContainer);
     dialog.appendChild(appendDialogButtons("Add task"));
 
     document.body.appendChild(dialog);
