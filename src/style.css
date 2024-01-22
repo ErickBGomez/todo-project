@@ -502,11 +502,9 @@ dialog#new-task .task-select-inputs {
   position: fixed;
   display: none;
   flex-direction: column;
-  align-items: center;
   background-color: var(--White);
   border: 1px solid #a3a3a3;
   border-radius: 8px;
-  font-size: 0.9rem;
   cursor: pointer;
 }
 
