@@ -539,6 +539,23 @@ dialog#new-task .task-select-inputs {
   display: flex;
 }
 
+/* Select priority input color depending to selected value */
+#select-priority[data-value="Low"] button {
+  border-color: var(--Low-Priority);
+  color: var(--Low-Priority);
+}
+
+#select-priority[data-value="Medium"] button {
+  border-color: var(--Medium-Priority);
+  color: var(--Medium-Priority);
+}
+
+#select-priority[data-value="High"] button {
+  border-color: var(--High-Priority);
+  color: var(--High-Priority);
+}
+
+/* Select priority input elements text color */
 #select-priority span[data-value="Priority"] {
   color: var(--Black-50);
 }
