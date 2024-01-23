@@ -520,6 +520,9 @@ dialog#new-task .task-select-inputs {
 }
 
 .options .option {
+  display: flex;
+  align-items: center;
+  gap: 4px;
   background-color: var(--White);
   padding: 8px;
   width: 100%;
