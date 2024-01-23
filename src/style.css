@@ -539,7 +539,7 @@ dialog#new-task .task-select-inputs {
   display: flex;
 }
 
-#select-priority span[data-value="No Priority"] {
+#select-priority span[data-value="Priority"] {
   color: var(--Black-50);
 }
 

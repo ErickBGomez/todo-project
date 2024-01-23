@@ -149,17 +149,12 @@ const dialogs = (() => {
       appendSelectInput("Date", dateUnselectedSvg)
     );
     selectInputsContainer.appendChild(
-      appendSelectInput(
-        "No Priority",
-        priorityUnselectedSvg,
-        "select-priority",
-        [
-          { icon: priorityUnselectedSvg, value: "No Priority" },
-          { icon: priorityLowSvg, value: "Low" },
-          { icon: priorityMediumSvg, value: "Medium" },
-          { icon: priorityHighSvg, value: "High" },
-        ]
-      )
+      appendSelectInput("Priority", priorityUnselectedSvg, "select-priority", [
+        { icon: priorityUnselectedSvg, value: "Priority" },
+        { icon: priorityLowSvg, value: "Low" },
+        { icon: priorityMediumSvg, value: "Medium" },
+        { icon: priorityHighSvg, value: "High" },
+      ])
     );
     selectInputsContainer.appendChild(
       appendSelectInput("List", listUnselectedSvg)
