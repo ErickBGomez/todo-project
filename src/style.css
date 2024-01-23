@@ -538,3 +538,19 @@ dialog#new-task .task-select-inputs {
 .select-input.expand .options {
   display: flex;
 }
+
+#select-priority span[data-value="No Priority"] {
+  color: var(--Black-50);
+}
+
+#select-priority span[data-value="Low"] {
+  color: var(--Low-Priority);
+}
+
+#select-priority span[data-value="Medium"] {
+  color: var(--Medium-Priority);
+}
+
+#select-priority span[data-value="High"] {
+  color: var(--High-Priority);
+}
