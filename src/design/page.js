@@ -122,19 +122,19 @@ function createNewTaskElement(task) {
   taskPriority.className = "priority";
 
   switch (task.priority) {
-    case 1: // Low
+    case "Low":
       priorityIcon.src = taskPriorityLowSvg;
       taskPriority.classList.add("low");
       taskPriority.textContent = "Low";
       break;
 
-    case 2: // Medium
+    case "Medium":
       priorityIcon.src = taskPriorityMediumSvg;
       taskPriority.classList.add("medium");
       taskPriority.textContent = "Medium";
       break;
 
-    case 3: // High
+    case "High":
       priorityIcon.src = taskPriorityHighSvg;
       taskPriority.classList.add("high");
       taskPriority.textContent = "High";

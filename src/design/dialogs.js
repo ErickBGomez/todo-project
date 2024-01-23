@@ -180,12 +180,15 @@ const dialogs = (() => {
     const descriptionInput = dialogContainer.querySelector(
       "#task-description-input"
     );
+    const priorityInput = dialogContainer.querySelector("#select-priority");
 
     createButton.addEventListener("click", () => {
       lists.addNewTask(
         lists.getCurrentList().name,
         titleInput.value,
-        descriptionInput.value
+        descriptionInput.value,
+        "22-Jan-2024",
+        priorityInput.dataset.value
       );
 
       page.refreshTaskElements();
