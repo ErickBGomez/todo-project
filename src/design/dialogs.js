@@ -208,14 +208,11 @@ const dialogs = (() => {
     options.forEach((option) => {
       option.addEventListener("click", () => {
         const optionIcon = option.querySelector(".option-icon");
-        const optionLabel = option.querySelector(".option-label");
 
         selectInput.dataset.value = option.dataset.value;
         buttonLabel.textContent = option.dataset.value;
         buttonIcon.src = optionIcon.src;
         selectInput.classList.toggle("expand");
-
-        console.log(selectInput.dataset.value);
       });
     });
   };
