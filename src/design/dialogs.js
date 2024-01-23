@@ -1,6 +1,9 @@
 import dateUnselectedSvg from "../img/svg/dialog-icons/date-unselected.svg";
 import priorityUnselectedSvg from "../img/svg/dialog-icons/priority-unselected.svg";
 import listUnselectedSvg from "../img/svg/dialog-icons/list-unselected.svg";
+import priorityLowSvg from "../img/svg/task-priority-low.svg";
+import priorityMediumSvg from "../img/svg/task-priority-medium.svg";
+import priorityHighSvg from "../img/svg/task-priority-high.svg";
 import lists from "../lists-and-tasks";
 import * as sidebar from "./sidebar.js";
 import * as page from "./page.js";
@@ -94,7 +97,19 @@ const dialogs = (() => {
     optionsArray.forEach((option) => {
       const optionElement = document.createElement("span");
       optionElement.className = "option";
-      optionElement.textContent = option.value;
+      optionElement.dataset.value = option.value;
+
+      const optionIcon = new Image();
+      optionIcon.className = "option-icon";
+      optionIcon.src = option.icon;
+
+      const optionLabel = document.createElement("span");
+      optionLabel.className = "option-label";
+      optionLabel.textContent = option.value;
+
+      optionElement.appendChild(optionIcon);
+      optionElement.appendChild(optionLabel);
+
       optionsContainer.appendChild(optionElement);
     });
 
@@ -133,10 +148,10 @@ const dialogs = (() => {
     );
     selectInputsContainer.appendChild(
       appendSelectInput("No Priority", priorityUnselectedSvg, [
-        { icon: "", value: "No Priority" },
-        { icon: "", value: "Low" },
-        { icon: "", value: "Medium" },
-        { icon: "", value: "High" },
+        { icon: priorityUnselectedSvg, value: "No Priority" },
+        { icon: priorityLowSvg, value: "Low" },
+        { icon: priorityMediumSvg, value: "Medium" },
+        { icon: priorityHighSvg, value: "High" },
       ])
     );
     selectInputsContainer.appendChild(
@@ -185,15 +200,20 @@ const dialogs = (() => {
 
   const addSelectOptionValueEvent = (selectInput) => {
     const buttonLabel = selectInput.querySelector(".button-label");
+    const buttonIcon = selectInput.querySelector(".button-icon");
     const options = selectInput.querySelectorAll(".option");
-
-    console.log(options);
 
     options.forEach((option) => {
       option.addEventListener("click", () => {
-        selectInput.dateset.value = option.textContent;
-        buttonLabel.textContent = option.textContent;
+        const optionIcon = option.querySelector(".option-icon");
+        const optionLabel = option.querySelector(".option-label");
+
+        selectInput.dataset.value = option.dataset.value;
+        buttonLabel.textContent = option.dataset.value;
+        buttonIcon.src = optionIcon.src;
         selectInput.classList.toggle("expand");
+
+        console.log(selectInput.dataset.value);
       });
     });
   };
