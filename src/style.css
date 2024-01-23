@@ -531,6 +531,6 @@ dialog#new-task .task-select-inputs {
   transition: background-color 150ms;
 }
 
-.select-button:focus + .options {
+.select-input.expand .options {
   display: flex;
 }

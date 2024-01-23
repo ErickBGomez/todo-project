@@ -80,9 +80,11 @@ const dialogs = (() => {
     inputButton.className = "select-button";
 
     const buttonLabel = document.createElement("span");
+    buttonLabel.className = "button-label";
     buttonLabel.textContent = label;
 
     const buttonIcon = new Image();
+    buttonIcon.className = "button-icon";
     buttonIcon.src = icon;
 
     // Options
@@ -101,6 +103,9 @@ const dialogs = (() => {
 
     container.appendChild(inputButton);
     container.appendChild(optionsContainer);
+
+    addExpandOptionsEvent(container);
+    addSelectOptionValueEvent(container);
 
     return container;
   };
@@ -127,7 +132,7 @@ const dialogs = (() => {
       appendSelectInput("Date", dateUnselectedSvg)
     );
     selectInputsContainer.appendChild(
-      appendSelectInput("Priority", priorityUnselectedSvg, [
+      appendSelectInput("No Priority", priorityUnselectedSvg, [
         { icon: "", value: "No Priority" },
         { icon: "", value: "Low" },
         { icon: "", value: "Medium" },
@@ -167,6 +172,29 @@ const dialogs = (() => {
       );
 
       page.refreshTaskElements();
+    });
+  };
+
+  const addExpandOptionsEvent = (selectInput) => {
+    const button = selectInput.querySelector(".select-button");
+
+    button.addEventListener("click", () =>
+      selectInput.classList.toggle("expand")
+    );
+  };
+
+  const addSelectOptionValueEvent = (selectInput) => {
+    const buttonLabel = selectInput.querySelector(".button-label");
+    const options = selectInput.querySelectorAll(".option");
+
+    console.log(options);
+
+    options.forEach((option) => {
+      option.addEventListener("click", () => {
+        selectInput.dateset.value = option.textContent;
+        buttonLabel.textContent = option.textContent;
+        selectInput.classList.toggle("expand");
+      });
     });
   };
 
