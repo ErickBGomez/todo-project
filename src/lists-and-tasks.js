@@ -11,6 +11,7 @@ class Task {
 class List {
   constructor(listName) {
     this.name = listName;
+    this.icon = "icon";
     this.tasks = [];
     this.completed = [];
   }
@@ -20,15 +21,19 @@ const lists = (() => {
   let content;
   let currentList;
 
-  const refreshLists = () => {
-    // If lists is not created in localStorage, create an empty array
-    if (!localStorage.getItem("lists")) localStorage.setItem("lists", "[]");
-
-    content = JSON.parse(localStorage.getItem("lists"));
-  };
-
   const saveLists = () => {
     localStorage.setItem("lists", JSON.stringify(content));
+  };
+
+  const refreshLists = () => {
+    // If lists is not created in localStorage, create an empty array
+    if (!localStorage.getItem("lists")) {
+      content = [];
+      createList("My tasks");
+      saveLists();
+    }
+
+    content = JSON.parse(localStorage.getItem("lists"));
   };
 
   const createList = (listName) => {
