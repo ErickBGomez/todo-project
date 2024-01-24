@@ -116,46 +116,50 @@ function createNewTaskElement(task) {
   const priorityContainer = document.createElement("div");
   priorityContainer.className = "priority-container";
 
-  const priorityIcon = new Image();
+  if (task.priority) {
+    const priorityIcon = new Image();
 
-  const taskPriority = document.createElement("div");
-  taskPriority.className = "priority";
+    const taskPriority = document.createElement("div");
+    taskPriority.className = "priority";
 
-  switch (task.priority) {
-    case "Low":
-      priorityIcon.src = taskPriorityLowSvg;
-      taskPriority.classList.add("low");
-      taskPriority.textContent = "Low";
-      break;
+    switch (task.priority) {
+      case "Low":
+        priorityIcon.src = taskPriorityLowSvg;
+        taskPriority.classList.add("low");
+        taskPriority.textContent = "Low";
+        break;
 
-    case "Medium":
-      priorityIcon.src = taskPriorityMediumSvg;
-      taskPriority.classList.add("medium");
-      taskPriority.textContent = "Medium";
-      break;
+      case "Medium":
+        priorityIcon.src = taskPriorityMediumSvg;
+        taskPriority.classList.add("medium");
+        taskPriority.textContent = "Medium";
+        break;
 
-    case "High":
-      priorityIcon.src = taskPriorityHighSvg;
-      taskPriority.classList.add("high");
-      taskPriority.textContent = "High";
-      break;
+      case "High":
+        priorityIcon.src = taskPriorityHighSvg;
+        taskPriority.classList.add("high");
+        taskPriority.textContent = "High";
+        break;
+    }
+
+    priorityContainer.appendChild(priorityIcon);
+    priorityContainer.appendChild(taskPriority);
   }
-
-  priorityContainer.appendChild(priorityIcon);
-  priorityContainer.appendChild(taskPriority);
 
   const dateContainer = document.createElement("div");
   dateContainer.className = "date-container";
 
-  const dateIcon = new Image();
-  dateIcon.src = taskDateSvg;
+  if (task.date) {
+    const dateIcon = new Image();
+    dateIcon.src = taskDateSvg;
 
-  const taskDate = document.createElement("div");
-  taskDate.className = "date";
-  taskDate.textContent = task.date;
+    const taskDate = document.createElement("div");
+    taskDate.className = "date";
+    taskDate.textContent = task.date;
 
-  dateContainer.appendChild(dateIcon);
-  dateContainer.appendChild(taskDate);
+    dateContainer.appendChild(dateIcon);
+    dateContainer.appendChild(taskDate);
+  }
 
   subInformation.appendChild(priorityContainer);
   subInformation.appendChild(dateContainer);
