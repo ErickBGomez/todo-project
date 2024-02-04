@@ -531,7 +531,7 @@ dialog#new-task .task-select-inputs {
 }
 
 .options .option:hover {
-  background-color: #d3d3d3;
+  background-color: #e8e8e8;
   transition: background-color 150ms;
 }
 
