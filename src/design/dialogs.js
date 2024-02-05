@@ -146,7 +146,7 @@ const dialogs = (() => {
     selectInputsContainer.className = "task-select-inputs";
 
     selectInputsContainer.appendChild(
-      appendSelectInput("Date", dateUnselectedSvg)
+      appendSelectInput("Date", dateUnselectedSvg, "select-date")
     );
     selectInputsContainer.appendChild(
       appendSelectInput("Priority", priorityUnselectedSvg, "select-priority", [
@@ -157,7 +157,7 @@ const dialogs = (() => {
       ])
     );
     selectInputsContainer.appendChild(
-      appendSelectInput("List", listUnselectedSvg)
+      appendSelectInput("List", listUnselectedSvg, "select-list")
     );
 
     dialog.appendChild(titleInput);

@@ -115,7 +115,7 @@ const lists = (() => {
     setCurrentList,
     getCurrentList,
     getCompletedLength,
-    getListsNames: getListsNamesIcons,
+    getListsNamesIcons,
   };
 })();
 
