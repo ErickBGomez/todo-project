@@ -124,6 +124,9 @@ const dialogs = (() => {
     addExpandOptionsEvent(container);
     addSelectOptionValueEvent(container);
 
+    // Auto-select first option
+    selectOptionValue(container, optionsContainer.childNodes[0]);
+
     return container;
   };
 
@@ -208,13 +211,13 @@ const dialogs = (() => {
     );
   };
 
-  const selectOptionValue = (selectInput, option) => {
+  const selectOptionValue = (selectInput, optionValue) => {
     const buttonLabel = selectInput.querySelector(".button-label");
     const buttonIcon = selectInput.querySelector(".button-icon");
-    const optionIcon = option.querySelector(".option-icon");
+    const optionIcon = optionValue.querySelector(".option-icon");
 
-    selectInput.dataset.value = option.dataset.value;
-    buttonLabel.textContent = option.dataset.value;
+    selectInput.dataset.value = optionValue.dataset.value;
+    buttonLabel.textContent = optionValue.dataset.value;
     buttonIcon.src = optionIcon.src;
   };
 
