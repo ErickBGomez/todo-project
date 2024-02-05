@@ -157,7 +157,12 @@ const dialogs = (() => {
       ])
     );
     selectInputsContainer.appendChild(
-      appendSelectInput("List", listUnselectedSvg, "select-list")
+      appendSelectInput(
+        "List",
+        listUnselectedSvg,
+        "select-list",
+        lists.getListsNamesIcons()
+      )
     );
 
     dialog.appendChild(titleInput);
