@@ -74,11 +74,11 @@ const dialogs = (() => {
     label,
     icon,
     inputId,
-    optionsArray = [{ icon: listUnselectedSvg, value: "No options" }]
+    optionsArray = [{ icon: listUnselectedSvg, name: "No options" }]
   ) => {
     const container = document.createElement("div");
     container.className = "select-input";
-    container.dataset.value = optionsArray[0].value;
+    container.dataset.value = optionsArray[0].name;
     if (inputId) container.id = inputId;
 
     const inputButton = document.createElement("button");
@@ -99,7 +99,7 @@ const dialogs = (() => {
     optionsArray.forEach((option) => {
       const optionElement = document.createElement("span");
       optionElement.className = "option";
-      optionElement.dataset.value = option.value;
+      optionElement.dataset.value = option.name;
 
       const optionIcon = new Image();
       optionIcon.className = "option-icon";
@@ -107,7 +107,7 @@ const dialogs = (() => {
 
       const optionLabel = document.createElement("span");
       optionLabel.className = "option-label";
-      optionLabel.textContent = option.value;
+      optionLabel.textContent = option.name;
 
       optionElement.appendChild(optionIcon);
       optionElement.appendChild(optionLabel);
@@ -150,10 +150,10 @@ const dialogs = (() => {
     );
     selectInputsContainer.appendChild(
       appendSelectInput("Priority", priorityUnselectedSvg, "select-priority", [
-        { icon: priorityUnselectedSvg, value: "Priority" },
-        { icon: priorityLowSvg, value: "Low" },
-        { icon: priorityMediumSvg, value: "Medium" },
-        { icon: priorityHighSvg, value: "High" },
+        { icon: priorityUnselectedSvg, name: "Priority" },
+        { icon: priorityLowSvg, name: "Low" },
+        { icon: priorityMediumSvg, name: "Medium" },
+        { icon: priorityHighSvg, name: "High" },
       ])
     );
     selectInputsContainer.appendChild(
