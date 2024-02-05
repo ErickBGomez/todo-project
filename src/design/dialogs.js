@@ -208,18 +208,22 @@ const dialogs = (() => {
     );
   };
 
-  const addSelectOptionValueEvent = (selectInput) => {
+  const selectOptionValue = (selectInput, option) => {
     const buttonLabel = selectInput.querySelector(".button-label");
     const buttonIcon = selectInput.querySelector(".button-icon");
+    const optionIcon = option.querySelector(".option-icon");
+
+    selectInput.dataset.value = option.dataset.value;
+    buttonLabel.textContent = option.dataset.value;
+    buttonIcon.src = optionIcon.src;
+  };
+
+  const addSelectOptionValueEvent = (selectInput) => {
     const options = selectInput.querySelectorAll(".option");
 
     options.forEach((option) => {
       option.addEventListener("click", () => {
-        const optionIcon = option.querySelector(".option-icon");
-
-        selectInput.dataset.value = option.dataset.value;
-        buttonLabel.textContent = option.dataset.value;
-        buttonIcon.src = optionIcon.src;
+        selectOptionValue(selectInput, option);
         selectInput.classList.toggle("expand");
       });
     });
