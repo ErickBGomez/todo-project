@@ -86,6 +86,26 @@ const lists = (() => {
 
   const getCompletedLength = (listName) => getList(listName).completed.length;
 
+  const getListsNamesIcons = () => {
+    const namesIconsArray = [];
+
+    content.forEach((list) => {
+      const propertiesToFilter = ["name", "icon"];
+
+      // Return a new object with only "name" and "icon" properties
+      const filteredList = Object.keys(list)
+        .filter((key) => propertiesToFilter.includes(key))
+        .reduce((object, key) => {
+          object[key] = list[key];
+          return object;
+        }, {});
+
+      namesIconsArray.push(filteredList);
+    });
+
+    return namesIconsArray;
+  };
+
   return {
     refreshLists,
     createList,
@@ -95,6 +115,7 @@ const lists = (() => {
     setCurrentList,
     getCurrentList,
     getCompletedLength,
+    getListsNames: getListsNamesIcons,
   };
 })();
 
