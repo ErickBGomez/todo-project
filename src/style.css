@@ -571,3 +571,9 @@ dialog#new-task .task-select-inputs {
 #select-priority span[data-value="High"] {
   color: var(--High-Priority);
 }
+
+/* List input button color */
+#select-list button {
+  border-color: var(--Completed-Checklist);
+  color: var(--Completed-Checklist);
+}
