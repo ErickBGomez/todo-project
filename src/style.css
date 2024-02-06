@@ -479,6 +479,9 @@ textarea::placeholder {
 /* Task options */
 
 /* Date input */
+#date-input input[type="date"] {
+  display: none;
+}
 
 /* Select inputs */
 
