@@ -96,6 +96,7 @@ const dialogs = (() => {
     container.appendChild(inputButton);
 
     addShowDatePickerEvent(inputButton, input);
+    changeDateValueEvent(buttonLabel, input);
 
     return container;
   };
@@ -260,6 +261,13 @@ const dialogs = (() => {
 
   const addShowDatePickerEvent = (inputButton, dateInput) => {
     inputButton.addEventListener("click", () => dateInput.showPicker());
+  };
+
+  const changeDateValueEvent = (inputLabel, dateInput) => {
+    dateInput.addEventListener(
+      "change",
+      () => (inputLabel.textContent = dateInput.value)
+    );
   };
 
   // All dialogs:
