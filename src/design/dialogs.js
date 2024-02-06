@@ -95,6 +95,8 @@ const dialogs = (() => {
     container.appendChild(input);
     container.appendChild(inputButton);
 
+    addShowDatePickerEvent(inputButton, input);
+
     return container;
   };
 
@@ -254,6 +256,10 @@ const dialogs = (() => {
         selectInput.classList.toggle("expand");
       });
     });
+  };
+
+  const addShowDatePickerEvent = (inputButton, dateInput) => {
+    inputButton.addEventListener("click", () => dateInput.showPicker());
   };
 
   // All dialogs:
