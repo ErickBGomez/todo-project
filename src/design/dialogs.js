@@ -71,9 +71,8 @@ const dialogs = (() => {
 
   // New task:
   const appendSelectInput = (
-    label,
-    icon,
     inputId,
+    icon,
     optionsArray = [{ icon: listUnselectedSvg, name: "No options" }]
   ) => {
     const container = document.createElement("div");
@@ -86,7 +85,6 @@ const dialogs = (() => {
 
     const buttonLabel = document.createElement("span");
     buttonLabel.className = "button-label";
-    buttonLabel.textContent = label;
 
     const buttonIcon = new Image();
     buttonIcon.className = "button-icon";
@@ -149,10 +147,10 @@ const dialogs = (() => {
     selectInputsContainer.className = "task-select-inputs";
 
     selectInputsContainer.appendChild(
-      appendSelectInput("Date", dateUnselectedSvg, "select-date")
+      appendSelectInput("select-date", dateUnselectedSvg)
     );
     selectInputsContainer.appendChild(
-      appendSelectInput("Priority", priorityUnselectedSvg, "select-priority", [
+      appendSelectInput("select-priority", priorityUnselectedSvg, [
         { icon: priorityUnselectedSvg, name: "Priority" },
         { icon: priorityLowSvg, name: "Low" },
         { icon: priorityMediumSvg, name: "Medium" },
@@ -161,9 +159,8 @@ const dialogs = (() => {
     );
     selectInputsContainer.appendChild(
       appendSelectInput(
-        "List",
-        listUnselectedSvg,
         "select-list",
+        listUnselectedSvg,
         lists.getListsNamesIcons()
       )
     );
