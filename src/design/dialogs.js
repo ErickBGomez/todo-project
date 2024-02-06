@@ -74,6 +74,10 @@ const dialogs = (() => {
     const container = document.createElement("div");
     container.id = inputId;
 
+    const input = document.createElement("input");
+    input.type = "date";
+    input.className = "date-element";
+
     const inputButton = document.createElement("button");
     inputButton.className = "date-button";
 
@@ -88,6 +92,7 @@ const dialogs = (() => {
     inputButton.appendChild(buttonIcon);
     inputButton.appendChild(buttonLabel);
 
+    container.appendChild(input);
     container.appendChild(inputButton);
 
     return container;
