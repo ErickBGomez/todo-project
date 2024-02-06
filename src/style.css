@@ -457,6 +457,8 @@ dialog#new-list .title-icon-input {
 
 /* New task dialog */
 
+/* Task information */
+
 textarea {
   font-family: inherit;
   font-size: 1rem;
@@ -473,6 +475,12 @@ textarea {
 textarea::placeholder {
   color: var(--Black-50);
 }
+
+/* Task options */
+
+/* Date input */
+
+/* Select inputs */
 
 dialog#new-task .task-select-inputs {
   display: flex;
