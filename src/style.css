@@ -484,7 +484,8 @@ dialog#new-task .task-select-inputs {
   position: relative;
 }
 
-.select-input .select-button {
+.select-input .select-button,
+#date-input .date-button {
   display: flex;
   align-items: center;
   gap: 4px;

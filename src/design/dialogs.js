@@ -72,7 +72,23 @@ const dialogs = (() => {
   // New task:
   const appendDateInput = (inputId, icon) => {
     const container = document.createElement("div");
-    container;
+    container.id = inputId;
+
+    const inputButton = document.createElement("button");
+    inputButton.className = "date-button";
+
+    const buttonLabel = document.createElement("span");
+    buttonLabel.className = "button-label";
+    buttonLabel.textContent = "Date";
+
+    const buttonIcon = new Image();
+    buttonIcon.className = "button-icon";
+    buttonIcon.src = icon;
+
+    inputButton.appendChild(buttonIcon);
+    inputButton.appendChild(buttonLabel);
+
+    container.appendChild(inputButton);
 
     return container;
   };
@@ -153,7 +169,7 @@ const dialogs = (() => {
     selectInputsContainer.className = "task-select-inputs";
 
     selectInputsContainer.appendChild(
-      appendDateInput("select-date", dateUnselectedSvg)
+      appendDateInput("date-input", dateUnselectedSvg)
     );
     selectInputsContainer.appendChild(
       appendSelectInput("select-priority", priorityUnselectedSvg, [
