@@ -490,9 +490,6 @@ textarea::placeholder {
 /* Change button and label color when selecting a date */
 #date-input:not([data-value=""]) button {
   border-color: var(--Primary);
-}
-
-#date-input:not([data-value=""]) span {
   color: var(--Primary);
 }
 
