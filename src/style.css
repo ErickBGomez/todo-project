@@ -487,6 +487,15 @@ textarea::placeholder {
   bottom: 77px;
 }
 
+/* Change button and label color when selecting a date */
+#date-input:not([data-value=""]) button {
+  border-color: var(--Primary);
+}
+
+#date-input:not([data-value=""]) span {
+  color: var(--Primary);
+}
+
 /* Select inputs */
 
 dialog#new-task .task-select-inputs {
