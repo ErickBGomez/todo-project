@@ -595,7 +595,7 @@ dialog#new-task .task-select-inputs {
 }
 
 /* List input button color */
-#select-list button {
+#select-list:not([data-value=""]) button {
   border-color: var(--Completed-Checklist);
   color: var(--Completed-Checklist);
 }
