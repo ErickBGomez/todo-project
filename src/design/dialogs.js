@@ -78,6 +78,8 @@ const dialogs = (() => {
     input.type = "date";
     input.className = "date-element";
 
+    container.dataset.value = input.value;
+
     const inputButton = document.createElement("button");
     inputButton.className = "date-button";
 
@@ -96,7 +98,7 @@ const dialogs = (() => {
     container.appendChild(inputButton);
 
     addShowDatePickerEvent(inputButton, input);
-    changeDateValueEvent(buttonLabel, input);
+    changeDateValueEvent(container);
 
     return container;
   };
@@ -263,11 +265,14 @@ const dialogs = (() => {
     inputButton.addEventListener("click", () => dateInput.showPicker());
   };
 
-  const changeDateValueEvent = (inputLabel, dateInput) => {
-    dateInput.addEventListener(
-      "change",
-      () => (inputLabel.textContent = dateInput.value)
-    );
+  const changeDateValueEvent = (inputContainer) => {
+    const buttonLabel = inputContainer.querySelector(".button-label");
+    const dateInput = inputContainer.querySelector("input.date-element");
+
+    dateInput.addEventListener("change", () => {
+      inputContainer.dataset.value = dateInput.value;
+      buttonLabel.textContent = dateInput.value ? dateInput.value : "Date";
+    });
   };
 
   // All dialogs:
