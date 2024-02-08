@@ -150,24 +150,24 @@ function createNewTaskElement(task, isCompleted) {
     taskPriority.appendChild(priorityLabel);
   }
 
-  const dateContainer = document.createElement("div");
-  dateContainer.className = "date-container";
+  const taskDate = document.createElement("div");
+  taskDate.className = "date";
 
   if (task.date) {
     const dateIcon = document.createElement("div");
     dateIcon.className = "date-icon";
     dateIcon.innerHTML = dateSvg;
 
-    const taskDate = document.createElement("div");
-    taskDate.className = "date";
-    taskDate.textContent = task.date;
+    const dateLabel = document.createElement("div");
+    dateLabel.className = "date-label";
+    dateLabel.textContent = task.date;
 
-    dateContainer.appendChild(dateIcon);
-    dateContainer.appendChild(taskDate);
+    taskDate.appendChild(dateIcon);
+    taskDate.appendChild(dateLabel);
   }
 
   subInformation.appendChild(taskPriority);
-  subInformation.appendChild(dateContainer);
+  subInformation.appendChild(taskDate);
 
   taskInformation.appendChild(mainInformation);
   taskInformation.appendChild(subInformation);

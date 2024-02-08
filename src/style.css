@@ -287,8 +287,8 @@ p {
   color: var(--High-Priority);
 }
 
-.task .priority-container,
-.task .date-container {
+.task .priority,
+.task .date {
   display: flex;
   gap: 4px;
   align-items: center;
