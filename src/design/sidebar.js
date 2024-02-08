@@ -1,4 +1,5 @@
 import defaultListSvg from "../img/svg/lists/default.svg";
+
 import { loadListContent } from "./page";
 import lists from "../lists-and-tasks.js";
 import dialogs from "./dialogs.js";

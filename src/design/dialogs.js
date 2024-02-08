@@ -3,6 +3,7 @@ import dateSelectedSvg from "../img/svg/tasks/date-fill.svg";
 import priorityUnselectedSvg from "../img/svg/tasks/priority-nofill.svg";
 import prioritySelectedSvg from "../img/svg/tasks/priority-fill.svg";
 import listUnselectedSvg from "../img/svg/lists/default.svg";
+
 import lists from "../lists-and-tasks";
 import * as sidebar from "./sidebar.js";
 import * as page from "./page.js";

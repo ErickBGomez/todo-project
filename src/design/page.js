@@ -2,6 +2,7 @@ import dateSvg from "../img/svg/tasks/date-fill.svg";
 import prioritySvg from "../img/svg/tasks/priority-fill.svg";
 import toCompleteButtonSvg from "../img/svg/others/to-complete-button.svg";
 import completedTaskSvg from "../img/svg/others/completed-task.svg";
+import expandTasksSvg from "../img/svg/others/expand-tasks.svg";
 
 import lists from "../lists-and-tasks.js";
 import dialogs from "./dialogs.js";
@@ -46,6 +47,7 @@ function createListContainer() {
 
   const expandCompletedTasks = document.createElement("div");
   expandCompletedTasks.className = "expand-tasks";
+  expandCompletedTasks.innerHTML = expandTasksSvg;
 
   completedTitle.appendChild(completedTasksCounter);
   completedTasksTitleSection.appendChild(completedTitle);

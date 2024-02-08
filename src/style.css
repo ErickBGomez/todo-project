@@ -325,8 +325,8 @@ p {
   width: 24px;
   height: 24px;
   cursor: pointer;
-  background: url(img/svg/others/expand-tasks.svg);
-  transform: rotate(0deg);
+  /* Set 360 degrees to rotate to right instead to the left */
+  transform: rotate(360deg);
   transition: 300ms;
 }
 
