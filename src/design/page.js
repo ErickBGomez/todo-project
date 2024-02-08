@@ -1,5 +1,7 @@
 import dateSvg from "../img/svg/tasks/date-fill.svg";
 import prioritySvg from "../img/svg/tasks/priority-fill.svg";
+import toCompleteButtonSvg from "../img/svg/others/to-complete-button.svg";
+import completedTaskSvg from "../img/svg/others/completed-task.svg";
 
 import lists from "../lists-and-tasks.js";
 import dialogs from "./dialogs.js";
@@ -82,7 +84,7 @@ function emptyPage() {
   return container;
 }
 
-function createNewTaskElement(task) {
+function createNewTaskElement(task, isCompleted) {
   const newTaskElement = document.createElement("div");
   newTaskElement.className = "task";
 
@@ -90,6 +92,9 @@ function createNewTaskElement(task) {
 
   const completeTaskButton = document.createElement("div");
   completeTaskButton.className = "complete-task-button";
+  completeTaskButton.innerHTML = isCompleted
+    ? completedTaskSvg
+    : toCompleteButtonSvg;
 
   const taskInformation = document.createElement("div");
   taskInformation.className = "task-information";
@@ -171,6 +176,7 @@ function createNewTaskElement(task) {
   return newTaskElement;
 }
 
+// Refresh all tasks from selected list
 export function refreshTaskElements() {
   const tasksContainer = listPage.querySelector("#tasks-container");
   const completedContainer = listPage.querySelector(
@@ -181,7 +187,7 @@ export function refreshTaskElements() {
   // Reset all tasks elements
   tasksContainer.innerHTML = "";
   lists.getCurrentList().tasks.forEach((task) => {
-    tasksContainer.appendChild(createNewTaskElement(task));
+    tasksContainer.appendChild(createNewTaskElement(task, false));
   });
 
   addCompleteTaskEvent();
@@ -194,7 +200,7 @@ export function refreshTaskElements() {
   )})`;
 
   lists.getCurrentList().completed.forEach((task) => {
-    completedContainer.appendChild(createNewTaskElement(task));
+    completedContainer.appendChild(createNewTaskElement(task, true));
   });
 
   addRestoreTaskEvent();

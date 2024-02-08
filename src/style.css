@@ -242,7 +242,6 @@ p {
   display: block;
   min-width: 32px;
   height: 32px;
-  background: url(img/svg/others/to-complete-button.svg);
   cursor: pointer;
 }
 
@@ -320,10 +319,6 @@ p {
 #completed-tasks-container .task .title {
   text-decoration: line-through;
   color: var(--Black-75);
-}
-
-#completed-tasks-container .task .complete-task-button {
-  background: url(img/svg/others/completed-task.svg);
 }
 
 .expand-tasks {
