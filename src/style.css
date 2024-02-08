@@ -298,6 +298,12 @@ p {
   color: var(--Black-75);
 }
 
+.task .date-icon,
+.task .priority-icon {
+  width: 24px;
+  height: 24px;
+}
+
 /* Completed tasks */
 .completed-tasks-section {
   border-top: 1px solid var(--Black-25);

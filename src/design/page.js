@@ -118,36 +118,36 @@ function createNewTaskElement(task, isCompleted) {
   const subInformation = document.createElement("div");
   subInformation.className = "sub-information";
 
-  const priorityContainer = document.createElement("div");
-  priorityContainer.className = "priority-container";
+  const taskPriority = document.createElement("div");
+  taskPriority.className = "priority";
 
   if (task.priority) {
     const priorityIcon = document.createElement("div");
     priorityIcon.className = "priority-icon";
     priorityIcon.innerHTML = prioritySvg;
 
-    const taskPriority = document.createElement("div");
-    taskPriority.className = "priority";
+    const priorityLabel = document.createElement("div");
+    priorityLabel.className = "priority-label";
 
     switch (task.priority) {
       case "Low":
         taskPriority.classList.add("low");
-        taskPriority.textContent = "Low";
+        priorityLabel.textContent = "Low";
         break;
 
       case "Medium":
         taskPriority.classList.add("medium");
-        taskPriority.textContent = "Medium";
+        priorityLabel.textContent = "Medium";
         break;
 
       case "High":
         taskPriority.classList.add("high");
-        taskPriority.textContent = "High";
+        priorityLabel.textContent = "High";
         break;
     }
 
-    priorityContainer.appendChild(priorityIcon);
-    priorityContainer.appendChild(taskPriority);
+    taskPriority.appendChild(priorityIcon);
+    taskPriority.appendChild(priorityLabel);
   }
 
   const dateContainer = document.createElement("div");
@@ -166,7 +166,7 @@ function createNewTaskElement(task, isCompleted) {
     dateContainer.appendChild(taskDate);
   }
 
-  subInformation.appendChild(priorityContainer);
+  subInformation.appendChild(taskPriority);
   subInformation.appendChild(dateContainer);
 
   taskInformation.appendChild(mainInformation);
