@@ -599,3 +599,10 @@ dialog#new-task .task-select-inputs {
   border-color: var(--Completed-Checklist);
   color: var(--Completed-Checklist);
 }
+
+/* SVG icons sizes */
+.button-icon,
+.option-icon {
+  width: 24px;
+  height: 24px;
+}

@@ -87,9 +87,9 @@ const dialogs = (() => {
     buttonLabel.className = "button-label";
     buttonLabel.textContent = "Date";
 
-    const buttonIcon = new Image();
+    const buttonIcon = document.createElement("span");
     buttonIcon.className = "button-icon";
-    buttonIcon.src = icon;
+    buttonIcon.innerHTML = icon;
 
     inputButton.appendChild(buttonIcon);
     inputButton.appendChild(buttonLabel);
@@ -118,9 +118,9 @@ const dialogs = (() => {
     const buttonLabel = document.createElement("span");
     buttonLabel.className = "button-label";
 
-    const buttonIcon = new Image();
+    const buttonIcon = document.createElement("span");
     buttonIcon.className = "button-icon";
-    buttonIcon.src = icon;
+    buttonIcon.innerHTML = icon;
 
     // Options
     const optionsContainer = document.createElement("div");
@@ -131,9 +131,9 @@ const dialogs = (() => {
       optionElement.className = "option";
       optionElement.dataset.value = option.name;
 
-      const optionIcon = new Image();
+      const optionIcon = document.createElement("span");
       optionIcon.className = "option-icon";
-      optionIcon.src = option.icon;
+      optionIcon.innerHTML = option.icon;
 
       const optionLabel = document.createElement("span");
       optionLabel.className = "option-label";
@@ -247,7 +247,7 @@ const dialogs = (() => {
 
     selectInput.dataset.value = optionValue.dataset.value;
     buttonLabel.textContent = optionValue.dataset.value;
-    buttonIcon.src = optionIcon.src;
+    buttonIcon.innerHTML = optionIcon.innerHTML; // Fix this
   };
 
   const addSelectOptionValueEvent = (selectInput) => {
