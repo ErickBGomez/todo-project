@@ -1,7 +1,5 @@
-import taskDateSvg from "../img/svg/task-date.svg";
-import taskPriorityLowSvg from "../img/svg/task-priority-low.svg";
-import taskPriorityMediumSvg from "../img/svg/task-priority-medium.svg";
-import taskPriorityHighSvg from "../img/svg/task-priority-high.svg";
+import dateSvg from "../img/svg/tasks/date-fill.svg";
+import prioritySvg from "../img/svg/tasks/priority-fill.svg";
 
 import lists from "../lists-and-tasks.js";
 import dialogs from "./dialogs.js";
@@ -117,26 +115,25 @@ function createNewTaskElement(task) {
   priorityContainer.className = "priority-container";
 
   if (task.priority) {
-    const priorityIcon = new Image();
+    const priorityIcon = document.createElement("div");
+    priorityIcon.className = "priority-icon";
+    priorityIcon.innerHTML = prioritySvg;
 
     const taskPriority = document.createElement("div");
     taskPriority.className = "priority";
 
     switch (task.priority) {
       case "Low":
-        priorityIcon.src = taskPriorityLowSvg;
         taskPriority.classList.add("low");
         taskPriority.textContent = "Low";
         break;
 
       case "Medium":
-        priorityIcon.src = taskPriorityMediumSvg;
         taskPriority.classList.add("medium");
         taskPriority.textContent = "Medium";
         break;
 
       case "High":
-        priorityIcon.src = taskPriorityHighSvg;
         taskPriority.classList.add("high");
         taskPriority.textContent = "High";
         break;
@@ -150,8 +147,9 @@ function createNewTaskElement(task) {
   dateContainer.className = "date-container";
 
   if (task.date) {
-    const dateIcon = new Image();
-    dateIcon.src = taskDateSvg;
+    const dateIcon = document.createElement("div");
+    dateIcon.className = "date-icon";
+    dateIcon.innerHTML = dateSvg;
 
     const taskDate = document.createElement("div");
     taskDate.className = "date";

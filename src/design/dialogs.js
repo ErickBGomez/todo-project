@@ -1,9 +1,8 @@
-import dateUnselectedSvg from "../img/svg/dialog-icons/date-unselected.svg";
-import priorityUnselectedSvg from "../img/svg/dialog-icons/priority-unselected.svg";
-import listUnselectedSvg from "../img/svg/dialog-icons/list-unselected.svg";
-import priorityLowSvg from "../img/svg/task-priority-low.svg";
-import priorityMediumSvg from "../img/svg/task-priority-medium.svg";
-import priorityHighSvg from "../img/svg/task-priority-high.svg";
+import dateUnselectedSvg from "../img/svg/tasks/date-nofill.svg";
+import dateSelectedSvg from "../img/svg/tasks/date-fill.svg";
+import priorityUnselectedSvg from "../img/svg/tasks/priority-nofill.svg";
+import prioritySelectedSvg from "../img/svg/tasks/priority-fill.svg";
+import listUnselectedSvg from "../img/svg/lists/default.svg";
 import lists from "../lists-and-tasks";
 import * as sidebar from "./sidebar.js";
 import * as page from "./page.js";
