@@ -126,6 +126,11 @@ p {
   transition: 100ms;
 }
 
+.list-sidebar-element .list-sidebar-element-icon {
+  width: 24px;
+  height: 24px;
+}
+
 .list-sidebar-element:hover {
   background-color: var(--Black-10);
   transition: 100ms;

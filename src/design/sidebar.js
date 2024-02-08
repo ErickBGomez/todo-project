@@ -19,7 +19,7 @@ function createListSidebar(listLabel, listIcon = defaultListSvg) {
   list.dataset.listName = listLabel;
 
   const icon = document.createElement("div");
-  icon.className = "lsit-sidebar-element-icon";
+  icon.className = "list-sidebar-element-icon";
   icon.innerHTML = listIcon;
 
   const label = document.createElement("div");
