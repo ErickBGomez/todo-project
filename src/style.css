@@ -277,14 +277,17 @@ p {
 
 .task .priority.low {
   color: var(--Low-Priority);
+  fill: var(--Low-Priority);
 }
 
 .task .priority.medium {
   color: var(--Medium-Priority);
+  fill: var(--Medium-Priority);
 }
 
 .task .priority.high {
   color: var(--High-Priority);
+  fill: var(--High-Priority);
 }
 
 .task .priority,
@@ -517,6 +520,7 @@ dialog#new-task .task-select-inputs {
   align-items: center;
   gap: 4px;
   color: var(--Black-50);
+  fill: var(--Black-50);
   font-weight: 400;
   padding: 6px 10px;
   background-color: var(--White);
@@ -571,33 +575,40 @@ dialog#new-task .task-select-inputs {
 #select-priority[data-value="Low"] button {
   border-color: var(--Low-Priority);
   color: var(--Low-Priority);
+  fill: var(--Low-Priority);
 }
 
 #select-priority[data-value="Medium"] button {
   border-color: var(--Medium-Priority);
   color: var(--Medium-Priority);
+  fill: var(--Medium-Priority);
 }
 
 #select-priority[data-value="High"] button {
   border-color: var(--High-Priority);
   color: var(--High-Priority);
+  fill: var(--High-Priority);
 }
 
 /* Select priority input elements text color */
 #select-priority span[data-value="Priority"] {
   color: var(--Black-50);
+  fill: var(--Black-50);
 }
 
 #select-priority span[data-value="Low"] {
   color: var(--Low-Priority);
+  fill: var(--Low-Priority);
 }
 
 #select-priority span[data-value="Medium"] {
   color: var(--Medium-Priority);
+  fill: var(--Medium-Priority);
 }
 
 #select-priority span[data-value="High"] {
   color: var(--High-Priority);
+  fill: var(--High-Priority);
 }
 
 /* List input button color */

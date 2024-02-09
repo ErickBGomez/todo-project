@@ -184,9 +184,9 @@ const dialogs = (() => {
     selectInputsContainer.appendChild(
       appendSelectInput("select-priority", priorityUnselectedSvg, [
         { icon: priorityUnselectedSvg, name: "Priority" },
-        { icon: priorityLowSvg, name: "Low" },
-        { icon: priorityMediumSvg, name: "Medium" },
-        { icon: priorityHighSvg, name: "High" },
+        { icon: prioritySelectedSvg, name: "Low" },
+        { icon: prioritySelectedSvg, name: "Medium" },
+        { icon: prioritySelectedSvg, name: "High" },
       ])
     );
     selectInputsContainer.appendChild(
