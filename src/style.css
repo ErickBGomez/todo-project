@@ -90,23 +90,32 @@ p {
 
 .sidebar-lists-container .title {
   color: var(--Black-50);
-  font-size: 0.875rem;
+  font-size: 0.9rem;
   font-weight: 400;
-  margin-bottom: 16px;
 }
 
 .user-lists .list-title-container {
   display: flex;
   justify-content: space-between;
-  align-items: start;
+  align-items: center;
+  margin-bottom: 16px;
 }
 
 #create-list-button {
-  background: none;
-  font-size: 1.2rem;
-  color: var(--Black-50);
-  width: 16px;
-  height: 16px;
+  padding: 4px;
+  transition: 100ms;
+}
+
+#create-list-button:hover {
+  background-color: var(--Black-10);
+  transition: 100ms;
+}
+
+#create-list-button .create-list-icon {
+  display: block;
+  width: 24px;
+  height: 24px;
+  fill: var(--Black-50);
 }
 
 .lists-group {

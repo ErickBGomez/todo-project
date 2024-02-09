@@ -1,4 +1,5 @@
 import defaultListSvg from "../img/svg/lists/default.svg";
+import createListSvg from "../img/svg/others/create-list.svg";
 
 import { loadListContent } from "./page";
 import lists from "../lists-and-tasks.js";
@@ -66,7 +67,12 @@ function createUserListsContainer() {
 
   const createListButton = document.createElement("button");
   createListButton.id = "create-list-button";
-  createListButton.textContent = "+";
+
+  const createListIcon = document.createElement("span");
+  createListIcon.className = "create-list-icon";
+  createListIcon.innerHTML = createListSvg;
+
+  createListButton.appendChild(createListIcon);
 
   listTitleContainer.appendChild(title);
   listTitleContainer.appendChild(createListButton);
