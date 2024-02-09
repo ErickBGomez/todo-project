@@ -217,6 +217,7 @@ const dialogs = (() => {
     const descriptionInput = dialogContainer.querySelector(
       "#task-description-input"
     );
+    const dateInput = dialogContainer.querySelector("#date-input");
     const priorityInput = dialogContainer.querySelector("#select-priority");
 
     createButton.addEventListener("click", () => {
@@ -224,7 +225,7 @@ const dialogs = (() => {
         lists.getCurrentList().name,
         titleInput.value,
         descriptionInput.value,
-        "22-Jan-2024",
+        dateInput.dataset.value,
         priorityInput.dataset.value
       );
 
