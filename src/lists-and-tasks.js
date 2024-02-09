@@ -1,3 +1,5 @@
+import defaultSvg from "./img/svg/lists/default.svg";
+
 class Task {
   constructor(title, description, date, priority) {
     this.id = Date.now().toString(16);
@@ -11,7 +13,7 @@ class Task {
 class List {
   constructor(listName) {
     this.name = listName;
-    this.icon = "icon";
+    this.icon = defaultSvg;
     this.tasks = [];
     this.completed = [];
   }

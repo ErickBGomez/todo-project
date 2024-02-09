@@ -41,7 +41,7 @@ export function refreshUserSidebarLists() {
 
   // Add lists to the sidebar
   listsContent.forEach((list) => {
-    userLists.appendChild(createListSidebar(list.name));
+    userLists.appendChild(createListSidebar(list.name, list.icon));
   });
 
   // Add loading events to each list created by the user

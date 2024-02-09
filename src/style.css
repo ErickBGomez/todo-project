@@ -574,49 +574,55 @@ dialog#new-task .task-select-inputs {
 }
 
 /* Select priority input color depending to selected value */
-#select-priority[data-value="Low"] button {
+#select-priority[data-value="Low"] .select-button {
   border-color: var(--Low-Priority);
   color: var(--Low-Priority);
   fill: var(--Low-Priority);
 }
 
-#select-priority[data-value="Medium"] button {
+#select-priority[data-value="Medium"] .select-button {
   border-color: var(--Medium-Priority);
   color: var(--Medium-Priority);
   fill: var(--Medium-Priority);
 }
 
-#select-priority[data-value="High"] button {
+#select-priority[data-value="High"] .select-button {
   border-color: var(--High-Priority);
   color: var(--High-Priority);
   fill: var(--High-Priority);
 }
 
 /* Select priority input elements text color */
-#select-priority span[data-value="Priority"] {
+#select-priority .option[data-value="Priority"] {
   color: var(--Black-50);
   fill: var(--Black-50);
 }
 
-#select-priority span[data-value="Low"] {
+#select-priority .option[data-value="Low"] {
   color: var(--Low-Priority);
   fill: var(--Low-Priority);
 }
 
-#select-priority span[data-value="Medium"] {
+#select-priority .option[data-value="Medium"] {
   color: var(--Medium-Priority);
   fill: var(--Medium-Priority);
 }
 
-#select-priority span[data-value="High"] {
+#select-priority .option[data-value="High"] {
   color: var(--High-Priority);
   fill: var(--High-Priority);
 }
 
 /* List input button color */
-#select-list:not([data-value=""]) button {
+#select-list:not([data-value=""]) .select-button {
   border-color: var(--Completed-Checklist);
   color: var(--Completed-Checklist);
+  fill: var(--Completed-Checklist);
+}
+
+#select-list .option {
+  color: var(--Black-50);
+  fill: var(--Black-50);
 }
 
 /* SVG icons sizes */
