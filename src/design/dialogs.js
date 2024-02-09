@@ -267,11 +267,15 @@ const dialogs = (() => {
 
   const changeDateValueEvent = (inputContainer) => {
     const buttonLabel = inputContainer.querySelector(".button-label");
+    const buttonIcon = inputContainer.querySelector(".button-icon");
     const dateInput = inputContainer.querySelector("input.date-element");
 
     dateInput.addEventListener("change", () => {
       inputContainer.dataset.value = dateInput.value;
       buttonLabel.textContent = dateInput.value ? dateInput.value : "Date";
+      buttonIcon.innerHTML = dateInput.value
+        ? dateSelectedSvg
+        : dateUnselectedSvg;
     });
   };
 

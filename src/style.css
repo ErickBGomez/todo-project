@@ -299,6 +299,7 @@ p {
 
 .task .date {
   color: var(--Black-75);
+  fill: var(--Black-75);
 }
 
 .task .date-icon,
@@ -500,6 +501,7 @@ textarea::placeholder {
 #date-input:not([data-value=""]) button {
   border-color: var(--Primary);
   color: var(--Primary);
+  fill: var(--Primary);
 }
 
 /* Select inputs */
