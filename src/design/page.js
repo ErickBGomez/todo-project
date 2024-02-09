@@ -108,13 +108,15 @@ function createNewTaskElement(task, isCompleted) {
   taskTitle.className = "title";
   taskTitle.textContent = task.title;
 
-  const taskDescription = document.createElement("div");
-  taskDescription.className = "description";
-  taskDescription.textContent = task.description;
-
   mainInformation.appendChild(taskTitle);
-  mainInformation.appendChild(taskDescription);
 
+  if (task.description) {
+    const taskDescription = document.createElement("div");
+    taskDescription.className = "description";
+    taskDescription.textContent = task.description;
+
+    mainInformation.appendChild(taskDescription);
+  }
   const subInformation = document.createElement("div");
   subInformation.className = "sub-information";
 
