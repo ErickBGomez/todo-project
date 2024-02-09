@@ -48,6 +48,11 @@ const lists = (() => {
 
   const addNewTask = (listName, title, description, date, priority) => {
     const selectedList = getList(listName);
+
+    // Remove any other possible value to priority that is not equal to the specified below
+    if (!(priority === "Low" || priority == "Medium" || priority === "High"))
+      priority = "";
+
     selectedList.tasks.push(new Task(title, description, date, priority));
     saveLists();
   };
