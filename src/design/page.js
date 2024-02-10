@@ -183,6 +183,7 @@ function createNewTaskElement(task, isCompleted) {
 // Refresh all tasks from selected list
 export function refreshTaskElements() {
   const tasksContainer = listPage.querySelector("#tasks-container");
+  const completedSection = listPage.querySelector(".completed-tasks-section");
   const completedContainer = listPage.querySelector(
     "#completed-tasks-container"
   );
@@ -206,6 +207,12 @@ export function refreshTaskElements() {
   lists.getCurrentList().completed.forEach((task) => {
     completedContainer.appendChild(createNewTaskElement(task, true));
   });
+
+  if (!lists.getCompletedLength(lists.getCurrentList().name)) {
+    completedSection.classList.add("hide");
+  } else {
+    completedSection.classList.remove("hide");
+  }
 
   addRestoreTaskEvent();
 }
