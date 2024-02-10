@@ -9,16 +9,16 @@ import dialogs from "./dialogs.js";
 
 let listPage;
 
-function createBackground() {
+function createListContainer() {
+  const page = document.createElement("div");
+  page.id = "page";
+  page.className = "hide";
+
   const background = document.createElement("div");
   background.id = "list-background";
 
-  return background;
-}
-
-function createListContainer() {
   const container = document.createElement("div");
-  container.className = "list-container hide";
+  container.className = "list-container";
 
   const title = document.createElement("h1");
   title.id = "list-title";
@@ -64,7 +64,10 @@ function createListContainer() {
   container.appendChild(newTaskButton);
   container.appendChild(completedSection);
 
-  return container;
+  page.appendChild(background);
+  page.appendChild(container);
+
+  return page;
 }
 
 function emptyPage() {
@@ -219,11 +222,11 @@ export function refreshTaskElements() {
 
 export function loadListContent() {
   const emptyContainer = listPage.querySelector(".empty-page");
-  const listContainer = listPage.querySelector(".list-container");
+  const pageContainer = listPage.querySelector("#page");
   const listTitle = listPage.querySelector("#list-title");
 
   emptyContainer.classList.add("hide");
-  listContainer.classList.remove("hide");
+  pageContainer.classList.remove("hide");
 
   // Set title
   listTitle.textContent = lists.getCurrentList().name;
@@ -282,7 +285,7 @@ export function renderPage() {
   listPage = document.createElement("div");
   listPage.id = "list-page";
 
-  listPage.appendChild(createBackground());
+  // listPage.appendChild(createBackground());
   listPage.appendChild(createListContainer());
   listPage.appendChild(emptyPage());
 
