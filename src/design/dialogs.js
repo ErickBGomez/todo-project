@@ -106,7 +106,8 @@ const dialogs = (() => {
   const appendSelectInput = (
     inputId,
     icon,
-    optionsArray = [{ icon: listUnselectedSvg, name: "No options" }]
+    optionsArray = [{ icon: listUnselectedSvg, name: "No options" }],
+    initialOptionIndex = 0
   ) => {
     const container = document.createElement("div");
     container.className = "select-input";
@@ -155,7 +156,13 @@ const dialogs = (() => {
     addSelectOptionValueEvent(container);
 
     // Auto-select first option
-    selectOptionValue(container, optionsContainer.childNodes[0]);
+    if (initialOptionIndex < 0 || initialOptionIndex >= optionsArray.length)
+      initialOptionIndex = 0;
+
+    selectOptionValue(
+      container,
+      optionsContainer.childNodes[initialOptionIndex].dataset.value
+    );
 
     return container;
   };
@@ -193,7 +200,8 @@ const dialogs = (() => {
       appendSelectInput(
         "select-list",
         listUnselectedSvg,
-        lists.getListsNamesIcons()
+        lists.getListsNamesIcons(),
+        1
       )
     );
 
@@ -244,10 +252,15 @@ const dialogs = (() => {
   const selectOptionValue = (selectInput, optionValue) => {
     const buttonLabel = selectInput.querySelector(".button-label");
     const buttonIcon = selectInput.querySelector(".button-icon");
-    const optionIcon = optionValue.querySelector(".option-icon");
+    const option = selectInput.querySelector(
+      `.option[data-value="${optionValue}"]`
+    );
+    const optionIcon = option.querySelector(".option-icon");
 
-    selectInput.dataset.value = optionValue.dataset.value;
-    buttonLabel.textContent = optionValue.dataset.value;
+    console.log(option);
+
+    selectInput.dataset.value = option.dataset.value;
+    buttonLabel.textContent = option.dataset.value;
     buttonIcon.innerHTML = optionIcon.innerHTML; // Fix this
   };
 
@@ -256,7 +269,7 @@ const dialogs = (() => {
 
     options.forEach((option) => {
       option.addEventListener("click", () => {
-        selectOptionValue(selectInput, option);
+        selectOptionValue(selectInput, option.dataset.value);
         selectInput.classList.toggle("expand");
       });
     });
