@@ -6,11 +6,15 @@ import prioritySelectedSvg from "../img/svg/tasks/priority-fill.svg";
 import defaultSvg from "../img/svg/lists/default.svg";
 import starSvg from "../img/svg/lists/star.svg";
 import heartSvg from "../img/svg/lists/heart.svg";
-import houseSvg from "../img/svg/lists/house.svg";
+import sofaSvg from "../img/svg/lists/sofa.svg";
 import treeSvg from "../img/svg/lists/tree.svg";
 import shoppingSvg from "../img/svg/lists/shopping.svg";
 import schoolSvg from "../img/svg/lists/school.svg";
+import pencilSvg from "../img/svg/lists/pencil.svg";
 import planeSvg from "../img/svg/lists/plane.svg";
+import cloudSvg from "../img/svg/lists/cloud.svg";
+import lightbulbSvg from "../img/svg/lists/lightbulb.svg";
+import bookSvg from "../img/svg/lists/book.svg";
 
 import lists from "../lists-and-tasks";
 import * as sidebar from "./sidebar.js";
@@ -99,11 +103,15 @@ const dialogs = (() => {
         defaultSvg,
         starSvg,
         heartSvg,
-        houseSvg,
+        sofaSvg,
         treeSvg,
         shoppingSvg,
         schoolSvg,
+        pencilSvg,
         planeSvg,
+        cloudSvg,
+        lightbulbSvg,
+        bookSvg,
       ])
     );
     titleContainer.appendChild(titleInput);
