@@ -71,6 +71,7 @@ const dialogs = (() => {
 
     // Select list grid events
     addExpandOptionsEvent(container);
+    addSelectOptionValueGridEvent(container);
 
     return container;
   };
@@ -114,6 +115,17 @@ const dialogs = (() => {
     const option = selectInputGrid.querySelectorAll(".option")[optionIndex];
 
     buttonIcon.innerHTML = option.innerHTML;
+  };
+
+  const addSelectOptionValueGridEvent = (selectInputGrid) => {
+    const options = selectInputGrid.querySelectorAll(".option");
+
+    options.forEach((option, index) => {
+      option.addEventListener("click", () => {
+        selectOptionValueGrid(selectInputGrid, index);
+        selectInputGrid.classList.remove("expand");
+      });
+    });
   };
 
   const addCreateListEvent = (dialogContainer) => {
@@ -326,7 +338,7 @@ const dialogs = (() => {
     options.forEach((option) => {
       option.addEventListener("click", () => {
         selectOptionValue(selectInput, option.dataset.value);
-        selectInput.classList.toggle("expand");
+        selectInput.classList.remove("expand");
       });
     });
   };
