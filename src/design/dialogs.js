@@ -4,6 +4,9 @@ import priorityUnselectedSvg from "../img/svg/tasks/priority-nofill.svg";
 import prioritySelectedSvg from "../img/svg/tasks/priority-fill.svg";
 import listUnselectedSvg from "../img/svg/lists/default.svg";
 
+import starSvg from "../img/svg/lists/star.svg";
+import heartSvg from "../img/svg/lists/heart.svg";
+
 import lists from "../lists-and-tasks";
 import * as sidebar from "./sidebar.js";
 import * as page from "./page.js";
@@ -28,6 +31,47 @@ const dialogs = (() => {
   };
 
   // New list:
+  const appendSelectInputGrid = (
+    inputId,
+    optionsArray = [listUnselectedSvg],
+    initialOptionIndex = 0
+  ) => {
+    const container = document.createElement("div");
+    container.className = "select-input-grid";
+    if (inputId) container.id = inputId;
+
+    const inputButton = document.createElement("button");
+    inputButton.className = "select-button";
+
+    const buttonIcon = document.createElement("span");
+    buttonIcon.className = "button-icon";
+
+    // Options
+    const optionsContainer = document.createElement("div");
+    optionsContainer.className = "options-grid";
+
+    optionsArray.forEach((optionIcon) => {
+      const optionElement = document.createElement("span");
+      optionElement.className = "option";
+      optionElement.innerHTML = optionIcon;
+
+      optionsContainer.appendChild(optionElement);
+    });
+
+    inputButton.appendChild(buttonIcon);
+
+    container.appendChild(inputButton);
+    container.appendChild(optionsContainer);
+
+    // Auto-select first option
+    if (initialOptionIndex < 0 || initialOptionIndex >= optionsArray.length)
+      initialOptionIndex = 0;
+
+    selectOptionValueGrid(container, initialOptionIndex);
+
+    return container;
+  };
+
   const showNewListDialog = () => {
     const dialog = document.createElement("dialog");
     dialog.id = "new-list";
@@ -35,16 +79,19 @@ const dialogs = (() => {
     const titleContainer = document.createElement("div");
     titleContainer.className = "title-container";
 
-    const titleIconInput = document.createElement("div");
-    titleIconInput.className = "title-icon-input";
-
     const titleInput = document.createElement("input");
     titleInput.type = "text";
     titleInput.id = "list-title-input";
     titleInput.name = "list-title-input";
     titleInput.placeholder = "List title";
 
-    titleContainer.appendChild(titleIconInput);
+    titleContainer.appendChild(
+      appendSelectInputGrid("select-icon", [
+        listUnselectedSvg,
+        starSvg,
+        heartSvg,
+      ])
+    );
     titleContainer.appendChild(titleInput);
 
     dialog.appendChild(titleContainer);
@@ -271,6 +318,13 @@ const dialogs = (() => {
         selectInput.classList.toggle("expand");
       });
     });
+  };
+
+  const selectOptionValueGrid = (selectInputGrid, optionIndex) => {
+    const buttonIcon = selectInputGrid.querySelector(".button-icon");
+    const option = selectInputGrid.querySelectorAll(".option")[optionIndex];
+
+    buttonIcon.innerHTML = option.innerHTML;
   };
 
   const addShowDatePickerEvent = (inputButton, dateInput) => {
