@@ -201,7 +201,7 @@ const dialogs = (() => {
         "select-list",
         listUnselectedSvg,
         lists.getListsNamesIcons(),
-        1
+        lists.getCurrentListIndex()
       )
     );
 
@@ -256,8 +256,6 @@ const dialogs = (() => {
       `.option[data-value="${optionValue}"]`
     );
     const optionIcon = option.querySelector(".option-icon");
-
-    console.log(option);
 
     selectInput.dataset.value = option.dataset.value;
     buttonLabel.textContent = option.dataset.value;

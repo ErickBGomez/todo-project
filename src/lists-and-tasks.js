@@ -113,6 +113,9 @@ const lists = (() => {
     return namesIconsArray;
   };
 
+  const getCurrentListIndex = () =>
+    content.indexOf(content.find((list) => list.name == currentList.name));
+
   return {
     refreshLists,
     createList,
@@ -123,6 +126,7 @@ const lists = (() => {
     getCurrentList,
     getCompletedLength,
     getListsNamesIcons,
+    getCurrentListIndex,
   };
 })();
 
