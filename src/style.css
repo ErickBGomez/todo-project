@@ -395,13 +395,13 @@ input[type="text"] {
 
 input[type="text"]:placeholder-shown {
   border-bottom-color: var(--Black-25);
-  transition: 150ms;
+  transition: 200ms;
 }
 
 input[type="text"]:focus,
 input[type="text"]:not(:placeholder-shown) {
   border-bottom-color: var(--Primary);
-  transition: 150ms;
+  transition: 200ms;
 }
 
 input[type="text"]:focus {
@@ -432,7 +432,7 @@ button:focus {
 button.primary {
   background-color: var(--Primary);
   color: var(--White);
-  transition: background-color 150ms;
+  transition: background-color 200ms;
 }
 
 button.primary:hover {
@@ -446,7 +446,7 @@ button.primary:active {
 button.secondary {
   background-color: #c9cbcf;
   color: var(--Black-75);
-  transition: background-color 150ms;
+  transition: background-color 200ms;
 }
 
 button.secondary:hover {
@@ -611,14 +611,14 @@ dialog#new-task .task-select-inputs {
   background-color: var(--White);
   padding: 8px;
   width: 100%;
-  transition: background-color 150ms;
+  transition: background-color 200ms;
   cursor: pointer;
   user-select: none;
 }
 
 .options .option:hover {
   background-color: #e8e8e8;
-  transition: background-color 150ms;
+  transition: background-color 200ms;
 }
 
 .select-input.expand .options {
