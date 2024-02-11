@@ -2,10 +2,15 @@ import dateUnselectedSvg from "../img/svg/tasks/date-nofill.svg";
 import dateSelectedSvg from "../img/svg/tasks/date-fill.svg";
 import priorityUnselectedSvg from "../img/svg/tasks/priority-nofill.svg";
 import prioritySelectedSvg from "../img/svg/tasks/priority-fill.svg";
-import listUnselectedSvg from "../img/svg/lists/default.svg";
 
+import defaultSvg from "../img/svg/lists/default.svg";
 import starSvg from "../img/svg/lists/star.svg";
 import heartSvg from "../img/svg/lists/heart.svg";
+import houseSvg from "../img/svg/lists/house.svg";
+import treeSvg from "../img/svg/lists/tree.svg";
+import shoppingSvg from "../img/svg/lists/shopping.svg";
+import schoolSvg from "../img/svg/lists/school.svg";
+import planeSvg from "../img/svg/lists/plane.svg";
 
 import lists from "../lists-and-tasks";
 import * as sidebar from "./sidebar.js";
@@ -33,7 +38,7 @@ const dialogs = (() => {
   // New list:
   const appendSelectInputGrid = (
     inputId,
-    optionsArray = [listUnselectedSvg],
+    optionsArray = [defaultSvg],
     initialOptionIndex = 0
   ) => {
     const container = document.createElement("div");
@@ -91,9 +96,14 @@ const dialogs = (() => {
 
     titleContainer.appendChild(
       appendSelectInputGrid("select-icon", [
-        listUnselectedSvg,
+        defaultSvg,
         starSvg,
         heartSvg,
+        houseSvg,
+        treeSvg,
+        shoppingSvg,
+        schoolSvg,
+        planeSvg,
       ])
     );
     titleContainer.appendChild(titleInput);
@@ -178,7 +188,7 @@ const dialogs = (() => {
   const appendSelectInput = (
     inputId,
     icon,
-    optionsArray = [{ icon: listUnselectedSvg, name: "No options" }],
+    optionsArray = [{ icon: defaultSvg, name: "No options" }],
     initialOptionIndex = 0
   ) => {
     const container = document.createElement("div");
@@ -272,7 +282,7 @@ const dialogs = (() => {
     selectInputsContainer.appendChild(
       appendSelectInput(
         "select-list",
-        listUnselectedSvg,
+        defaultSvg,
         lists.getListsNamesIcons(),
         lists.getCurrentListIndex()
       )

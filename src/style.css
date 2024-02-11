@@ -526,7 +526,7 @@ textarea::placeholder {
 .select-input-grid .options-grid {
   position: fixed;
   display: none;
-  grid-template-columns: repeat(3, 60px);
+  grid-template-columns: repeat(4, 60px);
   grid-auto-rows: 60px;
   padding: 6px;
   gap: 6px;
