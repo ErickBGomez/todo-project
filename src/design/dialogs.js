@@ -69,6 +69,9 @@ const dialogs = (() => {
 
     selectOptionValueGrid(container, initialOptionIndex);
 
+    // Select list grid events
+    addExpandOptionsEvent(container);
+
     return container;
   };
 
@@ -104,6 +107,13 @@ const dialogs = (() => {
     addCreateListEvent(dialog);
 
     dialog.showModal();
+  };
+
+  const selectOptionValueGrid = (selectInputGrid, optionIndex) => {
+    const buttonIcon = selectInputGrid.querySelector(".button-icon");
+    const option = selectInputGrid.querySelectorAll(".option")[optionIndex];
+
+    buttonIcon.innerHTML = option.innerHTML;
   };
 
   const addCreateListEvent = (dialogContainer) => {
@@ -199,9 +209,6 @@ const dialogs = (() => {
     container.appendChild(inputButton);
     container.appendChild(optionsContainer);
 
-    addExpandOptionsEvent(container);
-    addSelectOptionValueEvent(container);
-
     // Auto-select first option
     if (initialOptionIndex < 0 || initialOptionIndex >= optionsArray.length)
       initialOptionIndex = 0;
@@ -210,6 +217,10 @@ const dialogs = (() => {
       container,
       optionsContainer.childNodes[initialOptionIndex].dataset.value
     );
+
+    // Select list Events
+    addExpandOptionsEvent(container);
+    addSelectOptionValueEvent(container);
 
     return container;
   };
@@ -318,13 +329,6 @@ const dialogs = (() => {
         selectInput.classList.toggle("expand");
       });
     });
-  };
-
-  const selectOptionValueGrid = (selectInputGrid, optionIndex) => {
-    const buttonIcon = selectInputGrid.querySelector(".button-icon");
-    const option = selectInputGrid.querySelectorAll(".option")[optionIndex];
-
-    buttonIcon.innerHTML = option.innerHTML;
   };
 
   const addShowDatePickerEvent = (inputButton, dateInput) => {

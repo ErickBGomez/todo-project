@@ -513,19 +513,58 @@ textarea::placeholder {
   fill: var(--Primary);
 }
 
-/* Select inputs */
+/* Select input grid */
+.select-input-grid .select-button {
+  padding: 8px;
+  border: 1px solid var(--Primary);
+}
 
+.select-input-grid .button-icon {
+  fill: var(--Primary);
+}
+
+.select-input-grid .options-grid {
+  position: fixed;
+  display: none;
+  grid-template-columns: repeat(3, 60px);
+  grid-auto-rows: 60px;
+  padding: 6px;
+  gap: 6px;
+}
+
+.select-input-grid.expand .options-grid {
+  display: grid;
+}
+
+.options-grid .option {
+  padding: 10px;
+  fill: var(--Black-75);
+  border: 1px solid var(--Black-25);
+  border-radius: 6px;
+  background-color: var(--White);
+  cursor: pointer;
+  transition: background-color 200ms;
+}
+
+.options-grid .option:hover {
+  background-color: var(--Black-10);
+  transition: background-color 200ms;
+}
+
+/* Select inputs */
 dialog#new-task .task-select-inputs {
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
-.select-input {
+.select-input,
+.select-input-grid {
   position: relative;
 }
 
 .select-input .select-button,
+.select-input-grid .select-button,
 #date-input .date-button {
   display: flex;
   align-items: center;
@@ -533,15 +572,19 @@ dialog#new-task .task-select-inputs {
   color: var(--Black-50);
   fill: var(--Black-50);
   font-weight: 400;
-  padding: 6px 10px;
   background-color: var(--White);
-  border: 1px solid var(--Black-25);
   border-radius: 8px;
   user-select: none;
-  cursor: pointer;
 }
 
-.select-input .options {
+.select-input .select-button,
+#date-input .date-button {
+  padding: 6px 10px;
+  border: 1px solid var(--Black-25);
+}
+
+.select-input .options,
+.select-input-grid .options-grid {
   position: fixed;
   display: none;
   flex-direction: column;
@@ -549,7 +592,6 @@ dialog#new-task .task-select-inputs {
   color: var(--Black);
   border: 1px solid #a3a3a3;
   border-radius: 8px;
-  cursor: pointer;
 }
 
 .options :first-child {
@@ -570,6 +612,7 @@ dialog#new-task .task-select-inputs {
   padding: 8px;
   width: 100%;
   transition: background-color 150ms;
+  cursor: pointer;
   user-select: none;
 }
 
