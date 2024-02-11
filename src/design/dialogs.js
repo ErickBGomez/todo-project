@@ -131,9 +131,12 @@ const dialogs = (() => {
   const addCreateListEvent = (dialogContainer) => {
     const createButton = dialogContainer.querySelector("button.primary");
     const titleInput = dialogContainer.querySelector("input#list-title-input");
+    const selectedIcon = dialogContainer.querySelector(
+      "#select-icon .button-icon"
+    );
 
     createButton.addEventListener("click", () => {
-      lists.createList(titleInput.value);
+      lists.createList(titleInput.value, selectedIcon.innerHTML);
       sidebar.refreshUserSidebarLists();
     });
   };

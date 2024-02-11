@@ -11,9 +11,9 @@ class Task {
 }
 
 class List {
-  constructor(listName) {
+  constructor(listName, icon) {
     this.name = listName;
-    this.icon = defaultSvg;
+    this.icon = icon;
     this.tasks = [];
     this.completed = [];
   }
@@ -31,17 +31,17 @@ const lists = (() => {
     // If lists is not created in localStorage, create an empty array
     if (!localStorage.getItem("lists")) {
       content = [];
-      createList("My tasks");
+      createList("My tasks", defaultSvg);
       saveLists();
     }
 
     content = JSON.parse(localStorage.getItem("lists"));
   };
 
-  const createList = (listName) => {
+  const createList = (listName, icon) => {
     // Avoid creating duplicated lists
     if (!getList(listName)) {
-      content.push(new List(listName));
+      content.push(new List(listName, icon));
       saveLists();
     }
   };
