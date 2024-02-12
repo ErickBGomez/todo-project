@@ -465,6 +465,10 @@ button.secondary:active {
 
 /* New list dialog */
 
+dialog#new-list {
+  width: 550px;
+}
+
 dialog#new-list .title-container {
   display: flex;
   gap: 12px;
@@ -478,6 +482,10 @@ dialog#new-list .title-icon-input {
   border: 2px solid var(--Black-25);
   border-radius: 8px;
   cursor: pointer;
+}
+
+#list-title-input {
+  width: 100%;
 }
 
 /* New task dialog */
