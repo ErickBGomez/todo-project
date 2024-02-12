@@ -132,7 +132,7 @@ p {
   cursor: pointer;
   display: flex;
   gap: 4px;
-  transition: 100ms;
+  transition: 200ms;
 }
 
 .list-sidebar-element .list-sidebar-element-icon {
@@ -140,9 +140,15 @@ p {
   height: 24px;
 }
 
-.list-sidebar-element:hover {
+.list-sidebar-element.selected {
+  font-weight: 700;
+  transition: 200ms;
+}
+
+.list-sidebar-element:hover,
+.list-sidebar-element.selected {
   background-color: var(--Black-10);
-  transition: 100ms;
+  transition: 200ms;
 }
 
 .lower-sidebar {
