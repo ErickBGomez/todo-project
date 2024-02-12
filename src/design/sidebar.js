@@ -35,7 +35,7 @@ function createListSidebar(listLabel, listIcon = defaultListSvg) {
 }
 
 export function refreshUserSidebarLists() {
-  const listsContent = JSON.parse(localStorage.getItem("lists"));
+  const listsContent = lists.getListsNamesIcons();
 
   // Reset sidebar lists
   userLists.innerHTML = "";
