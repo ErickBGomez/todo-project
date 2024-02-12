@@ -464,7 +464,6 @@ button.secondary:active {
 }
 
 /* New list dialog */
-
 dialog#new-list {
   width: 550px;
 }
