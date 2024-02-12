@@ -50,8 +50,14 @@ export function refreshUserSidebarLists() {
     listElement.addEventListener("click", () => {
       lists.setCurrentList(listElement.dataset.listName);
       loadListContent();
+      highlightSelectedList(userLists.childNodes, listElement);
     });
   });
+}
+
+function highlightSelectedList(lists, selectedList) {
+  lists.forEach((list) => list.classList.remove("selected"));
+  selectedList.classList.add("selected");
 }
 
 function createUserListsContainer() {
