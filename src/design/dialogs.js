@@ -320,10 +320,11 @@ const dialogs = (() => {
     );
     const dateInput = dialogContainer.querySelector("#date-input");
     const priorityInput = dialogContainer.querySelector("#select-priority");
+    const selectedList = dialogContainer.querySelector("#select-list");
 
     createButton.addEventListener("click", () => {
       lists.addNewTask(
-        lists.getCurrentList().name,
+        selectedList.dataset.value,
         titleInput.value,
         descriptionInput.value,
         dateInput.dataset.value,
