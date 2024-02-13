@@ -98,6 +98,7 @@ const dialogs = (() => {
     titleInput.name = "list-title-input";
     titleInput.placeholder = "List title";
     titleInput.maxLength = "25";
+    titleInput.autofocus = true;
 
     titleContainer.appendChild(
       appendSelectInputGrid("select-icon", [
