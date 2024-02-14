@@ -722,7 +722,7 @@ dialog#task-details .actions-container button {
 dialog#task-details .main-information {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 8px;
   margin-top: 8px;
   margin-bottom: 24px;
 }

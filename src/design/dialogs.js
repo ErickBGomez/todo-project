@@ -405,7 +405,7 @@ const dialogs = (() => {
     return container;
   };
 
-  const showTaskDetailsDialog = (task) => {
+  const showTaskDetailsDialog = (list, task) => {
     const dialog = document.createElement("dialog");
     dialog.id = "task-details";
 
@@ -430,11 +430,11 @@ const dialogs = (() => {
 
     const taskTitle = document.createElement("p");
     taskTitle.className = "task-title";
-    taskTitle.textContent = "Task Title";
+    taskTitle.textContent = task.title;
 
     const taskDescription = document.createElement("p");
     taskDescription.className = "task-description";
-    taskDescription.textContent = "Task Description";
+    taskDescription.textContent = task.description || "No description";
 
     mainInfo.appendChild(taskTitle);
     mainInfo.appendChild(taskDescription);
@@ -444,18 +444,22 @@ const dialogs = (() => {
     const secondaryInfo = document.createElement("div");
     secondaryInfo.className = "secondary-information";
 
+    if (task.date) {
+      secondaryInfo.appendChild(
+        appendSecondaryInfoElements(task.date, dateSelectedSvg, "task-date")
+      );
+    }
+    if (task.priority) {
+      secondaryInfo.appendChild(
+        appendSecondaryInfoElements(
+          task.priority,
+          prioritySelectedSvg,
+          "task-priority"
+        )
+      );
+    }
     secondaryInfo.appendChild(
-      appendSecondaryInfoElements("Date", dateSelectedSvg, "task-date")
-    );
-    secondaryInfo.appendChild(
-      appendSecondaryInfoElements(
-        "Priority",
-        prioritySelectedSvg,
-        "task-priority"
-      )
-    );
-    secondaryInfo.appendChild(
-      appendSecondaryInfoElements("List", defaultSvg, "task-list")
+      appendSecondaryInfoElements(list.name, list.icon, "task-list")
     );
 
     dialog.appendChild(actionsContainer);

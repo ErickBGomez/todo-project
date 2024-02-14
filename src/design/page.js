@@ -180,7 +180,7 @@ function createNewTaskElement(task, isCompleted) {
   newTaskElement.appendChild(completeTaskButton);
   newTaskElement.appendChild(taskInformation);
 
-  addTaskDetailsDialogEvent(newTaskElement, task);
+  addTaskDetailsDialogEvent(newTaskElement, lists.getCurrentList(), task);
 
   return newTaskElement;
 }
@@ -283,9 +283,9 @@ function addExpandTasksEvent() {
   });
 }
 
-function addTaskDetailsDialogEvent(taskElement, task) {
+function addTaskDetailsDialogEvent(taskElement, list, task) {
   taskElement.addEventListener("click", () => {
-    dialogs.showTaskDetailsDialog(task);
+    dialogs.showTaskDetailsDialog(list, task);
   });
 }
 
