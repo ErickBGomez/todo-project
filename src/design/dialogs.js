@@ -16,6 +16,9 @@ import cloudSvg from "../img/svg/lists/cloud.svg";
 import lightbulbSvg from "../img/svg/lists/lightbulb.svg";
 import bookSvg from "../img/svg/lists/book.svg";
 
+import closeSvg from "../img/svg/others/close.svg";
+import horizontalOptionsSvg from "../img/svg/others/horizontal-options.svg";
+
 import lists from "../lists-and-tasks";
 import * as sidebar from "./sidebar.js";
 import * as page from "./page.js";
@@ -416,11 +419,19 @@ const dialogs = (() => {
 
     const moreOptions = document.createElement("button");
     moreOptions.className = "more-options";
-    moreOptions.textContent = "...";
+    const moreOptionsIcon = document.createElement("span");
+    moreOptionsIcon.className = "button-icon";
+    moreOptionsIcon.innerHTML = horizontalOptionsSvg;
+
+    moreOptions.appendChild(moreOptionsIcon);
 
     const closeDialog = document.createElement("button");
     closeDialog.id = "close-task-details";
-    closeDialog.textContent = "x";
+    const closeDialogIcon = document.createElement("span");
+    closeDialogIcon.className = "button-icon";
+    closeDialogIcon.innerHTML = closeSvg;
+
+    closeDialog.appendChild(closeDialogIcon);
 
     actionsContainer.appendChild(moreOptions);
     actionsContainer.appendChild(closeDialog);

@@ -717,6 +717,18 @@ dialog#task-details .actions-container {
 
 dialog#task-details .actions-container button {
   background: none;
+  padding: 8px;
+  fill: var(--Black);
+  transition: 200ms;
+}
+
+dialog#task-details .actions-container button:hover {
+  background-color: var(--Black-10);
+  transition: 200ms;
+}
+
+dialog#task-details .actions-container .button-icon {
+  display: block;
 }
 
 dialog#task-details .main-information {
