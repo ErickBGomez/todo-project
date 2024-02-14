@@ -180,6 +180,8 @@ function createNewTaskElement(task, isCompleted) {
   newTaskElement.appendChild(completeTaskButton);
   newTaskElement.appendChild(taskInformation);
 
+  addTaskDetailsDialogEvent(newTaskElement, task);
+
   return newTaskElement;
 }
 
@@ -278,6 +280,12 @@ function addExpandTasksEvent() {
 
   expandTasksButton.addEventListener("click", () => {
     completedTasks.classList.toggle("show");
+  });
+}
+
+function addTaskDetailsDialogEvent(taskElement, task) {
+  taskElement.addEventListener("click", () => {
+    dialogs.showTaskDetailsDialog(task);
   });
 }
 

@@ -412,7 +412,7 @@ const dialogs = (() => {
     const actionsContainer = document.createElement("div");
     actionsContainer.className = "actions-container";
 
-    const moreOptions = document.createElemen("button");
+    const moreOptions = document.createElement("button");
     moreOptions.className = "more-options";
 
     const closeDialog = document.createElement("button");
@@ -479,7 +479,7 @@ const dialogs = (() => {
     );
   };
 
-  return { showNewListDialog, showNewTaskDialog };
+  return { showNewListDialog, showNewTaskDialog, showTaskDetailsDialog };
 })();
 
 export default dialogs;
