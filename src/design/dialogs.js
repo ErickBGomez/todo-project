@@ -385,6 +385,65 @@ const dialogs = (() => {
     });
   };
 
+  // Expand task
+  const showTaskDetailsDialog = (task) => {
+    const dialog = document.createElement("dialog");
+    dialog.id = "task-details";
+
+    // Actions container
+    const actionsContainer = document.createElement("div");
+    actionsContainer.className = "actions-container";
+
+    const moreOptions = document.createElemen("button");
+    moreOptions.className = "more-options";
+
+    const closeDialog = document.createElement("button");
+    closeDialog.id = "close-task-details";
+
+    actionsContainer.appendChild(moreOptions);
+    actionsContainer.appendChild(closeDialog);
+
+    // Task main information
+    const mainInfo = document.createElement("div");
+    mainInfo.className = "main-information";
+
+    const taskTitle = document.createElement("p");
+    taskTitle.className = "task-title";
+
+    const taskDescription = document.createElement("p");
+    taskDescription.className = "task-description";
+
+    mainInfo.appendChild(taskTitle);
+    mainInfo.appendChild(taskDescription);
+
+    // Task secondary information
+
+    const secondaryInfo = document.createElement("div");
+    secondaryInfo.className = "secondary-information";
+
+    const taskDate = document.createElement("span");
+    taskDate.className = "task-date";
+
+    const taskDateIcon = document.createElement("span");
+    taskDateIcon.className = "date-icon";
+
+    const taskDateLabel = document.createElement("p");
+    taskDateLabel.className = "date-label";
+
+    taskDate.appendChild(taskDateIcon);
+    taskDate.appendChild(taskDateLabel);
+
+    const taskPriority = document.createElement("div");
+    taskPriority.className = "task-priority";
+
+    const taskPriorityIcon = document.createElement("span");
+    taskPriorityIcon.className = "priority-icon";
+
+    const taskPriorityLabel = document.createElement("p");
+
+    dialog.appendChild(actionsContainer);
+  };
+
   // All dialogs:
   const addCloseDialogEvent = (currentDialog) => {
     currentDialog.addEventListener("close", () =>
