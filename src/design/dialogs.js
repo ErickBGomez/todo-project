@@ -386,6 +386,24 @@ const dialogs = (() => {
   };
 
   // Expand task
+  const appendSecondaryInfoElements = (label, icon, elementClass) => {
+    const container = document.createElement("div");
+    container.className = elementClass;
+
+    const elementIcon = document.createElement("span");
+    elementIcon.className = "icon";
+    elementIcon.innerHTML = icon;
+
+    const elementLabel = document.createElement("p");
+    elementLabel.className = "label";
+    elementLabel.textContent = label;
+
+    container.appendChild(elementIcon);
+    container.appendChild(elementLabel);
+
+    return container;
+  };
+
   const showTaskDetailsDialog = (task) => {
     const dialog = document.createElement("dialog");
     dialog.id = "task-details";
@@ -421,27 +439,27 @@ const dialogs = (() => {
     const secondaryInfo = document.createElement("div");
     secondaryInfo.className = "secondary-information";
 
-    const taskDate = document.createElement("span");
-    taskDate.className = "task-date";
-
-    const taskDateIcon = document.createElement("span");
-    taskDateIcon.className = "date-icon";
-
-    const taskDateLabel = document.createElement("p");
-    taskDateLabel.className = "date-label";
-
-    taskDate.appendChild(taskDateIcon);
-    taskDate.appendChild(taskDateLabel);
-
-    const taskPriority = document.createElement("div");
-    taskPriority.className = "task-priority";
-
-    const taskPriorityIcon = document.createElement("span");
-    taskPriorityIcon.className = "priority-icon";
-
-    const taskPriorityLabel = document.createElement("p");
+    secondaryInfo.appendChild(
+      appendSecondaryInfoElements("Date", dateSelectedSvg, "task-date")
+    );
+    secondaryInfo.appendChild(
+      appendSecondaryInfoElements(
+        "Priority",
+        prioritySelectedSvg,
+        "task-priority"
+      )
+    );
+    secondaryInfo.appendChild(
+      appendSecondaryInfoElements("List", defaultSvg, "task-list")
+    );
 
     dialog.appendChild(actionsContainer);
+    dialog.appendChild(mainInfo);
+    dialog.appendChild(secondaryInfo);
+
+    document.body.appendChild(dialog);
+
+    dialog.showModal();
   };
 
   // All dialogs:
