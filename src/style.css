@@ -716,15 +716,15 @@ dialog#task-details .actions-container {
 }
 
 dialog#task-details .actions-container button {
-  background: none;
+  background-color: var(--White);
   padding: 8px;
   fill: var(--Black);
-  transition: 200ms;
+  transition: background-color 200ms;
 }
 
 dialog#task-details .actions-container button:hover {
   background-color: var(--Black-10);
-  transition: 200ms;
+  transition: background-color 200ms;
 }
 
 dialog#task-details .actions-container .button-icon {
