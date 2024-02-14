@@ -390,6 +390,7 @@ const dialogs = (() => {
     const container = document.createElement("div");
     container.classList.add("info-element");
     container.classList.add(elementClass);
+    container.dataset.value = label;
 
     const elementIcon = document.createElement("span");
     elementIcon.className = "icon";

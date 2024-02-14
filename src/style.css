@@ -759,7 +759,17 @@ dialog#task-details .secondary-information {
   fill: var(--Primary);
 }
 
-.info-element.task-priority {
+.info-element.task-priority[data-value="Low"] {
+  color: var(--Low-Priority);
+  fill: var(--Low-Priority);
+}
+
+.info-element.task-priority[data-value="Medium"] {
+  color: var(--Medium-Priority);
+  fill: var(--Medium-Priority);
+}
+
+.info-element.task-priority[data-value="High"] {
   color: var(--High-Priority);
   fill: var(--High-Priority);
 }
