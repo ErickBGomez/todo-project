@@ -369,11 +369,15 @@ p {
 dialog {
   display: flex;
   flex-direction: column;
-  gap: 16px;
   padding: 16px;
   background-color: var(--White);
   border: none;
   border-radius: 16px;
+}
+
+dialog#new-list,
+dialog#new-task {
+  gap: 16px;
 }
 
 dialog::backdrop {
@@ -695,4 +699,72 @@ dialog#new-task .task-select-inputs {
 .option-icon {
   width: 24px;
   height: 24px;
+}
+
+/* Task details */
+dialog#task-details {
+  display: flex;
+  flex-direction: column;
+  width: 600px;
+}
+
+dialog#task-details .actions-container {
+  display: flex;
+  width: 100%;
+  justify-content: end;
+  gap: 8px;
+}
+
+dialog#task-details .actions-container button {
+  background: none;
+}
+
+dialog#task-details .main-information {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 8px;
+  margin-bottom: 24px;
+}
+
+.main-information .task-title {
+  font-weight: 600;
+  font-size: 1.6rem;
+}
+
+.main-information .task-description {
+  font-size: 1.1rem;
+  color: var(--Black-75);
+}
+
+dialog#task-details .secondary-information {
+  display: flex;
+  gap: 24px;
+  border-top: 1px solid var(--Black-25);
+  padding-top: 32px;
+}
+
+.secondary-information .info-element {
+  display: flex;
+  gap: 4px;
+}
+
+.info-element .icon {
+  width: 24px;
+  height: 24px;
+}
+
+.info-element.task-date {
+  color: var(--Primary);
+  fill: var(--Primary);
+}
+
+.info-element.task-priority {
+  color: var(--High-Priority);
+  fill: var(--High-Priority);
+}
+
+.info-element.task-list {
+  color: var(--Completed-Checklist);
+  fill: var(--Completed-Checklist);
 }

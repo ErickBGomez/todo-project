@@ -388,7 +388,8 @@ const dialogs = (() => {
   // Expand task
   const appendSecondaryInfoElements = (label, icon, elementClass) => {
     const container = document.createElement("div");
-    container.className = elementClass;
+    container.classList.add("info-element");
+    container.classList.add(elementClass);
 
     const elementIcon = document.createElement("span");
     elementIcon.className = "icon";
@@ -414,9 +415,11 @@ const dialogs = (() => {
 
     const moreOptions = document.createElement("button");
     moreOptions.className = "more-options";
+    moreOptions.textContent = "...";
 
     const closeDialog = document.createElement("button");
     closeDialog.id = "close-task-details";
+    closeDialog.textContent = "x";
 
     actionsContainer.appendChild(moreOptions);
     actionsContainer.appendChild(closeDialog);
@@ -427,9 +430,11 @@ const dialogs = (() => {
 
     const taskTitle = document.createElement("p");
     taskTitle.className = "task-title";
+    taskTitle.textContent = "Task Title";
 
     const taskDescription = document.createElement("p");
     taskDescription.className = "task-description";
+    taskDescription.textContent = "Task Description";
 
     mainInfo.appendChild(taskTitle);
     mainInfo.appendChild(taskDescription);
