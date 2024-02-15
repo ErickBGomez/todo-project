@@ -1,8 +1,10 @@
+// Task icons
 import dateUnselectedSvg from "../img/svg/tasks/date-nofill.svg";
 import dateSelectedSvg from "../img/svg/tasks/date-fill.svg";
 import priorityUnselectedSvg from "../img/svg/tasks/priority-nofill.svg";
 import prioritySelectedSvg from "../img/svg/tasks/priority-fill.svg";
 
+// List icons
 import defaultSvg from "../img/svg/lists/default.svg";
 import starSvg from "../img/svg/lists/star.svg";
 import heartSvg from "../img/svg/lists/heart.svg";
@@ -16,9 +18,11 @@ import cloudSvg from "../img/svg/lists/cloud.svg";
 import lightbulbSvg from "../img/svg/lists/lightbulb.svg";
 import bookSvg from "../img/svg/lists/book.svg";
 
+// Dialog icons
 import closeSvg from "../img/svg/others/close.svg";
 import horizontalOptionsSvg from "../img/svg/others/horizontal-options.svg";
 
+// Functions
 import lists from "../lists-and-tasks";
 import * as sidebar from "./sidebar.js";
 import * as page from "./page.js";
