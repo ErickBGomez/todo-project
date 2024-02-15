@@ -647,6 +647,8 @@ dialog#new-task .task-select-inputs {
   align-items: center;
   gap: 4px;
   background-color: var(--White);
+  color: var(--Black);
+  fill: var(--Black);
   padding: 8px;
   width: 100%;
   transition: background-color 200ms;
