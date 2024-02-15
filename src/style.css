@@ -453,6 +453,11 @@ button.primary:active {
   background-color: #3352cc;
 }
 
+button.primary:disabled {
+  background-color: hsl(216, 27%, 71%);
+  color: hsl(0, 0%, 95%);
+}
+
 button.secondary {
   background-color: #c9cbcf;
   color: var(--Black-75);
