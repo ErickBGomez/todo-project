@@ -251,7 +251,8 @@ function addCompleteTaskEvent() {
   // Add complete button event to each task element
   tasks.forEach((task) => {
     const completeTaskButton = task.querySelector(".complete-task-button");
-    completeTaskButton.addEventListener("click", () => {
+    completeTaskButton.addEventListener("click", (e) => {
+      e.stopPropagation(); // Prevent opening task details dialog
       lists.completeTask(lists.getCurrentList().name, task.dataset.taskid);
       refreshTaskElements();
     });
@@ -267,7 +268,8 @@ function addRestoreTaskEvent() {
   // Add complete button event to each task element
   tasks.forEach((task) => {
     const completeTaskButton = task.querySelector(".complete-task-button");
-    completeTaskButton.addEventListener("click", () => {
+    completeTaskButton.addEventListener("click", (e) => {
+      e.stopPropagation(); // Prevent opening task details dialog
       lists.restoreTask(lists.getCurrentList().name, task.dataset.taskid);
       refreshTaskElements();
     });
