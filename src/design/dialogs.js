@@ -129,10 +129,12 @@ const dialogs = (() => {
     const closeButtons = Array.from(
       document.querySelectorAll(".dialog-buttons button")
     );
+    const mainButton = document.querySelector(".dialog-buttons .primary");
 
     addCloseDialogEvent(dialog);
     addCloseDialogButtonsEvent(dialog, closeButtons);
     addCreateListEvent(dialog);
+    disableEmptyDialogEvent(titleInput, mainButton);
 
     dialog.showModal();
   };
@@ -512,6 +514,15 @@ const dialogs = (() => {
     closeButtons.forEach((button) =>
       button.addEventListener("click", () => currentDialog.close())
     );
+  };
+
+  const disableEmptyDialogEvent = (textInput, mainButton) => {
+    console.log(mainButton);
+
+    textInput.addEventListener("input", () => {
+      mainButton.disabled = textInput.value.length <= 0;
+      console.log(mainButton.disabled);
+    });
   };
 
   return { showNewListDialog, showNewTaskDialog, showTaskDetailsDialog };
