@@ -712,12 +712,12 @@ dialog#task-details .actions-container {
   display: flex;
   width: 100%;
   justify-content: end;
-  gap: 8px;
+  gap: 4px;
 }
 
 dialog#task-details .actions-container button {
   background-color: var(--White);
-  padding: 8px;
+  padding: 6px;
   fill: var(--Black);
   transition: background-color 200ms;
 }
