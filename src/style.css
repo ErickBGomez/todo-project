@@ -251,6 +251,13 @@ p {
   display: flex;
   align-items: center;
   gap: 32px;
+  cursor: pointer;
+  transition: background-color 200ms;
+}
+
+.task:hover {
+  background-color: hsl(195, 10%, 87%);
+  transition: background-color 200ms;
 }
 
 .task .complete-task-button {
