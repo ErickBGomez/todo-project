@@ -520,9 +520,12 @@ const dialogs = (() => {
   };
 
   const disableEmptyDialogEvent = (textInput, mainButton) => {
-    console.log(lists.getListsNames());
-
+    // Disable button when opening the dialog
     mainButton.disabled = true;
+
+    // Disable main button when:
+    // 1. Selected text input is empty
+    // 2. In the case of lists, when a list already exists with the current input
     textInput.addEventListener("input", () => {
       mainButton.disabled =
         textInput.value.length <= 0 ||
