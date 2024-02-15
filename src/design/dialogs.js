@@ -108,7 +108,7 @@ const dialogs = (() => {
     );
 
     // Select list Events
-    addExpandOptionsEvent(container);
+    addExpandOptionsEvent(container, inputButton);
     addSelectOptionValueEvent(container);
 
     return container;
@@ -153,7 +153,7 @@ const dialogs = (() => {
     selectOptionValueGrid(container, initialOptionIndex);
 
     // Select list grid events
-    addExpandOptionsEvent(container);
+    addExpandOptionsEvent(container, inputButton);
     addSelectOptionValueGridEvent(container);
 
     return container;
@@ -237,17 +237,17 @@ const dialogs = (() => {
     container.appendChild(button);
     container.appendChild(optionsContainer);
 
-    addExpandOptionsEvent(container);
+    addExpandOptionsEvent(container, button);
 
     return container;
   };
 
   // Custom inputs events
-  const addExpandOptionsEvent = (selectInput) => {
-    const button = selectInput.querySelector(".select-button");
+  const addExpandOptionsEvent = (container, expandButton) => {
+    // const button = container.querySelector(".select-button");
 
-    button.addEventListener("click", () =>
-      selectInput.classList.toggle("expand")
+    expandButton.addEventListener("click", () =>
+      container.classList.toggle("expand")
     );
   };
 

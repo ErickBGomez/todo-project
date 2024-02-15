@@ -595,7 +595,7 @@ dialog#new-task .task-select-inputs {
 
 .select-input,
 .select-input-grid,
-.options-button {
+.options-controller {
   position: relative;
 }
 
@@ -621,7 +621,8 @@ dialog#new-task .task-select-inputs {
 }
 
 .select-input .options,
-.select-input-grid .options-grid {
+.select-input-grid .options-grid,
+.options-controller .options {
   position: fixed;
   display: none;
   flex-direction: column;
@@ -658,7 +659,8 @@ dialog#new-task .task-select-inputs {
   transition: background-color 200ms;
 }
 
-.select-input.expand .options {
+.select-input.expand .options,
+.options-controller.expand .options {
   display: flex;
 }
 
