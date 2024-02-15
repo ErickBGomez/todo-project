@@ -488,6 +488,10 @@ const dialogs = (() => {
 
     document.body.appendChild(dialog);
 
+    // Events
+    addCloseDialogEvent(dialog);
+    addCloseDialogButtonsEvent(dialog, closeDialog);
+
     dialog.showModal();
   };
 
@@ -499,6 +503,12 @@ const dialogs = (() => {
   };
 
   const addCloseDialogButtonsEvent = (currentDialog, closeButtons) => {
+    // If closeButtons is not an array. Assign event directly
+    if (!Array.isArray(closeButtons)) {
+      closeButtons.addEventListener("click", () => currentDialog.close());
+      return;
+    }
+
     closeButtons.forEach((button) =>
       button.addEventListener("click", () => currentDialog.close())
     );
