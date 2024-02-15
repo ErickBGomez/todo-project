@@ -594,13 +594,15 @@ dialog#new-task .task-select-inputs {
 }
 
 .select-input,
-.select-input-grid {
+.select-input-grid,
+.options-button {
   position: relative;
 }
 
 .select-input .select-button,
 .select-input-grid .select-button,
-#date-input .date-button {
+#date-input .date-button,
+.options-controller .options-controller-button {
   display: flex;
   align-items: center;
   gap: 4px;

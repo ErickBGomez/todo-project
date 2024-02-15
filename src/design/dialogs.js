@@ -21,6 +21,8 @@ import bookSvg from "../img/svg/lists/book.svg";
 // Dialog icons
 import closeSvg from "../img/svg/others/close.svg";
 import horizontalOptionsSvg from "../img/svg/others/horizontal-options.svg";
+import editSvg from "../img/svg/others/edit.svg";
+import deleteSvg from "../img/svg/others/delete.svg";
 
 // Functions
 import lists from "../lists-and-tasks";
@@ -186,6 +188,56 @@ const dialogs = (() => {
 
     addShowDatePickerEvent(inputButton, input);
     changeDateValueEvent(container);
+
+    return container;
+  };
+
+  const appendOptionsButton = (
+    icon,
+    controllerClass,
+    optionsArray = [
+      { label: "Option", icon: defaultSvg, optionClass: "option" },
+    ]
+  ) => {
+    const container = document.createElement("div");
+    container.classList.add("options-controller");
+    container.classList.add(controllerClass);
+
+    const button = document.createElement("button");
+    button.className = "options-controller-button";
+
+    const buttonIcon = document.createElement("span");
+    buttonIcon.className = "button-icon";
+    buttonIcon.innerHTML = icon;
+
+    const optionsContainer = document.createElement("div");
+    optionsContainer.className = "options";
+
+    optionsArray.forEach((option) => {
+      const optionElement = document.createElement("span");
+      optionElement.classList.add("option");
+      optionElement.classList.add(option.optionClass);
+
+      const optionIcon = document.createElement("span");
+      optionIcon.className = "option-icon";
+      optionIcon.innerHTML = option.icon;
+
+      const optionLabel = document.createElement("span");
+      optionLabel.className = "option-label";
+      optionLabel.textContent = option.label;
+
+      optionElement.appendChild(optionIcon);
+      optionElement.appendChild(optionLabel);
+
+      optionsContainer.appendChild(optionElement);
+    });
+
+    button.appendChild(buttonIcon);
+
+    container.appendChild(button);
+    container.appendChild(optionsContainer);
+
+    addExpandOptionsEvent(container);
 
     return container;
   };
@@ -414,14 +466,6 @@ const dialogs = (() => {
     const actionsContainer = document.createElement("div");
     actionsContainer.className = "actions-container";
 
-    const moreOptions = document.createElement("button");
-    moreOptions.className = "more-options";
-    const moreOptionsIcon = document.createElement("span");
-    moreOptionsIcon.className = "button-icon";
-    moreOptionsIcon.innerHTML = horizontalOptionsSvg;
-
-    moreOptions.appendChild(moreOptionsIcon);
-
     const closeDialog = document.createElement("button");
     closeDialog.id = "close-task-details";
     const closeDialogIcon = document.createElement("span");
@@ -431,7 +475,12 @@ const dialogs = (() => {
     closeDialog.appendChild(closeDialogIcon);
 
     actionsContainer.appendChild(closeDialog);
-    actionsContainer.appendChild(moreOptions);
+    actionsContainer.appendChild(
+      appendOptionsButton(horizontalOptionsSvg, "more-options", [
+        { label: "Edit", icon: editSvg, optionClass: "edit-task" },
+        { label: "Delete", icon: deleteSvg, optionClass: "delete-task" },
+      ])
+    );
 
     // Task main information
     const mainInfo = document.createElement("div");
