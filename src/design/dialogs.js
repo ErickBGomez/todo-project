@@ -24,6 +24,7 @@ import * as sidebar from "./sidebar.js";
 import * as page from "./page.js";
 
 const dialogs = (() => {
+  // Custom inputs controllers
   const appendDialogButtons = (primaryLabel, secondaryLabel = "Cancel") => {
     const buttons = document.createElement("div");
     buttons.className = "dialog-buttons";
@@ -42,7 +43,71 @@ const dialogs = (() => {
     return buttons;
   };
 
-  // New list:
+  const appendSelectInput = (
+    inputId,
+    icon,
+    optionsArray = [{ icon: defaultSvg, name: "No options" }],
+    initialOptionIndex = 0
+  ) => {
+    const container = document.createElement("div");
+    container.className = "select-input";
+    if (inputId) container.id = inputId;
+
+    const inputButton = document.createElement("button");
+    inputButton.className = "select-button";
+
+    const buttonLabel = document.createElement("span");
+    buttonLabel.className = "button-label";
+
+    const buttonIcon = document.createElement("span");
+    buttonIcon.className = "button-icon";
+    buttonIcon.innerHTML = icon;
+
+    // Options
+    const optionsContainer = document.createElement("div");
+    optionsContainer.className = "options";
+
+    optionsArray.forEach((option) => {
+      const optionElement = document.createElement("span");
+      optionElement.className = "option";
+      optionElement.dataset.value = option.name;
+
+      const optionIcon = document.createElement("span");
+      optionIcon.className = "option-icon";
+      optionIcon.innerHTML = option.icon;
+
+      const optionLabel = document.createElement("span");
+      optionLabel.className = "option-label";
+      optionLabel.textContent = option.name;
+
+      optionElement.appendChild(optionIcon);
+      optionElement.appendChild(optionLabel);
+
+      optionsContainer.appendChild(optionElement);
+    });
+
+    inputButton.appendChild(buttonIcon);
+    inputButton.appendChild(buttonLabel);
+
+    container.appendChild(inputButton);
+    container.appendChild(optionsContainer);
+
+    // Auto-select first option
+    if (initialOptionIndex < 0 || initialOptionIndex >= optionsArray.length)
+      initialOptionIndex = 0;
+
+    selectOptionValue(
+      container,
+      optionsContainer.childNodes[initialOptionIndex].dataset.value
+    );
+
+    // Select list Events
+    addExpandOptionsEvent(container);
+    addSelectOptionValueEvent(container);
+
+    return container;
+  };
+
   const appendSelectInputGrid = (
     inputId,
     optionsArray = [defaultSvg],
@@ -88,6 +153,92 @@ const dialogs = (() => {
     return container;
   };
 
+  const appendDateInput = (inputId, icon) => {
+    const container = document.createElement("div");
+    container.id = inputId;
+
+    const input = document.createElement("input");
+    input.type = "date";
+    input.className = "date-element";
+
+    container.dataset.value = input.value;
+
+    const inputButton = document.createElement("button");
+    inputButton.className = "date-button";
+
+    const buttonLabel = document.createElement("span");
+    buttonLabel.className = "button-label";
+    buttonLabel.textContent = "Date";
+
+    const buttonIcon = document.createElement("span");
+    buttonIcon.className = "button-icon";
+    buttonIcon.innerHTML = icon;
+
+    inputButton.appendChild(buttonIcon);
+    inputButton.appendChild(buttonLabel);
+
+    container.appendChild(input);
+    container.appendChild(inputButton);
+
+    addShowDatePickerEvent(inputButton, input);
+    changeDateValueEvent(container);
+
+    return container;
+  };
+
+  // Custom inputs events
+  const addExpandOptionsEvent = (selectInput) => {
+    const button = selectInput.querySelector(".select-button");
+
+    button.addEventListener("click", () =>
+      selectInput.classList.toggle("expand")
+    );
+  };
+
+  const selectOptionValue = (selectInput, optionValue) => {
+    const buttonLabel = selectInput.querySelector(".button-label");
+    const buttonIcon = selectInput.querySelector(".button-icon");
+    const option = selectInput.querySelector(
+      `.option[data-value="${optionValue}"]`
+    );
+    const optionIcon = option.querySelector(".option-icon");
+
+    selectInput.dataset.value = option.dataset.value;
+    buttonLabel.textContent = option.dataset.value;
+    buttonIcon.innerHTML = optionIcon.innerHTML; // Fix this
+  };
+
+  const addSelectOptionValueEvent = (selectInput) => {
+    const options = selectInput.querySelectorAll(".option");
+
+    options.forEach((option) => {
+      option.addEventListener("click", () => {
+        selectOptionValue(selectInput, option.dataset.value);
+        selectInput.classList.remove("expand");
+      });
+    });
+  };
+
+  const addShowDatePickerEvent = (inputButton, dateInput) => {
+    inputButton.addEventListener("click", () => dateInput.showPicker());
+  };
+
+  const changeDateValueEvent = (inputContainer) => {
+    const buttonLabel = inputContainer.querySelector(".button-label");
+    const buttonIcon = inputContainer.querySelector(".button-icon");
+    const dateInput = inputContainer.querySelector("input.date-element");
+
+    dateInput.addEventListener("change", () => {
+      inputContainer.dataset.value = dateInput.value;
+      buttonLabel.textContent = dateInput.value ? dateInput.value : "Date";
+      buttonIcon.innerHTML = dateInput.value
+        ? dateSelectedSvg
+        : dateUnselectedSvg;
+    });
+  };
+
+  // Dialogs
+  // New list:
   const showNewListDialog = () => {
     const dialog = document.createElement("dialog");
     dialog.id = "new-list";
@@ -171,104 +322,6 @@ const dialogs = (() => {
   };
 
   // New task:
-  const appendDateInput = (inputId, icon) => {
-    const container = document.createElement("div");
-    container.id = inputId;
-
-    const input = document.createElement("input");
-    input.type = "date";
-    input.className = "date-element";
-
-    container.dataset.value = input.value;
-
-    const inputButton = document.createElement("button");
-    inputButton.className = "date-button";
-
-    const buttonLabel = document.createElement("span");
-    buttonLabel.className = "button-label";
-    buttonLabel.textContent = "Date";
-
-    const buttonIcon = document.createElement("span");
-    buttonIcon.className = "button-icon";
-    buttonIcon.innerHTML = icon;
-
-    inputButton.appendChild(buttonIcon);
-    inputButton.appendChild(buttonLabel);
-
-    container.appendChild(input);
-    container.appendChild(inputButton);
-
-    addShowDatePickerEvent(inputButton, input);
-    changeDateValueEvent(container);
-
-    return container;
-  };
-
-  const appendSelectInput = (
-    inputId,
-    icon,
-    optionsArray = [{ icon: defaultSvg, name: "No options" }],
-    initialOptionIndex = 0
-  ) => {
-    const container = document.createElement("div");
-    container.className = "select-input";
-    if (inputId) container.id = inputId;
-
-    const inputButton = document.createElement("button");
-    inputButton.className = "select-button";
-
-    const buttonLabel = document.createElement("span");
-    buttonLabel.className = "button-label";
-
-    const buttonIcon = document.createElement("span");
-    buttonIcon.className = "button-icon";
-    buttonIcon.innerHTML = icon;
-
-    // Options
-    const optionsContainer = document.createElement("div");
-    optionsContainer.className = "options";
-
-    optionsArray.forEach((option) => {
-      const optionElement = document.createElement("span");
-      optionElement.className = "option";
-      optionElement.dataset.value = option.name;
-
-      const optionIcon = document.createElement("span");
-      optionIcon.className = "option-icon";
-      optionIcon.innerHTML = option.icon;
-
-      const optionLabel = document.createElement("span");
-      optionLabel.className = "option-label";
-      optionLabel.textContent = option.name;
-
-      optionElement.appendChild(optionIcon);
-      optionElement.appendChild(optionLabel);
-
-      optionsContainer.appendChild(optionElement);
-    });
-
-    inputButton.appendChild(buttonIcon);
-    inputButton.appendChild(buttonLabel);
-
-    container.appendChild(inputButton);
-    container.appendChild(optionsContainer);
-
-    // Auto-select first option
-    if (initialOptionIndex < 0 || initialOptionIndex >= optionsArray.length)
-      initialOptionIndex = 0;
-
-    selectOptionValue(
-      container,
-      optionsContainer.childNodes[initialOptionIndex].dataset.value
-    );
-
-    // Select list Events
-    addExpandOptionsEvent(container);
-    addSelectOptionValueEvent(container);
-
-    return container;
-  };
-
   const showNewTaskDialog = () => {
     const dialog = document.createElement("dialog");
     dialog.id = "new-task";
@@ -328,80 +381,7 @@ const dialogs = (() => {
     dialog.showModal();
   };
 
-  const addCreateTaskEvent = (dialogContainer) => {
-    const createButton = dialogContainer.querySelector("button.primary");
-    const titleInput = dialogContainer.querySelector("#task-title-input");
-    const descriptionInput = dialogContainer.querySelector(
-      "#task-description-input"
-    );
-    const dateInput = dialogContainer.querySelector("#date-input");
-    const priorityInput = dialogContainer.querySelector("#select-priority");
-    const selectedList = dialogContainer.querySelector("#select-list");
-
-    createButton.addEventListener("click", () => {
-      lists.addNewTask(
-        selectedList.dataset.value,
-        titleInput.value,
-        descriptionInput.value,
-        dateInput.dataset.value,
-        priorityInput.dataset.value
-      );
-
-      page.refreshTaskElements();
-    });
-  };
-
-  const addExpandOptionsEvent = (selectInput) => {
-    const button = selectInput.querySelector(".select-button");
-
-    button.addEventListener("click", () =>
-      selectInput.classList.toggle("expand")
-    );
-  };
-
-  const selectOptionValue = (selectInput, optionValue) => {
-    const buttonLabel = selectInput.querySelector(".button-label");
-    const buttonIcon = selectInput.querySelector(".button-icon");
-    const option = selectInput.querySelector(
-      `.option[data-value="${optionValue}"]`
-    );
-    const optionIcon = option.querySelector(".option-icon");
-
-    selectInput.dataset.value = option.dataset.value;
-    buttonLabel.textContent = option.dataset.value;
-    buttonIcon.innerHTML = optionIcon.innerHTML; // Fix this
-  };
-
-  const addSelectOptionValueEvent = (selectInput) => {
-    const options = selectInput.querySelectorAll(".option");
-
-    options.forEach((option) => {
-      option.addEventListener("click", () => {
-        selectOptionValue(selectInput, option.dataset.value);
-        selectInput.classList.remove("expand");
-      });
-    });
-  };
-
-  const addShowDatePickerEvent = (inputButton, dateInput) => {
-    inputButton.addEventListener("click", () => dateInput.showPicker());
-  };
-
-  const changeDateValueEvent = (inputContainer) => {
-    const buttonLabel = inputContainer.querySelector(".button-label");
-    const buttonIcon = inputContainer.querySelector(".button-icon");
-    const dateInput = inputContainer.querySelector("input.date-element");
-
-    dateInput.addEventListener("change", () => {
-      inputContainer.dataset.value = dateInput.value;
-      buttonLabel.textContent = dateInput.value ? dateInput.value : "Date";
-      buttonIcon.innerHTML = dateInput.value
-        ? dateSelectedSvg
-        : dateUnselectedSvg;
-    });
-  };
-
-  // Expand task
+  // Task details:
   const appendSecondaryInfoElements = (label, icon, elementClass) => {
     const container = document.createElement("div");
     container.classList.add("info-element");
@@ -500,7 +480,30 @@ const dialogs = (() => {
     dialog.showModal();
   };
 
-  // All dialogs:
+  // Dialog events
+  const addCreateTaskEvent = (dialogContainer) => {
+    const createButton = dialogContainer.querySelector("button.primary");
+    const titleInput = dialogContainer.querySelector("#task-title-input");
+    const descriptionInput = dialogContainer.querySelector(
+      "#task-description-input"
+    );
+    const dateInput = dialogContainer.querySelector("#date-input");
+    const priorityInput = dialogContainer.querySelector("#select-priority");
+    const selectedList = dialogContainer.querySelector("#select-list");
+
+    createButton.addEventListener("click", () => {
+      lists.addNewTask(
+        selectedList.dataset.value,
+        titleInput.value,
+        descriptionInput.value,
+        dateInput.dataset.value,
+        priorityInput.dataset.value
+      );
+
+      page.refreshTaskElements();
+    });
+  };
+
   const addCloseDialogEvent = (currentDialog) => {
     currentDialog.addEventListener("close", () =>
       document.body.removeChild(currentDialog)
