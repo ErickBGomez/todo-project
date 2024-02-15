@@ -205,6 +205,12 @@ p {
   border: 1px solid var(--Black-25);
   border-radius: 8px;
   background-color: var(--White);
+  transition: background-color 200ms;
+}
+
+#new-task-button:hover {
+  background-color: hsl(0, 0%, 94%);
+  transition: background-color 200ms;
 }
 
 .empty-page {
