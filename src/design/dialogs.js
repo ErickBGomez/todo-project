@@ -318,9 +318,12 @@ const dialogs = (() => {
       document.querySelectorAll(".dialog-buttons button")
     );
 
+    const mainButton = document.querySelector(".dialog-buttons .primary");
+
     addCloseDialogEvent(dialog);
     addCloseDialogButtonsEvent(dialog, closeButtons);
     addCreateTaskEvent(dialog);
+    disableEmptyDialogEvent(titleInput, mainButton);
 
     dialog.showModal();
   };
