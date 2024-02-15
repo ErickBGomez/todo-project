@@ -728,6 +728,7 @@ dialog#task-details {
 
 dialog#task-details .actions-container {
   display: flex;
+  flex-direction: row-reverse;
   width: 100%;
   justify-content: end;
   gap: 4px;

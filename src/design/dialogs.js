@@ -446,8 +446,8 @@ const dialogs = (() => {
 
     closeDialog.appendChild(closeDialogIcon);
 
-    actionsContainer.appendChild(moreOptions);
     actionsContainer.appendChild(closeDialog);
+    actionsContainer.appendChild(moreOptions);
 
     // Task main information
     const mainInfo = document.createElement("div");
