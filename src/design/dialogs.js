@@ -517,11 +517,9 @@ const dialogs = (() => {
   };
 
   const disableEmptyDialogEvent = (textInput, mainButton) => {
-    console.log(mainButton);
-
+    mainButton.disabled = true;
     textInput.addEventListener("input", () => {
       mainButton.disabled = textInput.value.length <= 0;
-      console.log(mainButton.disabled);
     });
   };
 
