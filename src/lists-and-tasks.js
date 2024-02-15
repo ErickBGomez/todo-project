@@ -93,6 +93,12 @@ const lists = (() => {
 
   const getCompletedLength = (listName) => getList(listName).completed.length;
 
+  const getListsNames = () => {
+    const namesArray = [];
+    content.forEach((list) => namesArray.push(list.name));
+    return namesArray;
+  };
+
   const getListsNamesIcons = () => {
     const namesIconsArray = [];
 
@@ -125,6 +131,7 @@ const lists = (() => {
     setCurrentList,
     getCurrentList,
     getCompletedLength,
+    getListsNames,
     getListsNamesIcons,
     getCurrentListIndex,
   };
