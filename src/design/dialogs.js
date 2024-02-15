@@ -520,9 +520,13 @@ const dialogs = (() => {
   };
 
   const disableEmptyDialogEvent = (textInput, mainButton) => {
+    console.log(lists.getListsNames());
+
     mainButton.disabled = true;
     textInput.addEventListener("input", () => {
-      mainButton.disabled = textInput.value.length <= 0;
+      mainButton.disabled =
+        textInput.value.length <= 0 ||
+        lists.getListsNames().some((listName) => listName === textInput.value);
     });
   };
 
