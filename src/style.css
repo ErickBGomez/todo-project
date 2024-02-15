@@ -454,8 +454,8 @@ button.primary:active {
 }
 
 button.primary:disabled {
-  background-color: hsl(216, 27%, 71%);
-  color: hsl(0, 0%, 95%);
+  background-color: #b3d1ff;
+  color: #f0f6ff;
 }
 
 button.secondary {
