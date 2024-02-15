@@ -718,6 +718,12 @@ dialog#new-task .task-select-inputs {
   fill: var(--Black-50);
 }
 
+/* Options controller colors */
+.task-more-options .delete-task {
+  color: var(--Error);
+  fill: var(--Error);
+}
+
 /* SVG icons sizes */
 .button-icon,
 .option-icon {
