@@ -293,6 +293,14 @@ const dialogs = (() => {
     });
   };
 
+  const addDeleteTaskEvent = (optionsController, optionQuery, taskId) => {
+    const optionElement = optionsController.querySelector(optionQuery);
+
+    optionElement.addEventListener("click", () => {
+      lists.deleteTask(lists.getCurrentList().name, taskId);
+    });
+  };
+
   // Dialogs
   // New list:
   const showNewListDialog = () => {
@@ -474,13 +482,17 @@ const dialogs = (() => {
 
     closeDialog.appendChild(closeDialogIcon);
 
-    actionsContainer.appendChild(closeDialog);
-    actionsContainer.appendChild(
-      appendOptionsButton(horizontalOptionsSvg, "more-options", [
+    const moreOptions = appendOptionsButton(
+      horizontalOptionsSvg,
+      "task-more-options",
+      [
         { label: "Edit", icon: editSvg, optionClass: "edit-task" },
         { label: "Delete", icon: deleteSvg, optionClass: "delete-task" },
-      ])
+      ]
     );
+
+    actionsContainer.appendChild(closeDialog);
+    actionsContainer.appendChild(moreOptions);
 
     // Task main information
     const mainInfo = document.createElement("div");
@@ -529,6 +541,7 @@ const dialogs = (() => {
     // Events
     addCloseDialogEvent(dialog);
     addCloseDialogButtonsEvent(dialog, closeDialog);
+    addDeleteTaskEvent(moreOptions, ".delete-task", task.id);
 
     dialog.showModal();
   };

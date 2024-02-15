@@ -85,6 +85,18 @@ const lists = (() => {
     saveLists();
   };
 
+  const deleteTask = (listName, taskId) => {
+    const selectedList = getList(listName);
+    const taskIndex = selectedList.tasks.indexOf(
+      selectedList.tasks.find((task) => task.id === taskId)
+    );
+    const deletedTask = selectedList.tasks.splice(taskIndex, 1)[0];
+
+    console.log(deletedTask);
+
+    saveLists();
+  };
+
   const setCurrentList = (listName) => {
     currentList = getList(listName);
   };
@@ -128,6 +140,7 @@ const lists = (() => {
     addNewTask,
     completeTask,
     restoreTask,
+    deleteTask,
     setCurrentList,
     getCurrentList,
     getCompletedLength,
