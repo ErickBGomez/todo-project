@@ -85,6 +85,9 @@ const lists = (() => {
     saveLists();
   };
 
+  // [Note]: This code only removes pending tasks, not completed
+  // Add later a way to remove a tasks from tasks or completed arrays
+  // Also, find a way to close current task details dialog and refresh content
   const deleteTask = (listName, taskId) => {
     const selectedList = getList(listName);
     const taskIndex = selectedList.tasks.indexOf(
