@@ -1,11 +1,16 @@
+// Icons
 import dateSvg from "../img/svg/tasks/date-fill.svg";
 import prioritySvg from "../img/svg/tasks/priority-fill.svg";
 import toCompleteButtonSvg from "../img/svg/others/to-complete-button.svg";
 import completedTaskSvg from "../img/svg/others/completed-task.svg";
 import expandTasksSvg from "../img/svg/others/expand-tasks.svg";
+import horizontalOptionsSvg from "../img/svg/others/horizontal-options.svg";
+import editSvg from "../img/svg/others/edit.svg";
+import deleteSvg from "../img/svg/others/delete.svg";
 
 import * as lists from "../lists-and-tasks.js";
 import * as dialogs from "./dialogs.js";
+import * as inputs from "./inputs.js";
 
 let listPage;
 
@@ -20,9 +25,24 @@ function createListContainer() {
   const container = document.createElement("div");
   container.className = "list-container";
 
+  const titleSection = document.createElement("div");
+  titleSection.className = "title-section";
+
   const title = document.createElement("h1");
   title.id = "list-title";
   title.textContent = "List Title";
+
+  const listOptions = inputs.appendOptionsButton(
+    horizontalOptionsSvg,
+    "list-more-options",
+    [
+      { label: "Edit list", icon: editSvg, optionClass: "edit-list" },
+      { label: "Delete list", icon: deleteSvg, optionClass: "delete-list" },
+    ]
+  );
+
+  titleSection.appendChild(title);
+  titleSection.appendChild(listOptions);
 
   const tasksContaier = document.createElement("div");
   tasksContaier.id = "tasks-container";
@@ -59,7 +79,7 @@ function createListContainer() {
   completedSection.appendChild(completedTasksTitleSection);
   completedSection.appendChild(completedContainer);
 
-  container.appendChild(title);
+  container.appendChild(titleSection);
   container.appendChild(tasksContaier);
   container.appendChild(newTaskButton);
   container.appendChild(completedSection);
