@@ -59,12 +59,16 @@ const lists = (() => {
     saveLists();
   };
 
+  const getTaskIndex = (list, taskArray, taskId) => {
+    return list[taskArray].indexOf(
+      list[taskArray].find((task) => task.id === taskId)
+    );
+  };
+
   const completeTask = (listName, taskId) => {
     const selectedList = getList(listName);
     // Find task index to use it in splice() arguments
-    const taskIndex = selectedList.tasks.indexOf(
-      selectedList.tasks.find((task) => task.id === taskId)
-    );
+    const taskIndex = getTaskIndex(selectedList, "tasks", taskId);
     // Remove task from array and convert it to object (index 0)
     const completedTask = selectedList.tasks.splice(taskIndex, 1)[0];
     // Add task to the front of completed array
@@ -75,9 +79,7 @@ const lists = (() => {
   const restoreTask = (listName, taskId) => {
     const selectedList = getList(listName);
     // Find task index to use it in splice() arguments
-    const taskIndex = selectedList.completed.indexOf(
-      selectedList.completed.find((task) => task.id === taskId)
-    );
+    const taskIndex = getTaskIndex(selectedList, "completed", taskId);
     // Remove task from array and convert it to object (index 0)
     const completedTask = selectedList.completed.splice(taskIndex, 1)[0];
     // Add task to the front of completed array
@@ -91,9 +93,7 @@ const lists = (() => {
     for (let key in selectedList) {
       // Iterate only in tasks and completed arrays to find tasks
       if (key === "tasks" || key === "completed") {
-        const taskIndex = selectedList[key].indexOf(
-          selectedList[key].find((task) => task.id === taskId)
-        );
+        const taskIndex = getTaskIndex(selectedList, key, taskId);
 
         if (taskIndex !== -1) {
           selectedList[key].splice(taskIndex, 1);
