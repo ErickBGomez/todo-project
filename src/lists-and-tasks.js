@@ -85,18 +85,23 @@ const lists = (() => {
     saveLists();
   };
 
-  // [Note]: This code only removes pending tasks, not completed
-  // Add later a way to remove a tasks from tasks or completed arrays
   const deleteTask = (listName, taskId) => {
     const selectedList = getList(listName);
-    const taskIndex = selectedList.tasks.indexOf(
-      selectedList.tasks.find((task) => task.id === taskId)
-    );
-    const deletedTask = selectedList.tasks.splice(taskIndex, 1)[0];
 
-    console.log(deletedTask);
+    for (let key in selectedList) {
+      // Iterate only in tasks and completed arrays to find tasks
+      if (key === "tasks" || key === "completed") {
+        const taskIndex = selectedList[key].indexOf(
+          selectedList[key].find((task) => task.id === taskId)
+        );
 
-    saveLists();
+        if (taskIndex !== -1) {
+          selectedList[key].splice(taskIndex, 1);
+          saveLists();
+          return;
+        }
+      }
+    }
   };
 
   const setCurrentList = (listName) => {
