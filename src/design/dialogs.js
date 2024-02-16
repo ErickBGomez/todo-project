@@ -25,7 +25,7 @@ import editSvg from "../img/svg/others/edit.svg";
 import deleteSvg from "../img/svg/others/delete.svg";
 
 // Functions
-import lists from "../lists-and-tasks";
+import * as lists from "../lists-and-tasks";
 import * as sidebar from "./sidebar.js";
 import * as page from "./page.js";
 import * as inputs from "./inputs.js";

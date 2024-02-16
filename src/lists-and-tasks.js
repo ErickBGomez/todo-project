@@ -19,142 +19,138 @@ class List {
   }
 }
 
-const lists = (() => {
-  let content;
-  let currentList;
+let content;
+let currentList;
 
-  const saveLists = () => {
-    localStorage.setItem("lists", JSON.stringify(content));
-  };
+const saveLists = () => {
+  localStorage.setItem("lists", JSON.stringify(content));
+};
 
-  const refreshLists = () => {
-    // If lists is not created in localStorage, create an empty array
-    if (!localStorage.getItem("lists")) {
-      content = [];
-      createList("My tasks", defaultSvg);
-      saveLists();
-    }
-
-    content = JSON.parse(localStorage.getItem("lists"));
-  };
-
-  const createList = (listName, icon) => {
-    // Avoid creating duplicated lists
-    if (!getList(listName)) {
-      content.push(new List(listName, icon));
-      saveLists();
-    }
-  };
-
-  const getList = (listName) => content.find((list) => list.name === listName);
-
-  const addNewTask = (listName, title, description, date, priority) => {
-    const selectedList = getList(listName);
-
-    // Remove any other possible value to priority that is not equal to the specified below
-    if (!(priority === "Low" || priority == "Medium" || priority === "High"))
-      priority = "";
-
-    selectedList.tasks.push(new Task(title, description, date, priority));
+const refreshLists = () => {
+  // If lists is not created in localStorage, create an empty array
+  if (!localStorage.getItem("lists")) {
+    content = [];
+    createList("My tasks", defaultSvg);
     saveLists();
-  };
+  }
 
-  const getTaskIndex = (list, taskArray, taskId) => {
-    return list[taskArray].indexOf(
-      list[taskArray].find((task) => task.id === taskId)
-    );
-  };
+  content = JSON.parse(localStorage.getItem("lists"));
+};
 
-  const completeTask = (listName, taskId) => {
-    const selectedList = getList(listName);
-    // Find task index to use it in splice() arguments
-    const taskIndex = getTaskIndex(selectedList, "tasks", taskId);
-    // Remove task from array and convert it to object (index 0)
-    const completedTask = selectedList.tasks.splice(taskIndex, 1)[0];
-    // Add task to the front of completed array
-    selectedList.completed.unshift(completedTask);
+const createList = (listName, icon) => {
+  // Avoid creating duplicated lists
+  if (!getList(listName)) {
+    content.push(new List(listName, icon));
     saveLists();
-  };
+  }
+};
 
-  const restoreTask = (listName, taskId) => {
-    const selectedList = getList(listName);
-    // Find task index to use it in splice() arguments
-    const taskIndex = getTaskIndex(selectedList, "completed", taskId);
-    // Remove task from array and convert it to object (index 0)
-    const completedTask = selectedList.completed.splice(taskIndex, 1)[0];
-    // Add task to the front of completed array
-    selectedList.tasks.push(completedTask);
-    saveLists();
-  };
+const getList = (listName) => content.find((list) => list.name === listName);
 
-  const deleteTask = (listName, taskId) => {
-    const selectedList = getList(listName);
+const addNewTask = (listName, title, description, date, priority) => {
+  const selectedList = getList(listName);
 
-    for (let key in selectedList) {
-      // Iterate only in tasks and completed arrays to find tasks
-      if (key === "tasks" || key === "completed") {
-        const taskIndex = getTaskIndex(selectedList, key, taskId);
+  // Remove any other possible value to priority that is not equal to the specified below
+  if (!(priority === "Low" || priority == "Medium" || priority === "High"))
+    priority = "";
 
-        if (taskIndex !== -1) {
-          selectedList[key].splice(taskIndex, 1);
-          saveLists();
-          return;
-        }
+  selectedList.tasks.push(new Task(title, description, date, priority));
+  saveLists();
+};
+
+const getTaskIndex = (list, taskArray, taskId) => {
+  return list[taskArray].indexOf(
+    list[taskArray].find((task) => task.id === taskId)
+  );
+};
+
+const completeTask = (listName, taskId) => {
+  const selectedList = getList(listName);
+  // Find task index to use it in splice() arguments
+  const taskIndex = getTaskIndex(selectedList, "tasks", taskId);
+  // Remove task from array and convert it to object (index 0)
+  const completedTask = selectedList.tasks.splice(taskIndex, 1)[0];
+  // Add task to the front of completed array
+  selectedList.completed.unshift(completedTask);
+  saveLists();
+};
+
+const restoreTask = (listName, taskId) => {
+  const selectedList = getList(listName);
+  // Find task index to use it in splice() arguments
+  const taskIndex = getTaskIndex(selectedList, "completed", taskId);
+  // Remove task from array and convert it to object (index 0)
+  const completedTask = selectedList.completed.splice(taskIndex, 1)[0];
+  // Add task to the front of completed array
+  selectedList.tasks.push(completedTask);
+  saveLists();
+};
+
+const deleteTask = (listName, taskId) => {
+  const selectedList = getList(listName);
+
+  for (let key in selectedList) {
+    // Iterate only in tasks and completed arrays to find tasks
+    if (key === "tasks" || key === "completed") {
+      const taskIndex = getTaskIndex(selectedList, key, taskId);
+
+      if (taskIndex !== -1) {
+        selectedList[key].splice(taskIndex, 1);
+        saveLists();
+        return;
       }
     }
-  };
+  }
+};
 
-  const setCurrentList = (listName) => {
-    currentList = getList(listName);
-  };
+const setCurrentList = (listName) => {
+  currentList = getList(listName);
+};
 
-  const getCurrentList = () => currentList;
+const getCurrentList = () => currentList;
 
-  const getCompletedLength = (listName) => getList(listName).completed.length;
+const getCompletedLength = (listName) => getList(listName).completed.length;
 
-  const getListsNames = () => {
-    const namesArray = [];
-    content.forEach((list) => namesArray.push(list.name));
-    return namesArray;
-  };
+const getListsNames = () => {
+  const namesArray = [];
+  content.forEach((list) => namesArray.push(list.name));
+  return namesArray;
+};
 
-  const getListsNamesIcons = () => {
-    const namesIconsArray = [];
+const getListsNamesIcons = () => {
+  const namesIconsArray = [];
 
-    content.forEach((list) => {
-      const propertiesToFilter = ["name", "icon"];
+  content.forEach((list) => {
+    const propertiesToFilter = ["name", "icon"];
 
-      // Return a new object with only "name" and "icon" properties
-      const filteredList = Object.keys(list)
-        .filter((key) => propertiesToFilter.includes(key))
-        .reduce((object, key) => {
-          object[key] = list[key];
-          return object;
-        }, {});
+    // Return a new object with only "name" and "icon" properties
+    const filteredList = Object.keys(list)
+      .filter((key) => propertiesToFilter.includes(key))
+      .reduce((object, key) => {
+        object[key] = list[key];
+        return object;
+      }, {});
 
-      namesIconsArray.push(filteredList);
-    });
+    namesIconsArray.push(filteredList);
+  });
 
-    return namesIconsArray;
-  };
+  return namesIconsArray;
+};
 
-  const getCurrentListIndex = () =>
-    content.indexOf(content.find((list) => list.name == currentList.name));
+const getCurrentListIndex = () =>
+  content.indexOf(content.find((list) => list.name == currentList.name));
 
-  return {
-    refreshLists,
-    createList,
-    addNewTask,
-    completeTask,
-    restoreTask,
-    deleteTask,
-    setCurrentList,
-    getCurrentList,
-    getCompletedLength,
-    getListsNames,
-    getListsNamesIcons,
-    getCurrentListIndex,
-  };
-})();
-
-export default lists;
+export {
+  refreshLists,
+  createList,
+  addNewTask,
+  completeTask,
+  restoreTask,
+  deleteTask,
+  setCurrentList,
+  getCurrentList,
+  getCompletedLength,
+  getListsNames,
+  getListsNamesIcons,
+  getCurrentListIndex,
+};
