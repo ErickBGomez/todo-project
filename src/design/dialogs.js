@@ -293,11 +293,18 @@ const dialogs = (() => {
     });
   };
 
-  const addDeleteTaskEvent = (optionsController, optionQuery, taskId) => {
+  const addDeleteTaskEvent = (
+    optionsController,
+    optionQuery,
+    taskId,
+    currentDialog
+  ) => {
     const optionElement = optionsController.querySelector(optionQuery);
 
     optionElement.addEventListener("click", () => {
       lists.deleteTask(lists.getCurrentList().name, taskId);
+      currentDialog.close();
+      page.refreshTaskElements();
     });
   };
 
@@ -541,7 +548,7 @@ const dialogs = (() => {
     // Events
     addCloseDialogEvent(dialog);
     addCloseDialogButtonsEvent(dialog, closeDialog);
-    addDeleteTaskEvent(moreOptions, ".delete-task", task.id);
+    addDeleteTaskEvent(moreOptions, ".delete-task", task.id, dialog);
 
     dialog.showModal();
   };
