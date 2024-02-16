@@ -186,7 +186,7 @@ function createNewTaskElement(task, isCompleted) {
 }
 
 // Refresh all tasks from selected list
-export function refreshTaskElements() {
+function refreshTaskElements() {
   const tasksContainer = listPage.querySelector("#tasks-container");
   const completedSection = listPage.querySelector(".completed-tasks-section");
   const completedContainer = listPage.querySelector(
@@ -222,7 +222,7 @@ export function refreshTaskElements() {
   addRestoreTaskEvent();
 }
 
-export function loadListContent() {
+function loadListContent() {
   const emptyContainer = listPage.querySelector(".empty-page");
   const pageContainer = listPage.querySelector("#page");
   const listTitle = listPage.querySelector("#list-title");
@@ -291,7 +291,7 @@ function addTaskDetailsDialogEvent(taskElement, list, task) {
   });
 }
 
-export function renderPage() {
+function renderPage() {
   listPage = document.createElement("div");
   listPage.id = "list-page";
 
@@ -304,3 +304,5 @@ export function renderPage() {
 
   document.body.appendChild(listPage);
 }
+
+export { refreshTaskElements, loadListContent, renderPage };

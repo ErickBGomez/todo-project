@@ -1,7 +1,7 @@
 import defaultListSvg from "../img/svg/lists/default.svg";
 import createListSvg from "../img/svg/others/create-list.svg";
 
-import { loadListContent } from "./page";
+import * as page from "./page";
 import * as lists from "../lists-and-tasks.js";
 import * as dialogs from "./dialogs.js";
 
@@ -34,7 +34,7 @@ function createListSidebar(listLabel, listIcon = defaultListSvg) {
   return list;
 }
 
-export function refreshUserSidebarLists() {
+function refreshUserSidebarLists() {
   const listsContent = lists.getListsNamesIcons();
 
   // Reset sidebar lists
@@ -49,7 +49,7 @@ export function refreshUserSidebarLists() {
   userLists.childNodes.forEach((listElement) => {
     listElement.addEventListener("click", () => {
       lists.setCurrentList(listElement.dataset.listName);
-      loadListContent();
+      page.loadListContent();
       highlightSelectedList(userLists.childNodes, listElement);
     });
   });
@@ -123,7 +123,7 @@ function createUserListEvent(sidebar) {
   createListButton.addEventListener("click", () => dialogs.showNewListDialog());
 }
 
-export default function renderSidebar() {
+function renderSidebar() {
   const sidebar = document.createElement("div");
   sidebar.id = "sidebar";
 
@@ -135,3 +135,5 @@ export default function renderSidebar() {
 
   document.body.appendChild(sidebar);
 }
+
+export { refreshUserSidebarLists, renderSidebar };
