@@ -5,7 +5,7 @@ import completedTaskSvg from "../img/svg/others/completed-task.svg";
 import expandTasksSvg from "../img/svg/others/expand-tasks.svg";
 
 import lists from "../lists-and-tasks.js";
-import dialogs from "./dialogs.js";
+import * as dialogs from "./dialogs.js";
 
 let listPage;
 

@@ -3,7 +3,7 @@ import createListSvg from "../img/svg/others/create-list.svg";
 
 import { loadListContent } from "./page";
 import lists from "../lists-and-tasks.js";
-import dialogs from "./dialogs.js";
+import * as dialogs from "./dialogs.js";
 
 let userLists;
 
