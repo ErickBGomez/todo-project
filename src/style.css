@@ -193,8 +193,29 @@ p {
   width: clamp(400px, 50vw, 832px);
 }
 
-#list-title {
+.title-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   margin-bottom: 48px;
+}
+
+.title-section .options-controller-button {
+  padding: 8px;
+  background-color: var(--White);
+  transition: 200ms;
+}
+
+.title-section .options-controller-button:hover,
+.title-section .options-controller-button:focus {
+  background-color: var(--Black-10);
+  transition: 200ms;
+}
+
+.title-section .list-more-options .button-icon {
+  fill: var(--Black);
+  width: 35px;
+  height: 35px;
 }
 
 #new-task-button {
