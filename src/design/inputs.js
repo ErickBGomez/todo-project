@@ -1,3 +1,7 @@
+import defaultSvg from "../img/svg/lists/default.svg";
+import dateUnselectedSvg from "../img/svg/tasks/date-nofill.svg";
+import dateSelectedSvg from "../img/svg/tasks/date-fill.svg";
+
 // Custom inputs controllers
 const appendDialogButtons = (primaryLabel, secondaryLabel = "Cancel") => {
   const buttons = document.createElement("div");
@@ -272,4 +276,12 @@ const addDeleteTaskEvent = (
     currentDialog.close();
     page.refreshTaskElements();
   });
+};
+
+export {
+  appendDialogButtons,
+  appendSelectInput,
+  appendSelectInputGrid,
+  appendDateInput,
+  appendOptionsButton,
 };

@@ -28,6 +28,7 @@ import deleteSvg from "../img/svg/others/delete.svg";
 import lists from "../lists-and-tasks";
 import * as sidebar from "./sidebar.js";
 import * as page from "./page.js";
+import * as inputs from "./inputs.js";
 
 const dialogs = (() => {
   // New list:
@@ -47,7 +48,7 @@ const dialogs = (() => {
     titleInput.autofocus = true;
 
     titleContainer.appendChild(
-      appendSelectInputGrid("select-icon", [
+      inputs.appendSelectInputGrid("select-icon", [
         defaultSvg,
         starSvg,
         heartSvg,
@@ -65,7 +66,7 @@ const dialogs = (() => {
     titleContainer.appendChild(titleInput);
 
     dialog.appendChild(titleContainer);
-    dialog.appendChild(appendDialogButtons("Create list"));
+    dialog.appendChild(inputs.appendDialogButtons("Create list"));
 
     document.body.appendChild(dialog);
 
@@ -133,10 +134,10 @@ const dialogs = (() => {
     selectInputsContainer.className = "task-select-inputs";
 
     selectInputsContainer.appendChild(
-      appendDateInput("date-input", dateUnselectedSvg)
+      inputs.appendDateInput("date-input", dateUnselectedSvg)
     );
     selectInputsContainer.appendChild(
-      appendSelectInput("select-priority", priorityUnselectedSvg, [
+      inputs.appendSelectInput("select-priority", priorityUnselectedSvg, [
         { icon: priorityUnselectedSvg, name: "Priority" },
         { icon: prioritySelectedSvg, name: "Low" },
         { icon: prioritySelectedSvg, name: "Medium" },
@@ -144,7 +145,7 @@ const dialogs = (() => {
       ])
     );
     selectInputsContainer.appendChild(
-      appendSelectInput(
+      inputs.appendSelectInput(
         "select-list",
         defaultSvg,
         lists.getListsNamesIcons(),
@@ -155,7 +156,7 @@ const dialogs = (() => {
     dialog.appendChild(titleInput);
     dialog.appendChild(descriptionInput);
     dialog.appendChild(selectInputsContainer);
-    dialog.appendChild(appendDialogButtons("Add task"));
+    dialog.appendChild(inputs.appendDialogButtons("Add task"));
 
     document.body.appendChild(dialog);
 
@@ -210,7 +211,7 @@ const dialogs = (() => {
 
     closeDialog.appendChild(closeDialogIcon);
 
-    const moreOptions = appendOptionsButton(
+    const moreOptions = inputs.appendOptionsButton(
       horizontalOptionsSvg,
       "task-more-options",
       [
