@@ -83,24 +83,6 @@ const dialogs = (() => {
     dialog.showModal();
   };
 
-  const selectOptionValueGrid = (selectInputGrid, optionIndex) => {
-    const buttonIcon = selectInputGrid.querySelector(".button-icon");
-    const option = selectInputGrid.querySelectorAll(".option")[optionIndex];
-
-    buttonIcon.innerHTML = option.innerHTML;
-  };
-
-  const addSelectOptionValueGridEvent = (selectInputGrid) => {
-    const options = selectInputGrid.querySelectorAll(".option");
-
-    options.forEach((option, index) => {
-      option.addEventListener("click", () => {
-        selectOptionValueGrid(selectInputGrid, index);
-        selectInputGrid.classList.remove("expand");
-      });
-    });
-  };
-
   const addCreateListEvent = (dialogContainer) => {
     const createButton = dialogContainer.querySelector("button.primary");
     const titleInput = dialogContainer.querySelector("input#list-title-input");
@@ -328,6 +310,21 @@ const dialogs = (() => {
       mainButton.disabled =
         textInput.value.length <= 0 ||
         lists.getListsNames().some((listName) => listName === textInput.value);
+    });
+  };
+
+  const addDeleteTaskEvent = (
+    optionsController,
+    optionQuery,
+    taskId,
+    currentDialog
+  ) => {
+    const optionElement = optionsController.querySelector(optionQuery);
+
+    optionElement.addEventListener("click", () => {
+      lists.deleteTask(lists.getCurrentList().name, taskId);
+      currentDialog.close();
+      page.refreshTaskElements();
     });
   };
 

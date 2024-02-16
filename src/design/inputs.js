@@ -1,3 +1,4 @@
+// Icons
 import defaultSvg from "../img/svg/lists/default.svg";
 import dateUnselectedSvg from "../img/svg/tasks/date-nofill.svg";
 import dateSelectedSvg from "../img/svg/tasks/date-fill.svg";
@@ -245,8 +246,22 @@ const addSelectOptionValueEvent = (selectInput) => {
   });
 };
 
-const addShowDatePickerEvent = (inputButton, dateInput) => {
-  inputButton.addEventListener("click", () => dateInput.showPicker());
+const selectOptionValueGrid = (selectInputGrid, optionIndex) => {
+  const buttonIcon = selectInputGrid.querySelector(".button-icon");
+  const option = selectInputGrid.querySelectorAll(".option")[optionIndex];
+
+  buttonIcon.innerHTML = option.innerHTML;
+};
+
+const addSelectOptionValueGridEvent = (selectInputGrid) => {
+  const options = selectInputGrid.querySelectorAll(".option");
+
+  options.forEach((option, index) => {
+    option.addEventListener("click", () => {
+      selectOptionValueGrid(selectInputGrid, index);
+      selectInputGrid.classList.remove("expand");
+    });
+  });
 };
 
 const changeDateValueEvent = (inputContainer) => {
@@ -263,19 +278,8 @@ const changeDateValueEvent = (inputContainer) => {
   });
 };
 
-const addDeleteTaskEvent = (
-  optionsController,
-  optionQuery,
-  taskId,
-  currentDialog
-) => {
-  const optionElement = optionsController.querySelector(optionQuery);
-
-  optionElement.addEventListener("click", () => {
-    lists.deleteTask(lists.getCurrentList().name, taskId);
-    currentDialog.close();
-    page.refreshTaskElements();
-  });
+const addShowDatePickerEvent = (inputButton, dateInput) => {
+  inputButton.addEventListener("click", () => dateInput.showPicker());
 };
 
 export {
