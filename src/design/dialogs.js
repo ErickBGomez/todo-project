@@ -201,6 +201,8 @@ const showTaskDetailsDialog = (list, task) => {
     ]
   );
 
+  const deleteOption = moreOptions.querySelector(".delete-task");
+
   actionsContainer.appendChild(closeDialog);
   actionsContainer.appendChild(moreOptions);
 
@@ -251,12 +253,12 @@ const showTaskDetailsDialog = (list, task) => {
   // Events
   addCloseDialogEvent(dialog);
   addCloseDialogButtonsEvent(dialog, closeDialog);
-  addDeleteTaskEvent(moreOptions, ".delete-task", task.id, dialog);
+  openDeleteDialogEvent(deleteOption, showDeleteTaskDialog, task.id);
 
   dialog.showModal();
 };
 
-const showDeleteTaskDialog = (task) => {
+const showDeleteTaskDialog = (taskId) => {
   const dialog = document.createElement("dialog");
   dialog.id = "delete-task";
 
@@ -272,6 +274,7 @@ const showDeleteTaskDialog = (task) => {
   subMessage.textContent = "This action cannot be undone.";
 
   const dialogButtons = inputs.appendDialogButtons("Delete");
+  const deleteButton = dialogButtons.querySelector("button.primary");
 
   message.appendChild(messageTitle);
   message.appendChild(subMessage);
@@ -283,6 +286,7 @@ const showDeleteTaskDialog = (task) => {
 
   addCloseDialogEvent(dialog);
   addCloseDialogButtonsEvent(dialog, dialogButtons);
+  addDeleteTaskEvent(deleteButton, taskId);
 
   dialog.showModal();
 };
@@ -343,18 +347,22 @@ const disableEmptyDialogEvent = (textInput, mainButton) => {
   });
 };
 
-const addDeleteTaskEvent = (
-  optionsController,
-  optionQuery,
-  taskId,
-  currentDialog
+const openDeleteDialogEvent = (
+  deleteOption,
+  dialogCallback,
+  dialogParameters
 ) => {
-  const optionElement = optionsController.querySelector(optionQuery);
+  deleteOption.addEventListener("click", () => {
+    dialogCallback(dialogParameters);
+  });
+};
 
-  optionElement.addEventListener("click", () => {
-    // lists.deleteTask(lists.getCurrentList().name, taskId);
-    // currentDialog.close();
-    showDeleteTaskDialog();
+const addDeleteTaskEvent = (deleteButton, taskId) => {
+  const dialogOrigin = document.querySelector("dialog#task-details");
+
+  deleteButton.addEventListener("click", () => {
+    lists.deleteTask(lists.getCurrentList().name, taskId);
+    dialogOrigin.close();
     page.refreshTaskElements();
   });
 };
