@@ -36,8 +36,8 @@ function createListContainer() {
     horizontalOptionsSvg,
     "list-more-options",
     [
-      { label: "Edit list", icon: editSvg, optionClass: "edit-list" },
-      { label: "Delete list", icon: deleteSvg, optionClass: "delete-list" },
+      { label: "Edit", icon: editSvg, optionClass: "edit-list" },
+      { label: "Delete", icon: deleteSvg, optionClass: "delete-list" },
     ]
   );
 
