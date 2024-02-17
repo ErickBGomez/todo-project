@@ -256,6 +256,37 @@ const showTaskDetailsDialog = (list, task) => {
   dialog.showModal();
 };
 
+const showDeleteTaskDialog = (task) => {
+  const dialog = document.createElement("dialog");
+  dialog.id = "delete-task";
+
+  const message = document.createElement("div");
+  message.className = "message";
+
+  const messageTitle = document.createElement("p");
+  messageTitle.className = "message-title";
+  messageTitle.textContent = "Are you sure you want to delete this task?";
+
+  const subMessage = document.createElement("p");
+  subMessage.className = "sub-message";
+  subMessage.textContent = "This action cannot be undone.";
+
+  const dialogButtons = inputs.appendDialogButtons("Delete");
+
+  message.appendChild(messageTitle);
+  message.appendChild(subMessage);
+
+  dialog.appendChild(message);
+  dialog.appendChild(dialogButtons);
+
+  document.body.appendChild(dialog);
+
+  addCloseDialogEvent(dialog);
+  addCloseDialogButtonsEvent(dialog, dialogButtons);
+
+  dialog.showModal();
+};
+
 // Dialog events
 const addCreateTaskEvent = (dialogContainer) => {
   const createButton = dialogContainer.querySelector("button.primary");
@@ -321,10 +352,16 @@ const addDeleteTaskEvent = (
   const optionElement = optionsController.querySelector(optionQuery);
 
   optionElement.addEventListener("click", () => {
-    lists.deleteTask(lists.getCurrentList().name, taskId);
-    currentDialog.close();
+    // lists.deleteTask(lists.getCurrentList().name, taskId);
+    // currentDialog.close();
+    showDeleteTaskDialog();
     page.refreshTaskElements();
   });
 };
 
-export { showNewListDialog, showNewTaskDialog, showTaskDetailsDialog };
+export {
+  showNewListDialog,
+  showNewTaskDialog,
+  showTaskDetailsDialog,
+  showDeleteTaskDialog,
+};
