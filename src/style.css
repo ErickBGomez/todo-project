@@ -203,13 +203,13 @@ p {
 .title-section .options-controller-button {
   padding: 8px;
   background-color: var(--White);
-  transition: 200ms;
+  transition: background-color 200ms;
 }
 
 .title-section .options-controller-button:hover,
 .title-section .options-controller-button:focus {
   background-color: var(--Black-10);
-  transition: 200ms;
+  transition: background-color 200ms;
 }
 
 .title-section .list-more-options .button-icon {
@@ -740,7 +740,8 @@ dialog#new-task .task-select-inputs {
 }
 
 /* Options controller colors */
-.task-more-options .delete-task {
+.task-more-options .delete-task,
+.list-more-options .delete-list {
   color: var(--Error);
   fill: var(--Error);
 }
