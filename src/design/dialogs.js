@@ -289,6 +289,19 @@ const showDeleteListDialog = (list) => {
 
   const dialogButtons = inputs.appendDialogButtons("Delete");
   const deleteButton = dialogButtons.querySelector("button.primary");
+
+  message.appendChild(messageTitle);
+  message.appendChild(subMessage);
+
+  dialog.appendChild(message);
+  dialog.appendChild(dialogButtons);
+
+  document.body.appendChild(dialog);
+
+  addCloseDialogEvent(dialog);
+  addCloseDialogButtonsEvent(dialog, dialogButtons);
+
+  dialog.showModal();
 };
 
 const showDeleteTaskDialog = (taskId) => {
@@ -404,6 +417,7 @@ export {
   showNewListDialog,
   showNewTaskDialog,
   showTaskDetailsDialog,
+  showDeleteListDialog,
   showDeleteTaskDialog,
   openDeleteDialogEvent,
 };

@@ -90,7 +90,7 @@ function createListContainer() {
 
   dialogs.openDeleteDialogEvent(
     deleteOption,
-    dialogs.showDeleteTaskDialog,
+    dialogs.showDeleteListDialog,
     "test"
   );
 
