@@ -258,6 +258,39 @@ const showTaskDetailsDialog = (list, task) => {
   dialog.showModal();
 };
 
+const showDeleteListDialog = (list) => {
+  const dialog = document.createElement("dialog");
+  dialog.id = "delete-list";
+
+  const message = document.createElement("div");
+  message.className = "message";
+
+  const messageTitle = document.createElement("p");
+  messageTitle.className = "message-title";
+  messageTitle.textContent = "Are you sure you want to delete this list?";
+
+  const listInfo = document.createElement("div");
+  listInfo.className = "list-info";
+
+  const listIcon = document.createElement("span");
+  listIcon.className = "list-icon";
+  listIcon.innerHTML = list.icon;
+
+  const listTitle = document.createElement("p");
+  listTitle.className = "list-title";
+  listTitle.textContent = list.title;
+
+  listInfo.appendChild(listIcon);
+  listInfo.appendChild(listTitle);
+
+  const subMessage = document.createElement("p");
+  subMessage.className = "sub-message";
+  subMessage.textContent = "This action cannot be undone.";
+
+  const dialogButtons = inputs.appendDialogButtons("Delete");
+  const deleteButton = dialogButtons.querySelector("button.primary");
+};
+
 const showDeleteTaskDialog = (taskId) => {
   const dialog = document.createElement("dialog");
   dialog.id = "delete-task";
@@ -372,4 +405,5 @@ export {
   showNewTaskDialog,
   showTaskDetailsDialog,
   showDeleteTaskDialog,
+  openDeleteDialogEvent,
 };

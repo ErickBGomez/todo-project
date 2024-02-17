@@ -40,6 +40,7 @@ function createListContainer() {
       { label: "Delete", icon: deleteSvg, optionClass: "delete-list" },
     ]
   );
+  const deleteOption = listOptions.querySelector(".delete-list");
 
   titleSection.appendChild(title);
   titleSection.appendChild(listOptions);
@@ -86,6 +87,12 @@ function createListContainer() {
 
   page.appendChild(background);
   page.appendChild(container);
+
+  dialogs.openDeleteDialogEvent(
+    deleteOption,
+    dialogs.showDeleteTaskDialog,
+    "test"
+  );
 
   return page;
 }
