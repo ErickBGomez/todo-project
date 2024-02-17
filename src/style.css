@@ -845,7 +845,8 @@ dialog#task-details .secondary-information {
   fill: var(--Completed-Checklist);
 }
 
-/* Delete task */
+/* Delete list and Delete task */
+dialog#delete-list,
 dialog#delete-task {
   display: flex;
   flex-direction: column;
@@ -855,16 +856,19 @@ dialog#delete-task {
   color: var(--Black);
 }
 
+dialog#delete-list .message-title,
 dialog#delete-task .message-title {
   font-weight: 600;
   font-size: 1.4rem;
   margin-bottom: 16px;
 }
 
+dialog#delete-list .sub-message,
 dialog#delete-task .sub-message {
   color: var(--Black-75);
 }
 
+dialog#delete-list button.primary,
 dialog#delete-task button.primary {
   background-color: var(--Error);
 }
