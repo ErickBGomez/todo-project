@@ -844,3 +844,27 @@ dialog#task-details .secondary-information {
   color: var(--Completed-Checklist);
   fill: var(--Completed-Checklist);
 }
+
+/* Delete task */
+dialog#delete-task {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 32px;
+  width: 400px;
+  color: var(--Black);
+}
+
+dialog#delete-task .message-title {
+  font-weight: 600;
+  font-size: 1.4rem;
+  margin-bottom: 16px;
+}
+
+dialog#delete-task .sub-message {
+  color: var(--Black-75);
+}
+
+dialog#delete-task button.primary {
+  background-color: var(--Error);
+}
