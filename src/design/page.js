@@ -88,12 +88,6 @@ function createListContainer() {
   page.appendChild(background);
   page.appendChild(container);
 
-  dialogs.openDeleteDialogEvent(
-    deleteOption,
-    dialogs.showDeleteListDialog,
-    "test"
-  );
-
   return page;
 }
 
@@ -253,12 +247,21 @@ function loadListContent() {
   const emptyContainer = listPage.querySelector(".empty-page");
   const pageContainer = listPage.querySelector("#page");
   const listTitle = listPage.querySelector("#list-title");
+  const deleteOption = listPage.querySelector(".options .delete-list");
 
   emptyContainer.classList.add("hide");
   pageContainer.classList.remove("hide");
 
   // Set title
   listTitle.textContent = lists.getCurrentList().name;
+
+  // Set events page
+
+  dialogs.openDeleteDialogEvent(
+    deleteOption,
+    dialogs.showDeleteListDialog,
+    lists.getCurrentList()
+  );
 
   refreshTaskElements();
 }

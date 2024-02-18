@@ -278,7 +278,7 @@ const showDeleteListDialog = (list) => {
 
   const listTitle = document.createElement("p");
   listTitle.className = "list-title";
-  listTitle.textContent = list.title;
+  listTitle.textContent = list.name;
 
   listInfo.appendChild(listIcon);
   listInfo.appendChild(listTitle);
@@ -291,6 +291,7 @@ const showDeleteListDialog = (list) => {
   const deleteButton = dialogButtons.querySelector("button.primary");
 
   message.appendChild(messageTitle);
+  message.appendChild(listInfo);
   message.appendChild(subMessage);
 
   dialog.appendChild(message);
