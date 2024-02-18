@@ -444,7 +444,8 @@ const addCloseDialogButtonsEvent = (currentDialog, closeButtons) => {
 
 const disableEmptyDialogEvent = (textInput, mainButton) => {
   // Disable button when opening the dialog
-  mainButton.disabled = true;
+  // If the dialog has default values when opening, don't disable mainButton
+  mainButton.disabled = textInput.value.length === 0;
 
   // Disable main button when:
   // 1. Selected text input is empty
