@@ -209,6 +209,7 @@ const appendOptionsButton = (
   container.appendChild(optionsContainer);
 
   addExpandOptionsEvent(container, button);
+  addCloseOptionsEvent(container, optionsContainer.childNodes);
 
   return container;
 };
@@ -219,6 +220,12 @@ const addExpandOptionsEvent = (container, expandButton) => {
 
   expandButton.addEventListener("click", () =>
     container.classList.toggle("expand")
+  );
+};
+
+const addCloseOptionsEvent = (container, optionButtons) => {
+  optionButtons.forEach((option) =>
+    option.addEventListener("click", () => container.classList.remove("expand"))
   );
 };
 
