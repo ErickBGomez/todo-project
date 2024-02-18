@@ -856,11 +856,18 @@ dialog#delete-task {
   color: var(--Black);
 }
 
+dialog#delete-list .message,
+dialog#delete-task .message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
 dialog#delete-list .message-title,
 dialog#delete-task .message-title {
   font-weight: 600;
   font-size: 1.4rem;
-  margin-bottom: 16px;
 }
 
 dialog#delete-list .sub-message,
@@ -876,17 +883,21 @@ dialog#delete-task button.primary {
 .list-info {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  background-color: var(--Black-05);
+  border-radius: 8px;
+  padding: 8px 16px;
 }
 
-.list-info .list-icon svg {
+.list-info .list-icon {
+  display: block;
   fill: var(--Primary);
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
 }
 
 .list-info .list-title {
-  font-weight: 500;
+  font-weight: 600;
   font-size: 1.2rem;
   color: var(--Primary);
-  margin-bottom: 16px;
 }
