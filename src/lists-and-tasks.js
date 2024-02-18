@@ -105,20 +105,25 @@ const editTask = (
     priority: "Priority",
   }
 ) => {
-  console.log(
-    "List target: " +
-      listName +
-      "\nTask ID: " +
-      taskId +
-      "\nnewTask info:\n - title: " +
-      newTask.title +
-      "\n - description: " +
-      newTask.description +
-      "\n - Date: " +
-      newTask.date +
-      "\n - Priority: " +
-      newTask.priority
-  );
+  const selectedList = getList(listName);
+
+  for (let key in selectedList) {
+    // Iterate only in tasks and completed arrays to find tasks
+    if (key === "tasks" || key === "completed") {
+      const taskIndex = getTaskIndex(selectedList, key, taskId);
+
+      if (taskIndex !== -1) {
+        const selectedTask = selectedList[key][taskIndex];
+        selectedTask.title = newTask.title;
+        selectedTask.description = newTask.description;
+        selectedTask.date = newTask.date;
+        selectedTask.priority = newTask.priority;
+
+        saveLists();
+        return;
+      }
+    }
+  }
 };
 
 const deleteTask = (listName, taskId) => {

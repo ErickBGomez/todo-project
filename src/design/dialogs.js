@@ -249,7 +249,7 @@ const showEditTaskDialog = (task) => {
 
   addCloseDialogEvent(dialog);
   addCloseDialogButtonsEvent(dialog, Array.from(dialogButtons.childNodes));
-  addEditTaskEvent(dialog);
+  addEditTaskEvent(dialog, task.id);
   disableEmptyDialogEvent(titleInput, mainButton);
 
   dialog.showModal();
@@ -432,6 +432,7 @@ const addEditTaskEvent = (dialogContainer, taskId) => {
   );
   const dateInput = dialogContainer.querySelector("#date-input");
   const priorityInput = dialogContainer.querySelector("#select-priority");
+  console.log(taskId);
 
   editButton.addEventListener("click", () => {
     lists.editTask(lists.getCurrentList().name, taskId, {
