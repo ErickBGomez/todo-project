@@ -410,7 +410,9 @@ dialog {
 }
 
 dialog#new-list,
-dialog#new-task {
+dialog#edit-list,
+dialog#new-task,
+dialog#edit-task {
   gap: 16px;
 }
 
@@ -507,17 +509,20 @@ button.secondary:active {
 }
 
 /* New list dialog */
-dialog#new-list {
+dialog#new-list,
+dialog#edit-list {
   width: 550px;
 }
 
-dialog#new-list .title-container {
+dialog#new-list .title-container,
+dialog#edit-list .title-container {
   display: flex;
   gap: 12px;
   align-items: center;
 }
 
-dialog#new-list .title-icon-input {
+dialog#new-list .title-icon-input,
+dialog#edit-list .title-icon-input {
   width: 32px;
   height: 32px;
   padding: 4px;
@@ -608,7 +613,8 @@ textarea::placeholder {
 }
 
 /* Select inputs */
-dialog#new-task .task-select-inputs {
+dialog#new-task .task-select-inputs,
+dialog#edit-task .task-select-inputs {
   display: flex;
   align-items: center;
   gap: 8px;

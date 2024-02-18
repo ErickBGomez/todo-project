@@ -235,7 +235,7 @@ const showNewTaskDialog = () => {
 
 const showEditTaskDialog = (task) => {
   const dialog = document.createElement("dialog");
-  dialog.id = "new-task";
+  dialog.id = "edit-task";
 
   const titleInput = document.createElement("input");
   titleInput.id = "task-title-input";
