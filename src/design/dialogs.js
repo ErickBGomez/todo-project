@@ -441,6 +441,7 @@ const addCreateListEvent = (dialogContainer) => {
   createButton.addEventListener("click", () => {
     lists.createList(titleInput.value, selectedIcon.innerHTML);
     sidebar.refreshUserSidebarLists();
+    notifications.displayNotification("List created successfully.");
   });
 };
 
@@ -458,6 +459,7 @@ const addEditListEvent = (dialogContainer) => {
     });
     sidebar.refreshUserSidebarLists();
     page.refreshListTitle();
+    notifications.displayNotification("List updated successfully.");
   });
 };
 
@@ -480,8 +482,8 @@ const addCreateTaskEvent = (dialogContainer) => {
       priorityInput.dataset.value
     );
 
-    notifications.displayNotification("Task created successfully.");
     page.refreshTaskElements();
+    notifications.displayNotification("Task created successfully.");
   });
 };
 
@@ -505,6 +507,7 @@ const addEditTaskEvent = (dialogContainer, taskId) => {
 
     page.refreshTaskElements();
     taskDetailsDialog.close();
+    notifications.displayNotification("Task updated successfully.");
   });
 };
 
@@ -552,6 +555,7 @@ const addDeleteListEvent = (deleteButton, listName) => {
     page.unloadPage();
     lists.deleteList(listName);
     sidebar.refreshUserSidebarLists();
+    notifications.displayNotification("List deleted successfully.");
   });
 };
 
@@ -562,6 +566,7 @@ const addDeleteTaskEvent = (deleteButton, taskId) => {
     lists.deleteTask(lists.getCurrentList().name, taskId);
     dialogOrigin.close();
     page.refreshTaskElements();
+    notifications.displayNotification("Task deleted successfully.");
   });
 };
 
