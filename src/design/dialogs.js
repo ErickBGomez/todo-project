@@ -377,8 +377,8 @@ const showTaskDetailsDialog = (list, task) => {
 
   addCloseDialogEvent(dialog);
   addCloseDialogButtonsEvent(dialog, closeDialog);
-  openDeleteDialogEvent(deleteOption, showDeleteTaskDialog, task.id);
-  openDeleteDialogEvent(editOption, showEditTaskDialog, task);
+  openDialogEvent(deleteOption, showDeleteTaskDialog, task.id);
+  openDialogEvent(editOption, showEditTaskDialog, task);
 
   dialog.showModal();
 };
@@ -452,13 +452,9 @@ const disableEmptyDialogEvent = (textInput, mainButton) => {
   });
 };
 
-const openDeleteDialogEvent = (
-  deleteOption,
-  dialogCallback,
-  dialogParameters
-) => {
-  deleteOption.addEventListener("click", () => {
-    dialogCallback(dialogParameters);
+const openDialogEvent = (targetElement, dialogCallback, dialogParameter) => {
+  targetElement.addEventListener("click", () => {
+    dialogCallback(dialogParameter);
   });
 };
 
@@ -487,5 +483,5 @@ export {
   showEditTaskDialog,
   showDeleteTaskDialog,
   showTaskDetailsDialog,
-  openDeleteDialogEvent,
+  openDialogEvent,
 };

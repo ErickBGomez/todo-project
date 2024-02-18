@@ -264,7 +264,7 @@ function loadListContent() {
   const deleteOption = listOptions.querySelector(".delete-list");
 
   // Set events page
-  dialogs.openDeleteDialogEvent(
+  dialogs.openDialogEvent(
     deleteOption,
     dialogs.showDeleteListDialog,
     lists.getCurrentList()
