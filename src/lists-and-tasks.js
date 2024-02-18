@@ -75,18 +75,13 @@ const getTask = (list, taskId) => {
   }
 };
 
-const getTaskIndex = (list, taskId) => {
-  for (let key in list) {
-    if (key === "tasks" || key === "completed") {
-      return list[key].indexOf(getTask(list, taskId));
-    }
-  }
-};
+const getTaskIndex = (list, taskArray, taskId) =>
+  list[taskArray].indexOf(getTask(list, taskId));
 
 const completeTask = (listName, taskId) => {
   const selectedList = getList(listName);
   // Find task index to use it in splice() arguments
-  const taskIndex = getTaskIndex(selectedList, taskId);
+  const taskIndex = getTaskIndex(selectedList, "tasks", taskId);
   // Remove task from array and convert it to object (index 0)
   const completedTask = selectedList.tasks.splice(taskIndex, 1)[0];
   // Add task to the front of completed array
@@ -97,7 +92,7 @@ const completeTask = (listName, taskId) => {
 const restoreTask = (listName, taskId) => {
   const selectedList = getList(listName);
   // Find task index to use it in splice() arguments
-  const taskIndex = getTaskIndex(selectedList, taskId);
+  const taskIndex = getTaskIndex(selectedList, "completed", taskId);
   // Remove task from array and convert it to object (index 0)
   const completedTask = selectedList.completed.splice(taskIndex, 1)[0];
   // Add task to the front of completed array
@@ -116,24 +111,14 @@ const editTask = (
   }
 ) => {
   const selectedList = getList(listName);
+  const selectedTask = getTask(selectedList, taskId);
 
-  for (let key in selectedList) {
-    // Iterate only in tasks and completed arrays to find tasks
-    if (key === "tasks" || key === "completed") {
-      const taskIndex = getTaskIndex(selectedList, key, taskId);
+  selectedTask.title = newTask.title;
+  selectedTask.description = newTask.description;
+  selectedTask.date = newTask.date;
+  selectedTask.priority = newTask.priority;
 
-      if (taskIndex !== -1) {
-        const selectedTask = selectedList[key][taskIndex];
-        selectedTask.title = newTask.title;
-        selectedTask.description = newTask.description;
-        selectedTask.date = newTask.date;
-        selectedTask.priority = newTask.priority;
-
-        saveLists();
-        return;
-      }
-    }
-  }
+  saveLists();
 };
 
 const deleteTask = (listName, taskId) => {
