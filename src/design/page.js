@@ -248,6 +248,9 @@ function loadListContent() {
   const pageContainer = listPage.querySelector("#page");
   const listTitle = listPage.querySelector("#list-title");
   const deleteOption = listPage.querySelector(".options .delete-list");
+  // Clone element to remove all previous events
+  const deleteOptionClone = deleteOption.cloneNode(true);
+  deleteOption.parentNode.replaceChild(deleteOptionClone, deleteOption);
 
   emptyContainer.classList.add("hide");
   pageContainer.classList.remove("hide");
@@ -256,9 +259,8 @@ function loadListContent() {
   listTitle.textContent = lists.getCurrentList().name;
 
   // Set events page
-
   dialogs.openDeleteDialogEvent(
-    deleteOption,
+    deleteOptionClone,
     dialogs.showDeleteListDialog,
     lists.getCurrentList()
   );
