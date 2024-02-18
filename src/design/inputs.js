@@ -299,5 +299,6 @@ export {
   appendDateInput,
   appendOptionsButton,
   selectOptionValue,
+  selectOptionValueGrid,
   selectDateValue,
 };

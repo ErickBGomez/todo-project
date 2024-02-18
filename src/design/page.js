@@ -257,16 +257,21 @@ function loadListContent() {
       { label: "Delete", icon: deleteSvg, optionClass: "delete-list" },
     ]
   );
+  const deleteOption = listOptions.querySelector(".delete-list");
+  const editOption = listOptions.querySelector(".edit-list");
 
   titleSection.appendChild(title);
   titleSection.appendChild(listOptions);
-
-  const deleteOption = listOptions.querySelector(".delete-list");
 
   // Set events page
   dialogs.openDialogEvent(
     deleteOption,
     dialogs.showDeleteListDialog,
+    lists.getCurrentList()
+  );
+  dialogs.openDialogEvent(
+    editOption,
+    dialogs.showEditListDialog,
     lists.getCurrentList()
   );
 
