@@ -941,10 +941,25 @@ dialog#delete-task button.primary {
 
 .close-notification {
   position: absolute;
+  display: block;
+  visibility: hidden;
+  opacity: 0;
   right: 8px;
   top: 8px;
-  background: none;
-  padding: 4px;
+  background-color: #00000000;
+  padding: 6px;
+  transition: 200ms;
+}
+
+.close-notification:hover {
+  background-color: #00000018;
+  transition: background-color 200ms;
+}
+
+.notification:hover .close-notification {
+  visibility: visible;
+  opacity: 1;
+  transition: 200ms;
 }
 
 .notification-icon,
