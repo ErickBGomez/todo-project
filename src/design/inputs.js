@@ -272,17 +272,20 @@ const addSelectOptionValueGridEvent = (selectInputGrid) => {
 };
 
 const changeDateValueEvent = (inputContainer) => {
-  const buttonLabel = inputContainer.querySelector(".button-label");
-  const buttonIcon = inputContainer.querySelector(".button-icon");
   const dateInput = inputContainer.querySelector("input.date-element");
 
-  dateInput.addEventListener("change", () => {
-    inputContainer.dataset.value = dateInput.value;
-    buttonLabel.textContent = dateInput.value ? dateInput.value : "Date";
-    buttonIcon.innerHTML = dateInput.value
-      ? dateSelectedSvg
-      : dateUnselectedSvg;
-  });
+  dateInput.addEventListener("change", () =>
+    setDateValue(inputContainer, dateInput.value)
+  );
+};
+
+const setDateValue = (inputContainer, newValue) => {
+  const buttonLabel = inputContainer.querySelector(".button-label");
+  const buttonIcon = inputContainer.querySelector(".button-icon");
+
+  inputContainer.dataset.value = newValue;
+  buttonLabel.textContent = newValue || "Date";
+  buttonIcon.innerHTML = newValue ? dateSelectedSvg : dateUnselectedSvg;
 };
 
 const addShowDatePickerEvent = (inputButton, dateInput) => {
