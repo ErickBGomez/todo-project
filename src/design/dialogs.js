@@ -407,7 +407,9 @@ const openDeleteDialogEvent = (
 
 const addDeleteListEvent = (deleteButton, listName) => {
   deleteButton.addEventListener("click", () => {
+    page.unloadPage();
     lists.deleteList(listName);
+    sidebar.refreshUserSidebarLists();
   });
 };
 
