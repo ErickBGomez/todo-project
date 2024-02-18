@@ -46,8 +46,11 @@ const createList = (listName, icon) => {
 };
 
 const deleteList = (listName) => {
-  if (getList(listName)) {
-    const listIndex = getListIndex(listName);
+  const listIndex = getListIndex(listName);
+
+  if (listIndex !== -1) {
+    content.splice(listIndex, 1);
+    saveLists();
   }
 };
 
