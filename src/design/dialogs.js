@@ -191,7 +191,65 @@ const showNewTaskDialog = () => {
   dialog.showModal();
 };
 
-// Here goes edit task
+const showEditTaskDialog = (task) => {
+  const dialog = document.createElement("dialog");
+  dialog.id = "new-task";
+
+  const titleInput = document.createElement("input");
+  titleInput.id = "task-title-input";
+  titleInput.type = "text";
+  titleInput.placeholder = "Task title";
+  titleInput.value = task.title;
+
+  const descriptionInput = document.createElement("textarea");
+  descriptionInput.id = "task-description-input";
+  descriptionInput.name = "task-description-input";
+  descriptionInput.rows = "4";
+  descriptionInput.placeholder = "Task description";
+  descriptionInput.value = task.description;
+
+  const selectInputsContainer = document.createElement("div");
+  selectInputsContainer.className = "task-select-inputs";
+
+  const dateInput = inputs.appendDateInput("date-input", dateUnselectedSvg);
+  const selectPriorityInput = inputs.appendSelectInput(
+    "select-priority",
+    priorityUnselectedSvg,
+    [
+      { icon: priorityUnselectedSvg, name: "Priority" },
+      { icon: prioritySelectedSvg, name: "Low" },
+      { icon: prioritySelectedSvg, name: "Medium" },
+      { icon: prioritySelectedSvg, name: "High" },
+    ]
+  );
+  const selectListInput = inputs.appendSelectInput(
+    "select-list",
+    defaultSvg,
+    lists.getListsNamesIcons(),
+    lists.getListIndex(lists.getCurrentList().name)
+  );
+
+  selectInputsContainer.appendChild(dateInput);
+  selectInputsContainer.appendChild(selectPriorityInput);
+  selectInputsContainer.appendChild(selectListInput);
+
+  const dialogButtons = inputs.appendDialogButtons("Edit task");
+  const mainButton = dialogButtons.querySelector("button.primary");
+
+  dialog.appendChild(titleInput);
+  dialog.appendChild(descriptionInput);
+  dialog.appendChild(selectInputsContainer);
+  dialog.appendChild(dialogButtons);
+
+  document.body.appendChild(dialog);
+
+  addCloseDialogEvent(dialog);
+  addCloseDialogButtonsEvent(dialog, Array.from(dialogButtons.childNodes));
+  // addCreateTaskEvent(dialog);
+  disableEmptyDialogEvent(titleInput, mainButton);
+
+  dialog.showModal();
+};
 
 const showDeleteTaskDialog = (taskId) => {
   const dialog = document.createElement("dialog");
@@ -271,6 +329,7 @@ const showTaskDetailsDialog = (list, task) => {
   );
 
   const deleteOption = moreOptions.querySelector(".delete-task");
+  const editOption = moreOptions.querySelector(".edit-task");
 
   actionsContainer.appendChild(closeDialog);
   actionsContainer.appendChild(moreOptions);
@@ -319,6 +378,7 @@ const showTaskDetailsDialog = (list, task) => {
   addCloseDialogEvent(dialog);
   addCloseDialogButtonsEvent(dialog, closeDialog);
   openDeleteDialogEvent(deleteOption, showDeleteTaskDialog, task.id);
+  openDeleteDialogEvent(editOption, showEditTaskDialog, task);
 
   dialog.showModal();
 };
@@ -422,9 +482,10 @@ const addDeleteTaskEvent = (deleteButton, taskId) => {
 
 export {
   showNewListDialog,
-  showNewTaskDialog,
-  showTaskDetailsDialog,
   showDeleteListDialog,
+  showNewTaskDialog,
+  showEditTaskDialog,
   showDeleteTaskDialog,
+  showTaskDetailsDialog,
   openDeleteDialogEvent,
 };
