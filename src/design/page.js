@@ -17,6 +17,7 @@ let listPage;
 function createListContainer() {
   const page = document.createElement("div");
   page.id = "page";
+  // Hide page when first load
   page.className = "hide";
 
   const background = document.createElement("div");
@@ -230,10 +231,12 @@ function refreshTaskElements() {
     lists.getCurrentList().name
   )})`;
 
+  // Add all completed tasks to page
   lists.getCurrentList().completed.forEach((task) => {
     completedContainer.appendChild(createNewTaskElement(task, true));
   });
 
+  // Hide completed tasks container when completed array is empty
   if (!lists.getCompletedLength(lists.getCurrentList().name)) {
     completedSection.classList.add("hide");
   } else {
@@ -266,6 +269,14 @@ function loadListContent() {
   );
 
   refreshTaskElements();
+}
+
+function unloadPage() {
+  const pageContainer = document.querySelector("#page");
+  const emptyPageContainer = document.querySelector(".empty-page");
+
+  pageContainer.classList.add("hide");
+  emptyPageContainer.classList.remove("hide");
 }
 
 function addNewTaskEvent() {
@@ -327,7 +338,6 @@ function renderPage() {
   listPage = document.createElement("div");
   listPage.id = "list-page";
 
-  // listPage.appendChild(createBackground());
   listPage.appendChild(createListContainer());
   listPage.appendChild(emptyPage());
 
@@ -337,4 +347,4 @@ function renderPage() {
   document.body.appendChild(listPage);
 }
 
-export { refreshTaskElements, loadListContent, renderPage };
+export { refreshTaskElements, loadListContent, unloadPage, renderPage };
