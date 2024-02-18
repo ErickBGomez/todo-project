@@ -151,41 +151,40 @@ const showNewTaskDialog = () => {
   const selectInputsContainer = document.createElement("div");
   selectInputsContainer.className = "task-select-inputs";
 
-  selectInputsContainer.appendChild(
-    inputs.appendDateInput("date-input", dateUnselectedSvg)
-  );
-  selectInputsContainer.appendChild(
-    inputs.appendSelectInput("select-priority", priorityUnselectedSvg, [
+  const dateInput = inputs.appendDateInput("date-input", dateUnselectedSvg);
+  const selectPriorityInput = inputs.appendSelectInput(
+    "select-priority",
+    priorityUnselectedSvg,
+    [
       { icon: priorityUnselectedSvg, name: "Priority" },
       { icon: prioritySelectedSvg, name: "Low" },
       { icon: prioritySelectedSvg, name: "Medium" },
       { icon: prioritySelectedSvg, name: "High" },
-    ])
+    ]
   );
-  selectInputsContainer.appendChild(
-    inputs.appendSelectInput(
-      "select-list",
-      defaultSvg,
-      lists.getListsNamesIcons(),
-      lists.getListIndex(lists.getCurrentList().name)
-    )
+  const selectListInput = inputs.appendSelectInput(
+    "select-list",
+    defaultSvg,
+    lists.getListsNamesIcons(),
+    lists.getListIndex(lists.getCurrentList().name)
   );
+
+  selectInputsContainer.appendChild(dateInput);
+  selectInputsContainer.appendChild(selectPriorityInput);
+  selectInputsContainer.appendChild(selectListInput);
+
+  const dialogButtons = inputs.appendDialogButtons("Add task");
+  const mainButton = dialogButtons.querySelector("button.primary");
 
   dialog.appendChild(titleInput);
   dialog.appendChild(descriptionInput);
   dialog.appendChild(selectInputsContainer);
-  dialog.appendChild(inputs.appendDialogButtons("Add task"));
+  dialog.appendChild(dialogButtons);
 
   document.body.appendChild(dialog);
 
-  const closeButtons = Array.from(
-    document.querySelectorAll(".dialog-buttons button")
-  );
-
-  const mainButton = document.querySelector(".dialog-buttons .primary");
-
   addCloseDialogEvent(dialog);
-  addCloseDialogButtonsEvent(dialog, closeButtons);
+  addCloseDialogButtonsEvent(dialog, Array.from(dialogButtons.childNodes));
   addCreateTaskEvent(dialog);
   disableEmptyDialogEvent(titleInput, mainButton);
 
