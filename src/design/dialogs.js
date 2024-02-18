@@ -46,36 +46,34 @@ const showNewListDialog = () => {
   titleInput.maxLength = "25";
   titleInput.autofocus = true;
 
-  titleContainer.appendChild(
-    inputs.appendSelectInputGrid("select-icon", [
-      defaultSvg,
-      starSvg,
-      heartSvg,
-      sofaSvg,
-      treeSvg,
-      shoppingSvg,
-      schoolSvg,
-      pencilSvg,
-      planeSvg,
-      cloudSvg,
-      lightbulbSvg,
-      bookSvg,
-    ])
-  );
+  const selectIconInput = inputs.appendSelectInputGrid("select-icon", [
+    defaultSvg,
+    starSvg,
+    heartSvg,
+    sofaSvg,
+    treeSvg,
+    shoppingSvg,
+    schoolSvg,
+    pencilSvg,
+    planeSvg,
+    cloudSvg,
+    lightbulbSvg,
+    bookSvg,
+  ]);
+
+  titleContainer.appendChild(selectIconInput);
   titleContainer.appendChild(titleInput);
 
+  const dialogButtons = inputs.appendDialogButtons("Create list");
+  const mainButton = dialogButtons.querySelector("button.primary");
+
   dialog.appendChild(titleContainer);
-  dialog.appendChild(inputs.appendDialogButtons("Create list"));
+  dialog.appendChild(dialogButtons);
 
   document.body.appendChild(dialog);
 
-  const closeButtons = Array.from(
-    document.querySelectorAll(".dialog-buttons button")
-  );
-  const mainButton = document.querySelector(".dialog-buttons .primary");
-
   addCloseDialogEvent(dialog);
-  addCloseDialogButtonsEvent(dialog, closeButtons);
+  addCloseDialogButtonsEvent(dialog, Array.from(dialogButtons.childNodes));
   addCreateListEvent(dialog);
   disableEmptyDialogEvent(titleInput, mainButton);
 
@@ -126,7 +124,7 @@ const showDeleteListDialog = (list) => {
   document.body.appendChild(dialog);
 
   addCloseDialogEvent(dialog);
-  addCloseDialogButtonsEvent(dialog, dialogButtons);
+  addCloseDialogButtonsEvent(dialog, Array.from(dialogButtons.childNodes));
   addDeleteListEvent(deleteButton, lists.getCurrentList().name);
 
   dialog.showModal();
@@ -282,7 +280,7 @@ const showDeleteTaskDialog = (taskId) => {
   document.body.appendChild(dialog);
 
   addCloseDialogEvent(dialog);
-  addCloseDialogButtonsEvent(dialog, dialogButtons);
+  addCloseDialogButtonsEvent(dialog, Array.from(dialogButtons.childNodes));
   addDeleteTaskEvent(deleteButton, taskId);
 
   dialog.showModal();
