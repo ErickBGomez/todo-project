@@ -425,6 +425,7 @@ const addCreateTaskEvent = (dialogContainer) => {
 };
 
 const addEditTaskEvent = (dialogContainer, taskId) => {
+  const taskDetailsDialog = document.querySelector("dialog#task-details");
   const editButton = dialogContainer.querySelector("button.primary");
   const titleInput = dialogContainer.querySelector("#task-title-input");
   const descriptionInput = dialogContainer.querySelector(
@@ -432,7 +433,6 @@ const addEditTaskEvent = (dialogContainer, taskId) => {
   );
   const dateInput = dialogContainer.querySelector("#date-input");
   const priorityInput = dialogContainer.querySelector("#select-priority");
-  console.log(taskId);
 
   editButton.addEventListener("click", () => {
     lists.editTask(lists.getCurrentList().name, taskId, {
@@ -441,6 +441,9 @@ const addEditTaskEvent = (dialogContainer, taskId) => {
       date: dateInput.dataset.value,
       priority: priorityInput.dataset.value,
     });
+
+    page.refreshTaskElements();
+    taskDetailsDialog.close();
   });
 };
 
