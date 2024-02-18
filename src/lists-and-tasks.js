@@ -95,6 +95,32 @@ const restoreTask = (listName, taskId) => {
   saveLists();
 };
 
+const editTask = (
+  listName,
+  taskId,
+  newTask = {
+    title: "Title",
+    description: "Description",
+    date: "Date",
+    priority: "Priority",
+  }
+) => {
+  console.log(
+    "List target: " +
+      listName +
+      "\nTask ID: " +
+      taskId +
+      "\nnewTask info:\n - title: " +
+      newTask.title +
+      "\n - description: " +
+      newTask.description +
+      "\n - Date: " +
+      newTask.date +
+      "\n - Priority: " +
+      newTask.priority
+  );
+};
+
 const deleteTask = (listName, taskId) => {
   const selectedList = getList(listName);
 
@@ -156,6 +182,7 @@ export {
   addNewTask,
   completeTask,
   restoreTask,
+  editTask,
   deleteTask,
   setCurrentList,
   getCurrentList,

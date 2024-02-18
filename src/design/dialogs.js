@@ -249,7 +249,7 @@ const showEditTaskDialog = (task) => {
 
   addCloseDialogEvent(dialog);
   addCloseDialogButtonsEvent(dialog, Array.from(dialogButtons.childNodes));
-  // addCreateTaskEvent(dialog);
+  addEditTaskEvent(dialog);
   disableEmptyDialogEvent(titleInput, mainButton);
 
   dialog.showModal();
@@ -421,6 +421,25 @@ const addCreateTaskEvent = (dialogContainer) => {
     );
 
     page.refreshTaskElements();
+  });
+};
+
+const addEditTaskEvent = (dialogContainer, taskId) => {
+  const editButton = dialogContainer.querySelector("button.primary");
+  const titleInput = dialogContainer.querySelector("#task-title-input");
+  const descriptionInput = dialogContainer.querySelector(
+    "#task-description-input"
+  );
+  const dateInput = dialogContainer.querySelector("#date-input");
+  const priorityInput = dialogContainer.querySelector("#select-priority");
+
+  editButton.addEventListener("click", () => {
+    lists.editTask(lists.getCurrentList().name, taskId, {
+      title: titleInput.value,
+      description: descriptionInput.value,
+      date: dateInput.dataset.value,
+      priority: priorityInput.dataset.value,
+    });
   });
 };
 
