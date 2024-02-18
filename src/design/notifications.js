@@ -1,3 +1,4 @@
+import successNotificationSvg from "../img/svg/others/success-notification.svg";
 import closeSvg from "../img/svg/others/close.svg";
 
 const renderNotifications = () => {
@@ -15,12 +16,16 @@ const displayNotification = (label) => {
   const newNotification = document.createElement("div");
   newNotification.className = "notification";
 
+  const notificationIcon = document.createElement("span");
+  notificationIcon.className = "notification-icon";
+  notificationIcon.innerHTML = successNotificationSvg;
+
   const notificationLabel = document.createElement("p");
   notificationLabel.className = "notification-label";
   notificationLabel.textContent = label;
 
   const closeButton = document.createElement("button");
-  closeButton.className = "close-notification-button";
+  closeButton.className = "close-notification";
 
   const closeButtonIcon = document.createElement("span");
   closeButtonIcon.className = "button-icon";
@@ -28,6 +33,7 @@ const displayNotification = (label) => {
 
   closeButton.appendChild(closeButtonIcon);
 
+  newNotification.appendChild(notificationIcon);
   newNotification.appendChild(notificationLabel);
   newNotification.appendChild(closeButton);
 

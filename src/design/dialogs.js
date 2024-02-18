@@ -29,6 +29,7 @@ import * as lists from "../lists-and-tasks";
 import * as sidebar from "./sidebar.js";
 import * as page from "./page.js";
 import * as inputs from "./inputs.js";
+import * as notifications from "./notifications.js";
 
 const listIcons = [
   defaultSvg,
@@ -479,6 +480,7 @@ const addCreateTaskEvent = (dialogContainer) => {
       priorityInput.dataset.value
     );
 
+    notifications.displayNotification("Task created successfully.");
     page.refreshTaskElements();
   });
 };
