@@ -31,20 +31,7 @@ function createListContainer() {
 
   const title = document.createElement("h1");
   title.id = "list-title";
-  title.textContent = "List Title";
-
-  const listOptions = inputs.appendOptionsButton(
-    horizontalOptionsSvg,
-    "list-more-options",
-    [
-      { label: "Edit", icon: editSvg, optionClass: "edit-list" },
-      { label: "Delete", icon: deleteSvg, optionClass: "delete-list" },
-    ]
-  );
-  const deleteOption = listOptions.querySelector(".delete-list");
-
-  titleSection.appendChild(title);
-  titleSection.appendChild(listOptions);
+  title.textContent = "List title";
 
   const tasksContaier = document.createElement("div");
   tasksContaier.id = "tasks-container";
@@ -249,21 +236,36 @@ function refreshTaskElements() {
 function loadListContent() {
   const emptyContainer = listPage.querySelector(".empty-page");
   const pageContainer = listPage.querySelector("#page");
-  const listTitle = listPage.querySelector("#list-title");
-  const deleteOption = listPage.querySelector(".options .delete-list");
-  // Clone element to remove all previous events
-  const deleteOptionClone = deleteOption.cloneNode(true);
-  deleteOption.parentNode.replaceChild(deleteOptionClone, deleteOption);
+  const titleSection = listPage.querySelector(".title-section");
 
+  // Hide empty page container
   emptyContainer.classList.add("hide");
   pageContainer.classList.remove("hide");
 
-  // Set title
-  listTitle.textContent = lists.getCurrentList().name;
+  // Reload titleSection to load title and options
+  titleSection.innerHTML = "";
+
+  const title = document.createElement("h1");
+  title.id = "list-title";
+  title.textContent = lists.getCurrentList().name;
+
+  const listOptions = inputs.appendOptionsButton(
+    horizontalOptionsSvg,
+    "list-more-options",
+    [
+      { label: "Edit", icon: editSvg, optionClass: "edit-list" },
+      { label: "Delete", icon: deleteSvg, optionClass: "delete-list" },
+    ]
+  );
+
+  titleSection.appendChild(title);
+  titleSection.appendChild(listOptions);
+
+  const deleteOption = listOptions.querySelector(".delete-list");
 
   // Set events page
   dialogs.openDeleteDialogEvent(
-    deleteOptionClone,
+    deleteOption,
     dialogs.showDeleteListDialog,
     lists.getCurrentList()
   );
