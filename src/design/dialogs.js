@@ -212,6 +212,8 @@ const showEditTaskDialog = (task) => {
   selectInputsContainer.className = "task-select-inputs";
 
   const dateInput = inputs.appendDateInput("date-input", dateUnselectedSvg);
+  inputs.selectDateValue(dateInput, task.date);
+
   const selectPriorityInput = inputs.appendSelectInput(
     "select-priority",
     priorityUnselectedSvg,
@@ -222,6 +224,8 @@ const showEditTaskDialog = (task) => {
       { icon: prioritySelectedSvg, name: "High" },
     ]
   );
+  inputs.selectOptionValue(selectPriorityInput, task.priority);
+
   const selectListInput = inputs.appendSelectInput(
     "select-list",
     defaultSvg,

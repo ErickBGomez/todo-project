@@ -275,11 +275,11 @@ const changeDateValueEvent = (inputContainer) => {
   const dateInput = inputContainer.querySelector("input.date-element");
 
   dateInput.addEventListener("change", () =>
-    setDateValue(inputContainer, dateInput.value)
+    selectDateValue(inputContainer, dateInput.value)
   );
 };
 
-const setDateValue = (inputContainer, newValue) => {
+const selectDateValue = (inputContainer, newValue) => {
   const buttonLabel = inputContainer.querySelector(".button-label");
   const buttonIcon = inputContainer.querySelector(".button-icon");
 
@@ -298,4 +298,6 @@ export {
   appendSelectInputGrid,
   appendDateInput,
   appendOptionsButton,
+  selectOptionValue,
+  selectDateValue,
 };
