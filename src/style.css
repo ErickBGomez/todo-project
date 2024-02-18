@@ -872,3 +872,21 @@ dialog#delete-list button.primary,
 dialog#delete-task button.primary {
   background-color: var(--Error);
 }
+
+.list-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.list-info .list-icon svg {
+  fill: var(--Primary);
+  width: 50px;
+  height: 50px;
+}
+
+.list-info .list-title {
+  font-weight: 500;
+  font-size: 1.2rem;
+  color: var(--Primary);
+  margin-bottom: 16px;
+}
