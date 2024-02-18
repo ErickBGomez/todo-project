@@ -30,6 +30,21 @@ import * as sidebar from "./sidebar.js";
 import * as page from "./page.js";
 import * as inputs from "./inputs.js";
 
+const listIcons = [
+  defaultSvg,
+  starSvg,
+  heartSvg,
+  sofaSvg,
+  treeSvg,
+  shoppingSvg,
+  schoolSvg,
+  pencilSvg,
+  planeSvg,
+  cloudSvg,
+  lightbulbSvg,
+  bookSvg,
+];
+
 // List dialogs:
 const showNewListDialog = () => {
   const dialog = document.createElement("dialog");
@@ -46,20 +61,10 @@ const showNewListDialog = () => {
   titleInput.maxLength = "25";
   titleInput.autofocus = true;
 
-  const selectIconInput = inputs.appendSelectInputGrid("select-icon", [
-    defaultSvg,
-    starSvg,
-    heartSvg,
-    sofaSvg,
-    treeSvg,
-    shoppingSvg,
-    schoolSvg,
-    pencilSvg,
-    planeSvg,
-    cloudSvg,
-    lightbulbSvg,
-    bookSvg,
-  ]);
+  const selectIconInput = inputs.appendSelectInputGrid(
+    "select-icon",
+    listIcons
+  );
 
   titleContainer.appendChild(selectIconInput);
   titleContainer.appendChild(titleInput);
@@ -80,7 +85,46 @@ const showNewListDialog = () => {
   dialog.showModal();
 };
 
-// Here goes edit list
+const showEditListDialog = (list) => {
+  const dialog = document.createElement("dialog");
+  dialog.id = "edit-list";
+
+  const titleContainer = document.createElement("div");
+  titleContainer.className = "title-container";
+
+  const titleInput = document.createElement("input");
+  titleInput.type = "text";
+  titleInput.id = "list-title-input";
+  titleInput.name = "list-title-input";
+  titleInput.placeholder = "List title";
+  titleInput.maxLength = "25";
+  titleInput.autofocus = true;
+  titleInput.value = list.name;
+
+  const selectIconInput = inputs.appendSelectInputGrid(
+    "select-icon",
+    listIcons
+  );
+  inputs.selectOptionValueGrid(selectIconInput, listIcons.indexOf(list.icon));
+
+  titleContainer.appendChild(selectIconInput);
+  titleContainer.appendChild(titleInput);
+
+  const dialogButtons = inputs.appendDialogButtons("Edit list");
+  const mainButton = dialogButtons.querySelector("button.primary");
+
+  dialog.appendChild(titleContainer);
+  dialog.appendChild(dialogButtons);
+
+  document.body.appendChild(dialog);
+
+  addCloseDialogEvent(dialog);
+  addCloseDialogButtonsEvent(dialog, Array.from(dialogButtons.childNodes));
+  // addCreateListEvent(dialog);
+  disableEmptyDialogEvent(titleInput, mainButton);
+
+  dialog.showModal();
+};
 
 const showDeleteListDialog = (list) => {
   const dialog = document.createElement("dialog");
@@ -504,6 +548,7 @@ const addDeleteTaskEvent = (deleteButton, taskId) => {
 
 export {
   showNewListDialog,
+  showEditListDialog,
   showDeleteListDialog,
   showNewTaskDialog,
   showEditTaskDialog,
