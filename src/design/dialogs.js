@@ -120,7 +120,7 @@ const showEditListDialog = (list) => {
 
   addCloseDialogEvent(dialog);
   addCloseDialogButtonsEvent(dialog, Array.from(dialogButtons.childNodes));
-  // addCreateListEvent(dialog);
+  addEditListEvent(dialog);
   disableEmptyDialogEvent(titleInput, mainButton);
 
   dialog.showModal();
@@ -440,6 +440,23 @@ const addCreateListEvent = (dialogContainer) => {
   createButton.addEventListener("click", () => {
     lists.createList(titleInput.value, selectedIcon.innerHTML);
     sidebar.refreshUserSidebarLists();
+  });
+};
+
+const addEditListEvent = (dialogContainer) => {
+  const editButton = dialogContainer.querySelector("button.primary");
+  const titleInput = dialogContainer.querySelector("input#list-title-input");
+  const selectedIcon = dialogContainer.querySelector(
+    "#select-icon .button-icon"
+  );
+
+  editButton.addEventListener("click", () => {
+    lists.editList(lists.getCurrentList().name, {
+      name: titleInput.value,
+      icon: selectedIcon.innerHTML,
+    });
+    sidebar.refreshUserSidebarLists();
+    page.refreshListTitle();
   });
 };
 

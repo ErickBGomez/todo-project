@@ -233,6 +233,11 @@ function refreshTaskElements() {
   addRestoreTaskEvent();
 }
 
+function refreshListTitle() {
+  const listTitle = document.querySelector("#list-title");
+  listTitle.textContent = lists.getCurrentList().name;
+}
+
 function loadListContent() {
   const emptyContainer = listPage.querySelector(".empty-page");
   const pageContainer = listPage.querySelector("#page");
@@ -354,4 +359,10 @@ function renderPage() {
   document.body.appendChild(listPage);
 }
 
-export { refreshTaskElements, loadListContent, unloadPage, renderPage };
+export {
+  refreshTaskElements,
+  refreshListTitle,
+  loadListContent,
+  unloadPage,
+  renderPage,
+};

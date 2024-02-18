@@ -45,6 +45,15 @@ const createList = (listName, icon) => {
   }
 };
 
+const editList = (listName, newList = { name: "Name", icon: defaultSvg }) => {
+  const selectedList = getList(listName);
+
+  selectedList.name = newList.name;
+  selectedList.icon = newList.icon;
+
+  saveLists();
+};
+
 const deleteList = (listName) => {
   const listIndex = getListIndex(listName);
 
@@ -178,6 +187,7 @@ const getListIndex = (listName) =>
 export {
   refreshLists,
   createList,
+  editList,
   deleteList,
   addNewTask,
   completeTask,
