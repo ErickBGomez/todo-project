@@ -907,3 +907,57 @@ dialog#delete-task button.primary {
   font-size: 1.2rem;
   color: var(--Primary);
 }
+
+/* Notifications */
+#notifications-container {
+  position: fixed;
+  width: 350px;
+  bottom: 16px;
+  right: 16px;
+}
+
+.notification {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background-color: hsl(143, 47%, 45%);
+  color: var(--White);
+  padding: 26px 22px;
+  border-radius: 8px;
+  width: 100%;
+}
+
+.notification-icon {
+  display: block;
+  width: 26px;
+  height: 26px;
+}
+
+.notification-label {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.close-notification {
+  position: absolute;
+  right: 8px;
+  top: 8px;
+  background: none;
+  padding: 4px;
+}
+
+.notification-icon,
+.close-notification .button-icon {
+  fill: var(--White);
+}
+
+.close-notification .button-icon {
+  display: block;
+  width: 16px;
+  height: 16px;
+}
+
+.button-icon svg {
+  display: block;
+}
