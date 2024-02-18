@@ -130,7 +130,7 @@ const showNewTaskDialog = () => {
       "select-list",
       defaultSvg,
       lists.getListsNamesIcons(),
-      lists.getCurrentListIndex()
+      lists.getListIndex(lists.getCurrentList().name)
     )
   );
 
@@ -301,6 +301,7 @@ const showDeleteListDialog = (list) => {
 
   addCloseDialogEvent(dialog);
   addCloseDialogButtonsEvent(dialog, dialogButtons);
+  addDeleteListEvent(deleteButton, lists.getCurrentList().name);
 
   dialog.showModal();
 };
@@ -401,6 +402,12 @@ const openDeleteDialogEvent = (
 ) => {
   deleteOption.addEventListener("click", () => {
     dialogCallback(dialogParameters);
+  });
+};
+
+const addDeleteListEvent = (deleteButton, listName) => {
+  deleteButton.addEventListener("click", () => {
+    lists.deleteList(listName);
   });
 };
 

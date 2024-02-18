@@ -45,6 +45,12 @@ const createList = (listName, icon) => {
   }
 };
 
+const deleteList = (listName) => {
+  if (getList(listName)) {
+    const listIndex = getListIndex(listName);
+  }
+};
+
 const getList = (listName) => content.find((list) => list.name === listName);
 
 const addNewTask = (listName, title, description, date, priority) => {
@@ -137,12 +143,13 @@ const getListsNamesIcons = () => {
   return namesIconsArray;
 };
 
-const getCurrentListIndex = () =>
-  content.indexOf(content.find((list) => list.name == currentList.name));
+const getListIndex = (listName) =>
+  content.indexOf(content.find((list) => list.name == listName));
 
 export {
   refreshLists,
   createList,
+  deleteList,
   addNewTask,
   completeTask,
   restoreTask,
@@ -152,5 +159,5 @@ export {
   getCompletedLength,
   getListsNames,
   getListsNamesIcons,
-  getCurrentListIndex,
+  getListIndex,
 };
