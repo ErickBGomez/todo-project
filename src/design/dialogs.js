@@ -30,7 +30,7 @@ import * as sidebar from "./sidebar.js";
 import * as page from "./page.js";
 import * as inputs from "./inputs.js";
 
-// New list:
+// List dialogs:
 const showNewListDialog = () => {
   const dialog = document.createElement("dialog");
   dialog.id = "new-list";
@@ -82,20 +82,57 @@ const showNewListDialog = () => {
   dialog.showModal();
 };
 
-const addCreateListEvent = (dialogContainer) => {
-  const createButton = dialogContainer.querySelector("button.primary");
-  const titleInput = dialogContainer.querySelector("input#list-title-input");
-  const selectedIcon = dialogContainer.querySelector(
-    "#select-icon .button-icon"
-  );
+// Here goes edit list
 
-  createButton.addEventListener("click", () => {
-    lists.createList(titleInput.value, selectedIcon.innerHTML);
-    sidebar.refreshUserSidebarLists();
-  });
+const showDeleteListDialog = (list) => {
+  const dialog = document.createElement("dialog");
+  dialog.id = "delete-list";
+
+  const message = document.createElement("div");
+  message.className = "message";
+
+  const messageTitle = document.createElement("p");
+  messageTitle.className = "message-title";
+  messageTitle.textContent = "Are you sure you want to delete this list?";
+
+  const listInfo = document.createElement("div");
+  listInfo.className = "list-info";
+
+  const listIcon = document.createElement("span");
+  listIcon.className = "list-icon";
+  listIcon.innerHTML = list.icon;
+
+  const listTitle = document.createElement("p");
+  listTitle.className = "list-title";
+  listTitle.textContent = list.name;
+
+  listInfo.appendChild(listIcon);
+  listInfo.appendChild(listTitle);
+
+  const subMessage = document.createElement("p");
+  subMessage.className = "sub-message";
+  subMessage.textContent = "This action cannot be undone.";
+
+  const dialogButtons = inputs.appendDialogButtons("Delete");
+  const deleteButton = dialogButtons.querySelector("button.primary");
+
+  message.appendChild(messageTitle);
+  message.appendChild(listInfo);
+  message.appendChild(subMessage);
+
+  dialog.appendChild(message);
+  dialog.appendChild(dialogButtons);
+
+  document.body.appendChild(dialog);
+
+  addCloseDialogEvent(dialog);
+  addCloseDialogButtonsEvent(dialog, dialogButtons);
+  addDeleteListEvent(deleteButton, lists.getCurrentList().name);
+
+  dialog.showModal();
 };
 
-// New task:
+// Task dialogs:
 const showNewTaskDialog = () => {
   const dialog = document.createElement("dialog");
   dialog.id = "new-task";
@@ -155,156 +192,7 @@ const showNewTaskDialog = () => {
   dialog.showModal();
 };
 
-// Task details:
-const appendSecondaryInfoElements = (label, icon, elementClass) => {
-  const container = document.createElement("div");
-  container.classList.add("info-element");
-  container.classList.add(elementClass);
-  container.dataset.value = label;
-
-  const elementIcon = document.createElement("span");
-  elementIcon.className = "icon";
-  elementIcon.innerHTML = icon;
-
-  const elementLabel = document.createElement("p");
-  elementLabel.className = "label";
-  elementLabel.textContent = label;
-
-  container.appendChild(elementIcon);
-  container.appendChild(elementLabel);
-
-  return container;
-};
-
-const showTaskDetailsDialog = (list, task) => {
-  const dialog = document.createElement("dialog");
-  dialog.id = "task-details";
-
-  // Actions container
-  const actionsContainer = document.createElement("div");
-  actionsContainer.className = "actions-container";
-
-  const closeDialog = document.createElement("button");
-  closeDialog.id = "close-task-details";
-  const closeDialogIcon = document.createElement("span");
-  closeDialogIcon.className = "button-icon";
-  closeDialogIcon.innerHTML = closeSvg;
-
-  closeDialog.appendChild(closeDialogIcon);
-
-  const moreOptions = inputs.appendOptionsButton(
-    horizontalOptionsSvg,
-    "task-more-options",
-    [
-      { label: "Edit", icon: editSvg, optionClass: "edit-task" },
-      { label: "Delete", icon: deleteSvg, optionClass: "delete-task" },
-    ]
-  );
-
-  const deleteOption = moreOptions.querySelector(".delete-task");
-
-  actionsContainer.appendChild(closeDialog);
-  actionsContainer.appendChild(moreOptions);
-
-  // Task main information
-  const mainInfo = document.createElement("div");
-  mainInfo.className = "main-information";
-
-  const taskTitle = document.createElement("p");
-  taskTitle.className = "task-title";
-  taskTitle.textContent = task.title;
-
-  const taskDescription = document.createElement("p");
-  taskDescription.className = "task-description";
-  taskDescription.textContent = task.description || "No description";
-
-  mainInfo.appendChild(taskTitle);
-  mainInfo.appendChild(taskDescription);
-
-  // Task secondary information
-
-  const secondaryInfo = document.createElement("div");
-  secondaryInfo.className = "secondary-information";
-
-  if (task.date) {
-    secondaryInfo.appendChild(
-      appendSecondaryInfoElements(task.date, dateSelectedSvg, "task-date")
-    );
-  }
-  if (task.priority) {
-    secondaryInfo.appendChild(
-      appendSecondaryInfoElements(
-        task.priority,
-        prioritySelectedSvg,
-        "task-priority"
-      )
-    );
-  }
-  secondaryInfo.appendChild(
-    appendSecondaryInfoElements(list.name, list.icon, "task-list")
-  );
-
-  dialog.appendChild(actionsContainer);
-  dialog.appendChild(mainInfo);
-  dialog.appendChild(secondaryInfo);
-
-  document.body.appendChild(dialog);
-
-  // Events
-  addCloseDialogEvent(dialog);
-  addCloseDialogButtonsEvent(dialog, closeDialog);
-  openDeleteDialogEvent(deleteOption, showDeleteTaskDialog, task.id);
-
-  dialog.showModal();
-};
-
-const showDeleteListDialog = (list) => {
-  const dialog = document.createElement("dialog");
-  dialog.id = "delete-list";
-
-  const message = document.createElement("div");
-  message.className = "message";
-
-  const messageTitle = document.createElement("p");
-  messageTitle.className = "message-title";
-  messageTitle.textContent = "Are you sure you want to delete this list?";
-
-  const listInfo = document.createElement("div");
-  listInfo.className = "list-info";
-
-  const listIcon = document.createElement("span");
-  listIcon.className = "list-icon";
-  listIcon.innerHTML = list.icon;
-
-  const listTitle = document.createElement("p");
-  listTitle.className = "list-title";
-  listTitle.textContent = list.name;
-
-  listInfo.appendChild(listIcon);
-  listInfo.appendChild(listTitle);
-
-  const subMessage = document.createElement("p");
-  subMessage.className = "sub-message";
-  subMessage.textContent = "This action cannot be undone.";
-
-  const dialogButtons = inputs.appendDialogButtons("Delete");
-  const deleteButton = dialogButtons.querySelector("button.primary");
-
-  message.appendChild(messageTitle);
-  message.appendChild(listInfo);
-  message.appendChild(subMessage);
-
-  dialog.appendChild(message);
-  dialog.appendChild(dialogButtons);
-
-  document.body.appendChild(dialog);
-
-  addCloseDialogEvent(dialog);
-  addCloseDialogButtonsEvent(dialog, dialogButtons);
-  addDeleteListEvent(deleteButton, lists.getCurrentList().name);
-
-  dialog.showModal();
-};
+// Here goes edit task
 
 const showDeleteTaskDialog = (taskId) => {
   const dialog = document.createElement("dialog");
@@ -339,7 +227,117 @@ const showDeleteTaskDialog = (taskId) => {
   dialog.showModal();
 };
 
+const appendSecondaryInfoElements = (label, icon, elementClass) => {
+  const container = document.createElement("div");
+  container.classList.add("info-element");
+  container.classList.add(elementClass);
+  container.dataset.value = label;
+
+  const elementIcon = document.createElement("span");
+  elementIcon.className = "icon";
+  elementIcon.innerHTML = icon;
+
+  const elementLabel = document.createElement("p");
+  elementLabel.className = "label";
+  elementLabel.textContent = label;
+
+  container.appendChild(elementIcon);
+  container.appendChild(elementLabel);
+
+  return container;
+};
+
+const showTaskDetailsDialog = (list, task) => {
+  const dialog = document.createElement("dialog");
+  dialog.id = "task-details";
+
+  const actionsContainer = document.createElement("div");
+  actionsContainer.className = "actions-container";
+
+  const closeDialog = document.createElement("button");
+  closeDialog.id = "close-task-details";
+  const closeDialogIcon = document.createElement("span");
+  closeDialogIcon.className = "button-icon";
+  closeDialogIcon.innerHTML = closeSvg;
+
+  closeDialog.appendChild(closeDialogIcon);
+
+  const moreOptions = inputs.appendOptionsButton(
+    horizontalOptionsSvg,
+    "task-more-options",
+    [
+      { label: "Edit", icon: editSvg, optionClass: "edit-task" },
+      { label: "Delete", icon: deleteSvg, optionClass: "delete-task" },
+    ]
+  );
+
+  const deleteOption = moreOptions.querySelector(".delete-task");
+
+  actionsContainer.appendChild(closeDialog);
+  actionsContainer.appendChild(moreOptions);
+
+  const mainInfo = document.createElement("div");
+  mainInfo.className = "main-information";
+
+  const taskTitle = document.createElement("p");
+  taskTitle.className = "task-title";
+  taskTitle.textContent = task.title;
+
+  const taskDescription = document.createElement("p");
+  taskDescription.className = "task-description";
+  taskDescription.textContent = task.description || "No description";
+
+  mainInfo.appendChild(taskTitle);
+  mainInfo.appendChild(taskDescription);
+
+  const secondaryInfo = document.createElement("div");
+  secondaryInfo.className = "secondary-information";
+
+  if (task.date) {
+    secondaryInfo.appendChild(
+      appendSecondaryInfoElements(task.date, dateSelectedSvg, "task-date")
+    );
+  }
+  if (task.priority) {
+    secondaryInfo.appendChild(
+      appendSecondaryInfoElements(
+        task.priority,
+        prioritySelectedSvg,
+        "task-priority"
+      )
+    );
+  }
+  secondaryInfo.appendChild(
+    appendSecondaryInfoElements(list.name, list.icon, "task-list")
+  );
+
+  dialog.appendChild(actionsContainer);
+  dialog.appendChild(mainInfo);
+  dialog.appendChild(secondaryInfo);
+
+  document.body.appendChild(dialog);
+
+  addCloseDialogEvent(dialog);
+  addCloseDialogButtonsEvent(dialog, closeDialog);
+  openDeleteDialogEvent(deleteOption, showDeleteTaskDialog, task.id);
+
+  dialog.showModal();
+};
+
 // Dialog events
+const addCreateListEvent = (dialogContainer) => {
+  const createButton = dialogContainer.querySelector("button.primary");
+  const titleInput = dialogContainer.querySelector("input#list-title-input");
+  const selectedIcon = dialogContainer.querySelector(
+    "#select-icon .button-icon"
+  );
+
+  createButton.addEventListener("click", () => {
+    lists.createList(titleInput.value, selectedIcon.innerHTML);
+    sidebar.refreshUserSidebarLists();
+  });
+};
+
 const addCreateTaskEvent = (dialogContainer) => {
   const createButton = dialogContainer.querySelector("button.primary");
   const titleInput = dialogContainer.querySelector("#task-title-input");
