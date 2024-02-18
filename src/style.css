@@ -910,6 +910,9 @@ dialog#delete-task button.primary {
 
 /* Notifications */
 #notifications-container {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 12px;
   position: fixed;
   width: 350px;
   bottom: 16px;
@@ -926,6 +929,7 @@ dialog#delete-task button.primary {
   padding: 26px 22px;
   border-radius: 8px;
   width: 100%;
+  user-select: none;
 }
 
 .notification-icon {
