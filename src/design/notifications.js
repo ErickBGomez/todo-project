@@ -1,6 +1,9 @@
 import successNotificationSvg from "../img/svg/others/success-notification.svg";
 import closeSvg from "../img/svg/others/close.svg";
 
+const closeTimeout = 5000;
+let closeTimeoutId;
+
 const renderNotifications = () => {
   const container = document.createElement("div");
   container.id = "notifications-container";
@@ -38,6 +41,26 @@ const displayNotification = (label) => {
   newNotification.appendChild(closeButton);
 
   notificationsContainer.appendChild(newNotification);
+
+  closeInnterval = setTimeout(
+    closeNotification,
+    closeTimeout,
+    notificationsContainer,
+    newNotification
+  );
+
+  closeNotificationEvent(closeButton, notificationsContainer, newNotification);
+};
+
+const closeNotification = (container, notification) => {
+  container.removeChild(notification);
+};
+
+const closeNotificationEvent = (closeButton, container, notification) => {
+  closeButton.addEventListener("click", () => {
+    clearTimeout(closeInnterval);
+    closeNotification(container, notification);
+  });
 };
 
 export { renderNotifications, displayNotification };
