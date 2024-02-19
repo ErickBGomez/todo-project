@@ -42,7 +42,7 @@ const displayNotification = (label) => {
 
   notificationsContainer.appendChild(newNotification);
 
-  closeInnterval = setTimeout(
+  closeTimeoutId = setTimeout(
     closeNotification,
     closeTimeout,
     notificationsContainer,
@@ -58,7 +58,7 @@ const closeNotification = (container, notification) => {
 
 const closeNotificationEvent = (closeButton, container, notification) => {
   closeButton.addEventListener("click", () => {
-    clearTimeout(closeInnterval);
+    clearTimeout(closeTimeoutId);
     closeNotification(container, notification);
   });
 };
