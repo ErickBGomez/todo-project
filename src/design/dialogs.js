@@ -495,9 +495,10 @@ const addEditTaskEvent = (dialogContainer, taskId) => {
   );
   const dateInput = dialogContainer.querySelector("#date-input");
   const priorityInput = dialogContainer.querySelector("#select-priority");
+  const listInput = dialogContainer.querySelector("#select-list");
 
   editButton.addEventListener("click", () => {
-    lists.editTask(lists.getCurrentList().name, taskId, {
+    lists.editTask(listInput.dataset.value, taskId, {
       title: titleInput.value,
       description: descriptionInput.value,
       date: dateInput.dataset.value,

@@ -127,6 +127,23 @@ const restoreTask = (listName, taskId) => {
   saveLists();
 };
 
+const moveTask = (taskId, fromListName, toListName) => {
+  const fromList = getList(fromListName);
+  const toList = getList(toListName);
+
+  for (let key in fromList) {
+    if (key === "tasks" || key === "completed") {
+      const taskIndex = getTaskIndex(fromList, key, taskId);
+
+      if (taskIndex !== -1) {
+        const movedTask = fromList[key].splice(taskIndex, 1)[0];
+        toList[key].push(movedTask);
+        return;
+      }
+    }
+  }
+};
+
 const editTask = (
   listName,
   taskId,
@@ -137,6 +154,10 @@ const editTask = (
     priority: "Priority",
   }
 ) => {
+  if (listName !== currentList.name) {
+    moveTask(taskId, currentList.name, listName);
+  }
+
   const selectedList = getList(listName);
   const selectedTask = getTask(selectedList, taskId);
 
