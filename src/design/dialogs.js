@@ -516,26 +516,32 @@ const addEditTaskEvent = (dialogContainer, taskId) => {
     });
 
     page.refreshTaskElements();
-    taskDetailsDialog.close();
+    closeDialog(taskDetailsDialog);
     notifications.displayNotification("Task updated successfully.");
   });
 };
 
-const addCloseDialogEvent = (currentDialog) => {
-  currentDialog.addEventListener("close", () =>
-    document.body.removeChild(currentDialog)
-  );
+const closeDialog = (dialog) => {
+  dialog.classList.add("closing");
+
+  dialog.addEventListener("animationend", () => {
+    dialog.close();
+  });
 };
 
-const addCloseDialogButtonsEvent = (currentDialog, closeButtons) => {
+const addCloseDialogEvent = (dialog) => {
+  dialog.addEventListener("close", () => document.body.removeChild(dialog));
+};
+
+const addCloseDialogButtonsEvent = (dialog, closeButtons) => {
   // If closeButtons is not an array. Assign event directly
   if (!Array.isArray(closeButtons)) {
-    closeButtons.addEventListener("click", () => currentDialog.close());
+    closeButtons.addEventListener("click", () => closeDialog(dialog));
     return;
   }
 
   closeButtons.forEach((button) =>
-    button.addEventListener("click", () => currentDialog.close())
+    button.addEventListener("click", () => closeDialog(dialog))
   );
 };
 
@@ -576,7 +582,7 @@ const addDeleteTaskEvent = (deleteButton, taskId) => {
 
   deleteButton.addEventListener("click", () => {
     lists.deleteTask(lists.getCurrentList().name, taskId);
-    dialogOrigin.close();
+    closeDialog(dialogOrigin);
     page.refreshTaskElements();
     notifications.displayNotification("Task deleted successfully.");
   });

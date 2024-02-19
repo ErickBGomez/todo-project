@@ -411,17 +411,29 @@ dialog {
   animation-duration: 300ms;
 }
 
-dialog#new-list,
-dialog#edit-list,
-dialog#new-task,
-dialog#edit-task {
-  gap: 16px;
+dialog.closing {
+  animation-name: closeDialog;
+  animation-duration: 300ms;
+  animation-fill-mode: forwards;
 }
 
 dialog::backdrop {
   background-color: #00000099;
   animation-name: showDialogBackdrop;
   animation-duration: 300ms;
+}
+
+dialog.closing::backdrop {
+  animation-name: closeDialogBackdrop;
+  animation-duration: 300ms;
+  animation-fill-mode: forwards;
+}
+
+dialog#new-list,
+dialog#edit-list,
+dialog#new-task,
+dialog#edit-task {
+  gap: 16px;
 }
 
 dialog .dialog-buttons {
@@ -1030,7 +1042,6 @@ dialog#delete-task button.primary {
   }
   to {
     transform: translate(0px, 0px);
-
     opacity: 1;
   }
 }
@@ -1041,5 +1052,26 @@ dialog#delete-task button.primary {
   }
   to {
     background-color: #00000099;
+  }
+}
+
+@keyframes closeDialog {
+  from {
+    transform: translate(0px, 0px);
+    opacity: 1;
+  }
+
+  to {
+    transform: translate(0px, 100px);
+    opacity: 0;
+  }
+}
+
+@keyframes closeDialogBackdrop {
+  from {
+    background-color: #00000099;
+  }
+  to {
+    background-color: #00000000;
   }
 }
