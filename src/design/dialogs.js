@@ -54,13 +54,12 @@ const showNewListDialog = () => {
   const titleContainer = document.createElement("div");
   titleContainer.className = "title-container";
 
-  const titleInput = document.createElement("input");
-  titleInput.type = "text";
-  titleInput.id = "list-title-input";
-  titleInput.name = "list-title-input";
-  titleInput.placeholder = "List title";
-  titleInput.maxLength = "25";
-  titleInput.autofocus = true;
+  const titleInput = inputs.appendTextInput(
+    "list-title-input",
+    "List title",
+    25,
+    true
+  );
 
   const selectIconInput = inputs.appendSelectInputGrid(
     "select-icon",
@@ -93,14 +92,13 @@ const showEditListDialog = (list) => {
   const titleContainer = document.createElement("div");
   titleContainer.className = "title-container";
 
-  const titleInput = document.createElement("input");
-  titleInput.type = "text";
-  titleInput.id = "list-title-input";
-  titleInput.name = "list-title-input";
-  titleInput.placeholder = "List title";
-  titleInput.maxLength = "25";
-  titleInput.autofocus = true;
-  titleInput.value = list.name;
+  const titleInput = inputs.appendTextInput(
+    "list-title-input",
+    "List title",
+    25,
+    true,
+    list.name
+  );
 
   const selectIconInput = inputs.appendSelectInputGrid(
     "select-icon",
@@ -180,10 +178,12 @@ const showNewTaskDialog = () => {
   const dialog = document.createElement("dialog");
   dialog.id = "new-task";
 
-  const titleInput = document.createElement("input");
-  titleInput.id = "task-title-input";
-  titleInput.type = "text";
-  titleInput.placeholder = "Task title";
+  const titleInput = inputs.appendTextInput(
+    "task-title-input",
+    "Task title",
+    25,
+    true
+  );
 
   const descriptionInput = document.createElement("textarea");
   descriptionInput.id = "task-description-input";
@@ -238,11 +238,13 @@ const showEditTaskDialog = (task) => {
   const dialog = document.createElement("dialog");
   dialog.id = "edit-task";
 
-  const titleInput = document.createElement("input");
-  titleInput.id = "task-title-input";
-  titleInput.type = "text";
-  titleInput.placeholder = "Task title";
-  titleInput.value = task.title;
+  const titleInput = inputs.appendTextInput(
+    "task-title-input",
+    "Task title",
+    25,
+    true,
+    task.title
+  );
 
   const descriptionInput = document.createElement("textarea");
   descriptionInput.id = "task-description-input";
@@ -529,7 +531,9 @@ const addCloseDialogButtonsEvent = (currentDialog, closeButtons) => {
   );
 };
 
-const disableEmptyDialogEvent = (textInput, mainButton) => {
+const disableEmptyDialogEvent = (textInputContainer, mainButton) => {
+  const textInput = textInputContainer.querySelector("input[type='text']");
+
   // Disable button when opening the dialog
   // If the dialog has default values when opening, don't disable mainButton
   mainButton.disabled = textInput.value.length === 0;
