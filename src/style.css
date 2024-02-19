@@ -311,6 +311,7 @@ p {
 
 .task .task-information {
   display: flex;
+  justify-content: space-between;
   width: 100%;
   align-items: center;
   gap: 24px;
@@ -331,6 +332,14 @@ p {
 
 .task .description {
   color: var(--Black-50);
+}
+
+.task .title,
+.task .description {
+  max-width: 425px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .task .sub-information {
@@ -368,8 +377,9 @@ p {
 
 .task .date-icon,
 .task .priority-icon {
-  width: 24px;
-  height: 24px;
+  display: block;
+  min-width: 24px;
+  max-height: 24px;
 }
 
 /* Completed tasks */
