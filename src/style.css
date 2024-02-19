@@ -492,6 +492,7 @@ button.primary:active {
 button.primary:disabled {
   background-color: #b3d1ff;
   color: #f0f6ff;
+  cursor: not-allowed;
 }
 
 button.secondary {
