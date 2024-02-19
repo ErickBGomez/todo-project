@@ -741,8 +741,8 @@ dialog#edit-task .task-select-inputs {
 }
 
 #select-list .option {
-  color: var(--Black-50);
-  fill: var(--Black-50);
+  color: var(--Black-75);
+  fill: var(--Black-75);
 }
 
 /* Options controller colors */

@@ -280,10 +280,12 @@ const changeDateValueEvent = (inputContainer) => {
 };
 
 const selectDateValue = (inputContainer, newValue) => {
+  const input = inputContainer.querySelector("input.date-element");
   const buttonLabel = inputContainer.querySelector(".button-label");
   const buttonIcon = inputContainer.querySelector(".button-icon");
 
   inputContainer.dataset.value = newValue;
+  input.value = newValue;
   buttonLabel.textContent = newValue || "Date";
   buttonIcon.innerHTML = newValue ? dateSelectedSvg : dateUnselectedSvg;
 };
