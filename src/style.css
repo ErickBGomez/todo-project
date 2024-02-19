@@ -556,7 +556,18 @@ textarea::placeholder {
   color: var(--Black-50);
 }
 
-/* Task options */
+/* Inputs */
+
+/* Text and textarea input */
+.text-input-container,
+.textarea-input-container {
+  position: relative;
+}
+
+.text-counter {
+  position: absolute;
+  right: 10px;
+}
 
 /* Date input */
 #date-input input[type="date"] {

@@ -46,6 +46,7 @@ const appendTextInput = (
 
   const currentTextCount = document.createElement("span");
   currentTextCount.className = "current-count";
+  currentTextCount.textContent = input.value.length;
 
   const counterLimit = document.createElement("span");
   counterLimit.className = "counter-limit";
@@ -56,6 +57,8 @@ const appendTextInput = (
 
   container.appendChild(input);
   container.appendChild(textCounter);
+
+  addCountLengthEvent(input, currentTextCount);
 
   return container;
 };
@@ -85,6 +88,7 @@ const appendTextAreaInput = (
 
   const currentTextCount = document.createElement("span");
   currentTextCount.className = "current-count";
+  currentTextCount.textContent = input.value.length;
 
   const counterLimit = document.createElement("span");
   counterLimit.className = "counter-limit";
@@ -95,6 +99,8 @@ const appendTextAreaInput = (
 
   container.appendChild(input);
   container.appendChild(textCounter);
+
+  addCountLengthEvent(input, currentTextCount);
 
   return container;
 };
@@ -292,6 +298,13 @@ const appendOptionsButton = (
 };
 
 // Custom inputs events
+const addCountLengthEvent = (input, counter) => {
+  input.addEventListener(
+    "input",
+    () => (counter.textContent = input.value.length)
+  );
+};
+
 const addExpandOptionsEvent = (container, expandButton) => {
   // const button = container.querySelector(".select-button");
 
