@@ -46,6 +46,10 @@ const listIcons = [
   bookSvg,
 ];
 
+const listTitleMaxLength = 25;
+const taskTitleMaxLength = 50;
+const taskDescriptionMaxLength = 300;
+
 // List dialogs:
 const showNewListDialog = () => {
   const dialog = document.createElement("dialog");
@@ -57,7 +61,7 @@ const showNewListDialog = () => {
   const titleInput = inputs.appendTextInput(
     "list-title-input",
     "List title",
-    25,
+    listTitleMaxLength,
     true
   );
 
@@ -95,7 +99,7 @@ const showEditListDialog = (list) => {
   const titleInput = inputs.appendTextInput(
     "list-title-input",
     "List title",
-    25,
+    listTitleMaxLength,
     true,
     list.name
   );
@@ -181,14 +185,14 @@ const showNewTaskDialog = () => {
   const titleInput = inputs.appendTextInput(
     "task-title-input",
     "Task title",
-    25,
+    taskTitleMaxLength,
     true
   );
 
   const descriptionInput = inputs.appendTextAreaInput(
     "task-description-input",
     "Task description",
-    300,
+    taskDescriptionMaxLength,
     4,
     false
   );
@@ -243,7 +247,7 @@ const showEditTaskDialog = (task) => {
   const titleInput = inputs.appendTextInput(
     "task-title-input",
     "Task title",
-    25,
+    taskTitleMaxLength,
     true,
     task.title
   );
@@ -251,7 +255,7 @@ const showEditTaskDialog = (task) => {
   const descriptionInput = inputs.appendTextAreaInput(
     "task-description-input",
     "Task description",
-    300,
+    taskDescriptionMaxLength,
     4,
     false,
     task.description
