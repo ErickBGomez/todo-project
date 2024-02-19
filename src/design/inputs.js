@@ -60,6 +60,45 @@ const appendTextInput = (
   return container;
 };
 
+const appendTextAreaInput = (
+  inputId,
+  placeholder,
+  maxLength = 10,
+  rows = 1,
+  autoFocus = false,
+  initialValue = null
+) => {
+  const container = document.createElement("div");
+  container.className = "textarea-input-container";
+
+  const input = document.createElement("textarea");
+  input.id = inputId;
+  input.name = inputId;
+  input.placeholder = placeholder;
+  input.maxLength = maxLength.toString();
+  input.rows = rows.toString();
+  input.autofocus = autoFocus;
+  input.value = initialValue;
+
+  const textCounter = document.createElement("span");
+  textCounter.className = "text-counter";
+
+  const currentTextCount = document.createElement("span");
+  currentTextCount.className = "current-count";
+
+  const counterLimit = document.createElement("span");
+  counterLimit.className = "counter-limit";
+  counterLimit.textContent = ` / ${maxLength}`;
+
+  textCounter.appendChild(currentTextCount);
+  textCounter.appendChild(counterLimit);
+
+  container.appendChild(input);
+  container.appendChild(textCounter);
+
+  return container;
+};
+
 const appendSelectInput = (
   inputId,
   icon,
@@ -335,6 +374,7 @@ const addShowDatePickerEvent = (inputButton, dateInput) => {
 export {
   appendDialogButtons,
   appendTextInput,
+  appendTextAreaInput,
   appendSelectInput,
   appendSelectInputGrid,
   appendDateInput,

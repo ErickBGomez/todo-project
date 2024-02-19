@@ -185,11 +185,13 @@ const showNewTaskDialog = () => {
     true
   );
 
-  const descriptionInput = document.createElement("textarea");
-  descriptionInput.id = "task-description-input";
-  descriptionInput.name = "task-description-input";
-  descriptionInput.rows = "4";
-  descriptionInput.placeholder = "Task description";
+  const descriptionInput = inputs.appendTextAreaInput(
+    "task-description-input",
+    "Task description",
+    300,
+    4,
+    false
+  );
 
   const selectInputsContainer = document.createElement("div");
   selectInputsContainer.className = "task-select-inputs";
@@ -246,12 +248,14 @@ const showEditTaskDialog = (task) => {
     task.title
   );
 
-  const descriptionInput = document.createElement("textarea");
-  descriptionInput.id = "task-description-input";
-  descriptionInput.name = "task-description-input";
-  descriptionInput.rows = "4";
-  descriptionInput.placeholder = "Task description";
-  descriptionInput.value = task.description;
+  const descriptionInput = inputs.appendTextAreaInput(
+    "task-description-input",
+    "Task description",
+    300,
+    4,
+    false,
+    task.description
+  );
 
   const selectInputsContainer = document.createElement("div");
   selectInputsContainer.className = "task-select-inputs";
