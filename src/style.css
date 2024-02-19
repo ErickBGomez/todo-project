@@ -136,8 +136,15 @@ p {
 }
 
 .list-sidebar-element .list-sidebar-element-icon {
-  width: 24px;
-  height: 24px;
+  display: block;
+  min-width: 24px;
+  max-height: 24px;
+}
+
+.list-sidebar-element .list-sidebar-element-label {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .list-sidebar-element.selected {
@@ -197,7 +204,15 @@ p {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  max-width: 100%;
+  gap: 26px;
   margin-bottom: 48px;
+  word-wrap: break-word;
+}
+
+.title-section #list-title {
+  flex: 1;
+  max-width: 80%;
 }
 
 .title-section .options-controller-button {
