@@ -474,13 +474,12 @@ const addCreateTaskEvent = (dialogContainer) => {
   const selectedList = dialogContainer.querySelector("#select-list");
 
   createButton.addEventListener("click", () => {
-    lists.addNewTask(
-      selectedList.dataset.value,
-      titleInput.value,
-      descriptionInput.value,
-      dateInput.dataset.value,
-      priorityInput.dataset.value
-    );
+    lists.createTask(selectedList.dataset.value, {
+      title: titleInput.value,
+      description: descriptionInput.value,
+      date: dateInput.dataset.value,
+      priority: priorityInput.dataset.value,
+    });
 
     page.refreshTaskElements();
     notifications.displayNotification("Task created successfully.");

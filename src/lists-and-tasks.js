@@ -65,14 +65,30 @@ const deleteList = (listName) => {
 
 const getList = (listName) => content.find((list) => list.name === listName);
 
-const addNewTask = (listName, title, description, date, priority) => {
+const createTask = (
+  listName,
+  newTask = {
+    title: "Title",
+    description: "Description",
+    date: "Date",
+    priority: "Priority",
+  }
+) => {
   const selectedList = getList(listName);
 
   // Remove any other possible value to priority that is not equal to the specified below
-  if (!(priority === "Low" || priority == "Medium" || priority === "High"))
-    priority = "";
+  if (
+    !(
+      newTask.priority === "Low" ||
+      newTask.priority == "Medium" ||
+      newTask.priority === "High"
+    )
+  )
+    newTask.priority = "";
 
-  selectedList.tasks.push(new Task(title, description, date, priority));
+  selectedList.tasks.push(
+    new Task(newTask.title, newTask.description, newTask.date, newTask.priority)
+  );
   saveLists();
 };
 
@@ -199,7 +215,7 @@ export {
   createList,
   editList,
   deleteList,
-  addNewTask,
+  createTask,
   completeTask,
   restoreTask,
   editTask,
