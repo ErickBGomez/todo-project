@@ -95,7 +95,9 @@ const createTask = (
 const getTask = (list, taskId) => {
   for (let key in list) {
     if (key === "tasks" || key === "completed") {
-      return list[key].find((task) => task.id === taskId);
+      const taskFound = list[key].find((task) => task.id === taskId);
+      // If task is not found in "tasks" array, continue to "completed" array
+      if (taskFound) return taskFound;
     }
   }
 };
