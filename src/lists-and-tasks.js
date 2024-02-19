@@ -122,6 +122,16 @@ const editTask = (
   const selectedList = getList(listName);
   const selectedTask = getTask(selectedList, taskId);
 
+  // Remove any other possible value to priority that is not equal to the specified below
+  if (
+    !(
+      newTask.priority === "Low" ||
+      newTask.priority == "Medium" ||
+      newTask.priority === "High"
+    )
+  )
+    newTask.priority = "";
+
   selectedTask.title = newTask.title;
   selectedTask.description = newTask.description;
   selectedTask.date = newTask.date;

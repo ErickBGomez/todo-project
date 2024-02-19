@@ -267,7 +267,7 @@ const showEditTaskDialog = (task) => {
       { icon: prioritySelectedSvg, name: "High" },
     ]
   );
-  inputs.selectOptionValue(selectPriorityInput, task.priority);
+  inputs.selectOptionValue(selectPriorityInput, task.priority || "Priority");
 
   const selectListInput = inputs.appendSelectInput(
     "select-list",
