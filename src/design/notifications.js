@@ -53,7 +53,11 @@ const displayNotification = (label) => {
 };
 
 const closeNotification = (container, notification) => {
-  container.removeChild(notification);
+  notification.classList.add("closing");
+
+  notification.addEventListener("animationend", () =>
+    container.removeChild(notification)
+  );
 };
 
 const closeNotificationEvent = (closeButton, container, notification) => {

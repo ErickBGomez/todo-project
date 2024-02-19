@@ -982,6 +982,14 @@ dialog#delete-task button.primary {
   border-radius: 8px;
   width: 100%;
   user-select: none;
+  animation-name: showNotification;
+  animation-duration: 300ms;
+}
+
+.notification.closing {
+  animation-name: closeNotification;
+  animation-duration: 300ms;
+  animation-fill-mode: forwards;
 }
 
 .notification-icon {
@@ -1073,5 +1081,27 @@ dialog#delete-task button.primary {
   }
   to {
     background-color: #00000000;
+  }
+}
+
+@keyframes showNotification {
+  from {
+    transform: translate(100px, 0px);
+    opacity: 0;
+  }
+  to {
+    transform: translate(0px, 0px);
+    opacity: 1;
+  }
+}
+
+@keyframes closeNotification {
+  from {
+    transform: translate(0px, 0px);
+    opacity: 1;
+  }
+  to {
+    transform: translate(100px, 0px);
+    opacity: 0;
   }
 }
