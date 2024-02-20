@@ -840,6 +840,7 @@ dialog#task-details {
   display: flex;
   flex-direction: column;
   width: 600px;
+  max-width: 600px;
 }
 
 dialog#task-details .actions-container {
@@ -878,11 +879,13 @@ dialog#task-details .main-information {
   color: var(--Black);
   font-weight: 600;
   font-size: 1.6rem;
+  word-wrap: break-word;
 }
 
 .main-information .task-description {
   font-size: 1.1rem;
   color: var(--Black-75);
+  word-wrap: break-word;
 }
 
 dialog#task-details .secondary-information {
