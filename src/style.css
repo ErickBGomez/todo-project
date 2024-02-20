@@ -901,8 +901,8 @@ dialog#task-details .secondary-information {
 }
 
 .info-element .icon {
-  width: 24px;
-  height: 24px;
+  min-width: 24px;
+  max-height: 24px;
 }
 
 .info-element.task-date {
@@ -926,8 +926,15 @@ dialog#task-details .secondary-information {
 }
 
 .info-element.task-list {
+  max-width: 160px;
   color: var(--Completed-Checklist);
   fill: var(--Completed-Checklist);
+}
+
+.task-list .label {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* Delete list and Delete task */
