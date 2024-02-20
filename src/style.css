@@ -908,6 +908,9 @@ dialog#task-details .main-information {
 .main-information .task-description {
   font-size: 1.1rem;
   color: var(--Black-75);
+  max-height: 500px;
+  white-space: pre-wrap;
+  overflow-y: scroll;
   word-wrap: break-word;
 }
 
