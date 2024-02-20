@@ -460,6 +460,11 @@ dialog#edit-task {
   gap: 16px;
 }
 
+dialog#new-task,
+dialog#edit-task {
+  width: 550px;
+}
+
 dialog .dialog-buttons {
   display: flex;
   flex-direction: row-reverse;
@@ -477,6 +482,7 @@ input[type="text"] {
   border: none;
   border-bottom: 3px solid;
   caret-color: var(--Primary);
+  width: 100%;
 }
 
 input[type="text"]:placeholder-shown {
