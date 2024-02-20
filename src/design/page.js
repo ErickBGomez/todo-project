@@ -110,9 +110,6 @@ function createNewTaskElement(task, isCompleted) {
     ? completedTaskSvg
     : toCompleteButtonSvg;
 
-  const taskInformation = document.createElement("div");
-  taskInformation.className = "task-information";
-
   const mainInformation = document.createElement("div");
   mainInformation.className = "main-information";
 
@@ -183,11 +180,9 @@ function createNewTaskElement(task, isCompleted) {
   subInformation.appendChild(taskPriority);
   subInformation.appendChild(taskDate);
 
-  taskInformation.appendChild(mainInformation);
-  taskInformation.appendChild(subInformation);
-
   newTaskElement.appendChild(completeTaskButton);
-  newTaskElement.appendChild(taskInformation);
+  newTaskElement.appendChild(mainInformation);
+  newTaskElement.appendChild(subInformation);
 
   addTaskDetailsDialogEvent(newTaskElement, lists.getCurrentList(), task);
 
