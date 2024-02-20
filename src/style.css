@@ -717,10 +717,27 @@ dialog#edit-task .task-select-inputs {
   user-select: none;
 }
 
+.select-input .button-icon,
+.select-list .button-icon,
+#date-input .button-icon {
+  min-width: 24px;
+  max-height: 24px;
+}
+
 .select-input .select-button,
 #date-input .date-button {
   padding: 6px 10px;
   border: 1px solid var(--Black-25);
+}
+
+#select-list button {
+  max-width: 180px;
+}
+
+#select-list .button-label {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .select-input .options,
