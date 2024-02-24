@@ -1,7 +1,7 @@
 // Icons
-import defaultSvg from "../img/svg/lists/default.svg";
-import dateUnselectedSvg from "../img/svg/tasks/date-nofill.svg";
-import dateSelectedSvg from "../img/svg/tasks/date-fill.svg";
+import defaultSvg from "../img/lists/default.svg";
+import dateUnselectedSvg from "../img/tasks/date-nofill.svg";
+import dateSelectedSvg from "../img/tasks/date-fill.svg";
 
 // Custom inputs controllers
 const appendDialogButtons = (primaryLabel, secondaryLabel = "Cancel") => {

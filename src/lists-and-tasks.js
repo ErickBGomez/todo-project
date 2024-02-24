@@ -1,4 +1,4 @@
-import defaultSvg from "./img/svg/lists/default.svg";
+import defaultSvg from "./img/lists/default.svg";
 
 class Task {
   constructor(title, description, date, priority) {

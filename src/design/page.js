@@ -1,12 +1,12 @@
 // Icons
-import dateSvg from "../img/svg/tasks/date-fill.svg";
-import prioritySvg from "../img/svg/tasks/priority-fill.svg";
-import toCompleteButtonSvg from "../img/svg/others/to-complete-button.svg";
-import completedTaskSvg from "../img/svg/others/completed-task.svg";
-import expandTasksSvg from "../img/svg/others/expand-tasks.svg";
-import horizontalOptionsSvg from "../img/svg/others/horizontal-options.svg";
-import editSvg from "../img/svg/others/edit.svg";
-import deleteSvg from "../img/svg/others/delete.svg";
+import dateSvg from "../img/tasks/date-fill.svg";
+import prioritySvg from "../img/tasks/priority-fill.svg";
+import toCompleteButtonSvg from "../img/others/to-complete-button.svg";
+import completedTaskSvg from "../img/others/completed-task.svg";
+import expandTasksSvg from "../img/others/expand-tasks.svg";
+import horizontalOptionsSvg from "../img/others/horizontal-options.svg";
+import editSvg from "../img/others/edit.svg";
+import deleteSvg from "../img/others/delete.svg";
 
 import * as lists from "../lists-and-tasks.js";
 import * as dialogs from "./dialogs.js";

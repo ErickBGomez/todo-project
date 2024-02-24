@@ -1,5 +1,5 @@
-import successNotificationSvg from "../img/svg/others/success-notification.svg";
-import closeSvg from "../img/svg/others/close.svg";
+import successNotificationSvg from "../img/others/success-notification.svg";
+import closeSvg from "../img/others/close.svg";
 
 const closeTimeout = 5000;
 let closeTimeoutId;

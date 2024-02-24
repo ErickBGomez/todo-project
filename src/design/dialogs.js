@@ -1,28 +1,28 @@
 // Task icons
-import dateUnselectedSvg from "../img/svg/tasks/date-nofill.svg";
-import dateSelectedSvg from "../img/svg/tasks/date-fill.svg";
-import priorityUnselectedSvg from "../img/svg/tasks/priority-nofill.svg";
-import prioritySelectedSvg from "../img/svg/tasks/priority-fill.svg";
+import dateUnselectedSvg from "../img/tasks/date-nofill.svg";
+import dateSelectedSvg from "../img/tasks/date-fill.svg";
+import priorityUnselectedSvg from "../img/tasks/priority-nofill.svg";
+import prioritySelectedSvg from "../img/tasks/priority-fill.svg";
 
 // List icons
-import defaultSvg from "../img/svg/lists/default.svg";
-import starSvg from "../img/svg/lists/star.svg";
-import heartSvg from "../img/svg/lists/heart.svg";
-import sofaSvg from "../img/svg/lists/sofa.svg";
-import treeSvg from "../img/svg/lists/tree.svg";
-import shoppingSvg from "../img/svg/lists/shopping.svg";
-import schoolSvg from "../img/svg/lists/school.svg";
-import pencilSvg from "../img/svg/lists/pencil.svg";
-import planeSvg from "../img/svg/lists/plane.svg";
-import cloudSvg from "../img/svg/lists/cloud.svg";
-import lightbulbSvg from "../img/svg/lists/lightbulb.svg";
-import bookSvg from "../img/svg/lists/book.svg";
+import defaultSvg from "../img/lists/default.svg";
+import starSvg from "../img/lists/star.svg";
+import heartSvg from "../img/lists/heart.svg";
+import sofaSvg from "../img/lists/sofa.svg";
+import treeSvg from "../img/lists/tree.svg";
+import shoppingSvg from "../img/lists/shopping.svg";
+import schoolSvg from "../img/lists/school.svg";
+import pencilSvg from "../img/lists/pencil.svg";
+import planeSvg from "../img/lists/plane.svg";
+import cloudSvg from "../img/lists/cloud.svg";
+import lightbulbSvg from "../img/lists/lightbulb.svg";
+import bookSvg from "../img/lists/book.svg";
 
 // Dialog icons
-import closeSvg from "../img/svg/others/close.svg";
-import horizontalOptionsSvg from "../img/svg/others/horizontal-options.svg";
-import editSvg from "../img/svg/others/edit.svg";
-import deleteSvg from "../img/svg/others/delete.svg";
+import closeSvg from "../img/others/close.svg";
+import horizontalOptionsSvg from "../img/others/horizontal-options.svg";
+import editSvg from "../img/others/edit.svg";
+import deleteSvg from "../img/others/delete.svg";
 
 // Functions
 import * as lists from "../lists-and-tasks";

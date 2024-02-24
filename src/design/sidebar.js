@@ -1,5 +1,5 @@
-import defaultListSvg from "../img/svg/lists/default.svg";
-import createListSvg from "../img/svg/others/create-list.svg";
+import defaultListSvg from "../img/lists/default.svg";
+import createListSvg from "../img/others/create-list.svg";
 
 import * as page from "./page";
 import * as lists from "../lists-and-tasks.js";
