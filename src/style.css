@@ -84,15 +84,15 @@ p {
 
 #app-icon {
   display: block;
-  width: 36px;
-  height: 36px;
+  width: 32px;
+  height: 32px;
   fill: var(--Primary);
 }
 
 #app-title {
   color: var(--Primary);
   font-weight: 700;
-  font-size: 1.4rem;
+  font-size: 1.5rem;
 }
 
 .sidebar-lists-container {
@@ -923,8 +923,12 @@ dialog#task-details .main-information {
   color: var(--Black-75);
   max-height: 500px;
   white-space: pre-wrap;
-  overflow-y: scroll;
+  overflow-y: hidden;
   word-wrap: break-word;
+}
+
+.task-description.scroll-text {
+  overflow-y: scroll;
 }
 
 dialog#task-details .secondary-information {

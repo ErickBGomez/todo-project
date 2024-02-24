@@ -49,6 +49,7 @@ const listIcons = [
 const listTitleMaxLength = 25;
 const taskTitleMaxLength = 50;
 const taskDescriptionMaxLength = 300;
+const heightOverflow = 156;
 
 // List dialogs:
 const showNewListDialog = () => {
@@ -438,6 +439,10 @@ const showTaskDetailsDialog = (list, task) => {
   openDialogEvent(editOption, showEditTaskDialog, task);
 
   dialog.showModal();
+
+  // If description is overflowing: Apply scrollbars
+  if (taskDescription.clientHeight > heightOverflow)
+    taskDescription.classList.add("scroll-text");
 };
 
 // Dialog events

@@ -123,7 +123,6 @@ function createNewTaskElement(task, isCompleted) {
     const taskDescription = document.createElement("div");
     taskDescription.className = "description";
     taskDescription.textContent = task.description;
-
     mainInformation.appendChild(taskDescription);
   }
   const subInformation = document.createElement("div");
