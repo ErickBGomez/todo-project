@@ -20,14 +20,11 @@
   --Black-05: #25272c0d;
   --White: #fafafa;
   --Primary: #4c7dfb;
-  --Secondary: #9ac2ff;
-  --Tertiary: #37408e;
-  --Success: #28c166;
-  --Error: #ec3a4f;
+  --Delete-Accent: #ec3a4f;
   --High-Priority: #ee4e39;
   --Medium-Priority: #ea7e1a;
-  --Low-Priority: #896b3f;
-  --Completed-Checklist: #2f9e62;
+  --Low-Priority: #89715d;
+  --Task-List: #2f9e62;
   --List-Background-Gradient: linear-gradient(90deg, #66a2e8 0%, #989be9 100%);
 }
 
@@ -847,9 +844,9 @@ dialog#edit-task .task-select-inputs {
 
 /* List input button color */
 #select-list:not([data-value=""]) .select-button {
-  border-color: var(--Completed-Checklist);
-  color: var(--Completed-Checklist);
-  fill: var(--Completed-Checklist);
+  border-color: var(--Task-List);
+  color: var(--Task-List);
+  fill: var(--Task-List);
 }
 
 #select-list .option {
@@ -860,8 +857,8 @@ dialog#edit-task .task-select-inputs {
 /* Options controller colors */
 .task-more-options .delete-task,
 .list-more-options .delete-list {
-  color: var(--Error);
-  fill: var(--Error);
+  color: var(--Delete-Accent);
+  fill: var(--Delete-Accent);
 }
 
 /* SVG icons sizes */
@@ -970,8 +967,8 @@ dialog#task-details .secondary-information {
 
 .info-element.task-list {
   max-width: 160px;
-  color: var(--Completed-Checklist);
-  fill: var(--Completed-Checklist);
+  color: var(--Task-List);
+  fill: var(--Task-List);
 }
 
 .task-list .label {
@@ -1012,7 +1009,7 @@ dialog#delete-task .sub-message {
 
 dialog#delete-list button.primary,
 dialog#delete-task button.primary {
-  background-color: var(--Error);
+  background-color: var(--Delete-Accent);
 }
 
 .list-info {
