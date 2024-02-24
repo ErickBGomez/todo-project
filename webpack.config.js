@@ -15,7 +15,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: "To-do Project | Erick B. Gómez",
+      title: "To-Do App | Erick B. Gómez",
       favicon: "./src/img/todo-app-icon.svg",
     }),
   ],
