@@ -1,5 +1,6 @@
 import defaultListSvg from "../img/lists/default.svg";
 import createListSvg from "../img/others/create-list.svg";
+import appIconSvg from "../img/todo-app-icon.svg";
 
 import * as page from "./page";
 import * as lists from "../lists-and-tasks.js";
@@ -8,11 +9,21 @@ import * as dialogs from "./dialogs.js";
 let userLists;
 
 function createAppTitle() {
+  const container = document.createElement("div");
+  container.className = "app-info-container";
+
+  const appIcon = document.createElement("span");
+  appIcon.id = "app-icon";
+  appIcon.innerHTML = appIconSvg;
+
   const appTitle = document.createElement("div");
   appTitle.id = "app-title";
-  appTitle.textContent = "To-do app";
+  appTitle.textContent = "To-Do app";
 
-  return appTitle;
+  container.appendChild(appIcon);
+  container.appendChild(appTitle);
+
+  return container;
 }
 
 function createListSidebar(listLabel, listIcon = defaultListSvg) {

@@ -76,10 +76,22 @@ p {
   user-select: none;
 }
 
+.app-info-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+#app-icon {
+  display: block;
+  width: 36px;
+  height: 36px;
+}
+
 #app-title {
   color: var(--Primary);
   font-weight: 700;
-  font-size: 1.625rem;
+  font-size: 1.4rem;
 }
 
 .sidebar-lists-container {
