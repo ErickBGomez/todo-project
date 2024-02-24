@@ -3,9 +3,17 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   mode: "development",
-  entry: "./src/index.js",
+  entry: {
+    index: "./src/index.js",
+    listsAndTasks: "./src/lists-and-tasks.js",
+    sidebar: "./src/design/sidebar.js",
+    page: "./src/design/page.js",
+    inputs: "./src/design/inputs.js",
+    dialogs: "./src/design/dialogs.js",
+    notifications: "./src/design/notifications.js",
+  },
   output: {
-    filename: "main.js",
+    filename: "[name].bundle.js",
     path: path.resolve(__dirname, "dist"),
     clean: true,
   },
