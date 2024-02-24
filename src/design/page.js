@@ -90,7 +90,7 @@ function emptyPage() {
   const emptySubtitle = document.createElement("p");
   emptySubtitle.className = "empty-subtitle";
   emptySubtitle.textContent =
-    "Create a new list by clicking the + button or select an existing one to create adding your tasks.";
+    "Create a new list by clicking the + button or select an existing one to start adding your tasks.";
 
   container.appendChild(emptyTitle);
   container.appendChild(emptySubtitle);
