@@ -1,6 +1,6 @@
 import defaultListSvg from "../img/lists/default.svg";
 import createListSvg from "../img/others/create-list.svg";
-import appIconSvg from "../img/todo-app-icon.svg";
+import appIconSvg from "../img/todo-app-icon-flat.svg";
 
 import * as page from "./page";
 import * as lists from "../lists-and-tasks.js";
